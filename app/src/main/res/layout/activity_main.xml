@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
 <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottom_navigation"
     android:layout_width="match_parent"
@@ -16,6 +17,16 @@
     app:layout_constraintLeft_toRightOf="parent"
     app:itemBackground="@color/design_default_color_primary"
     app:menu="@menu/menu_bottom"/>
+=======
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:iconifiedByDefault="false"
+        app:queryHint="검색어를 입력하세요"
+        tools:ignore="MissingConstraints" />
+>>>>>>> ee7d8715680bf8e39a073ff5928f8ba54c5d0c62
 
     <Button
         android:id="@+id/daily_stamp_button"
