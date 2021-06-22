@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //홈에 있는 매일 인증(daily_stamp)버튼을 누르면 매일 인증 화면으로 넘어감
         Button imageButton = findViewById(R.id.daily_stamp_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

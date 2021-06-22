@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class daily_stamp extends AppCompatActivity {
 
+    //매일 인증.java
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

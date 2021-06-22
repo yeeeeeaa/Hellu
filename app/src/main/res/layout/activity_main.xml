@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    //여기는 앱을 열면 처음으로 보이는 홈입니다~8개의 버튼이 있고 검색창이 있고 하단에 네비가 있습니다
+
 <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottom_navigation"
     android:layout_width="match_parent"
