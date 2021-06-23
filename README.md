@@ -1,5 +1,15 @@
-[2021_06_23]
-8 button all switch screens의 파일에 추가한 파일 : 
+[2021_06_23] README push
+android studio에서 리드미 파일 생성
+
+[2021_06_23] just menu name change
+menu_bottom.xml
+    bottom_navigation의 item 이름 수정
+
+[2021_06_23] Add README.md
+gitLab에서 리드미 파일 생성
+
+[2021_06_23] 8 button all switch screens
+8 button all switch screens의 파일에 추가한 파일 :
     +R.layout.activity_daily_stamp.xml
     +R.layout.activity_event_stamp.xml
     +R.layout.activity_plan_choose.xml
