@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Front_end_home_test">
-
-        <activity android:name=".daily_stamp"/>
-
+        <activity android:name=".record" />
+        <activity android:name=".walking" />
+        <activity android:name=".ranking" />
+        <activity android:name=".inbody_check" />
+        <activity android:name=".community" />
+        <activity android:name=".event_stamp" />
+        <activity android:name=".plan_choose" />
+        <activity android:name=".daily_stamp" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

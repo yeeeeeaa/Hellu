@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".daily_stamp">
+    tools:context=".inbody_check">
 
-    //여기는 홈에 있는 매일인증(daily_stamp) 버튼을 누르면 나오는 화면입니다.
+    //여기는 홈에 있는 인바디체크(inbody_check) 버튼을 누르면 나오는 화면입니다.
 
     <TextView
         android:id="@+id/textView"
@@ -15,7 +15,7 @@
         android:layout_marginStart="152dp"
         android:layout_marginLeft="152dp"
         android:layout_marginTop="204dp"
-        android:text="매일 인증 화면"
+        android:text="인바디 체크 화면"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
