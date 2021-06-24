@@ -18,9 +18,9 @@ public class fragment_home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //미안해요 은서의 버튼 능력을 상실했어요....정말 미안해요....
         //홈에 있는 매일 인증(daily_stamp)버튼을 누르면 매일 인증 화면으로 넘어감
         Button imageButton = view.findViewById(R.id.daily_stamp_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +101,6 @@ public class fragment_home extends Fragment {
             }
         });
 
-        // Inflate the layout for this fragment
         return view;
     }
     @Override

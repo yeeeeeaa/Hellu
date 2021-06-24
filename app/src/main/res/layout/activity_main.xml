@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <!--하단 네비게이션의 위치를 잡아줍니다-->
     <FrameLayout
         android:id="@+id/content_layout"

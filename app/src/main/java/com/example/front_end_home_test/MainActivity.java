@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 BottomNavigate(menuItem.getItemId());
 
-
                 return true;
             }
         });
@@ -54,10 +53,11 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new fragment_home();
 
             } else if (id == R.id.feed){
-
                 fragment = new fragment_feed();
+
             }else if (id == R.id.mypage){
                 fragment = new fragment_mypage();
+
             }else{
                 fragment=new fragment_setting();
             }
