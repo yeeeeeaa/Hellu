@@ -1,15 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragment_home">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    //여기는 앱을 열면 처음으로 보이는 홈입니다~8개의 버튼이 있고 검색창이 있고 하단에 네비가 있습니다
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:iconifiedByDefault="false"
+        app:queryHint="검색어를 입력하세요"
+        tools:ignore="MissingConstraints" />
+    <Button
+        android:id="@+id/daily_stamp_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="매일 인증"
+        app:icon="@android:drawable/ic_menu_camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/event_stamp_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이벤트 인증"
+        app:icon="@android:drawable/ic_menu_camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.759"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21" />
+
+    <Button
+        android:id="@+id/plan_choose_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="플랜 선택"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daily_stamp_button"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <Button
+        android:id="@+id/community_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="소통"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintStart_toEndOf="@+id/plan_choose_button"
+        app:layout_constraintTop_toBottomOf="@+id/event_stamp_button"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <Button
+        android:id="@+id/inbody_check_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인바디 체크"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plan_choose_button"
+        app:layout_constraintVertical_bias="0.285" />
+
+    <Button
+        android:id="@+id/ranking_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="랭킹"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toEndOf="@+id/inbody_check_button"
+        app:layout_constraintTop_toBottomOf="@+id/community_button"
+        app:layout_constraintVertical_bias="0.285" />
+
+    <Button
+        android:id="@+id/walking_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="걷기 운동"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inbody_check_button"
+        app:layout_constraintVertical_bias="0.502" />
+
+    <Button
+        android:id="@+id/record_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="역대 기록"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintStart_toEndOf="@+id/walking_button"
+        app:layout_constraintTop_toBottomOf="@+id/ranking_button"
+        app:layout_constraintVertical_bias="0.502" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
