@@ -1,3 +1,25 @@
+[2021_06_24] bottom_navigation move
+bottom navigation 추가 xml 파일:
+    +R.layout.fragment_home.xml
+    +R.layout.fragment_feed.xml
+    +R.layout.fragment_mypage.xml
+    +R.layout.fragment_setting.xml
+    +R.menu.menu_bottom.xml
+까지 총 5개의 파일 생성
+
+bottom_navigation 추가 java 파일:
+    +com.example.front_end_home_fragment_home.java
+    +com.example.front_end_home_fragment_feed.java
+    +com.example.front_end_home_fragment_mypage.java
+    +com.example.front_end_home_fragment_setting.java
+까지 총 4개의 파일 생성
+
+
+R.layout.activity_main.xml 파일 내용 R.layout.fragment_home.xml로 옮김
+    getApplicationContext() 함수 getContext() 함수로 수정
+com.example.front_end_home_MainActivity.java 파일의 내용 com.example.front_end_home_fragment_home.xml로 옮김
+
+
 [2021_06_23] README push
 android studio에서 리드미 파일 생성
 
