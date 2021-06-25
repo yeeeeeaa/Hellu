@@ -45,7 +45,7 @@
         android:id="@+id/plan_choose_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="플랜 선택"
+        android:text="플랜 추천"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.157"

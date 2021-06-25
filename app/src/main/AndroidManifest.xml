@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Front_end_home_test">
+        <activity android:name=".pchoose_QnA_plan"></activity>
         <activity android:name=".record" />
         <activity android:name=".walking" />
         <activity android:name=".ranking" />
