@@ -1,3 +1,12 @@
+[2021_06_25] plan_choose two button clear
+추가 xml 파일 :
++R.layout.activity_pchoose_qn_a_plan.xml
++R.layout.activity_pchoose_inbody_plan.xml
+추가 자바 파일 :
++com.example.front_end_home_test.pchoose_QnA_plan.java
++com.example.front_end_home_test.pchoose_inbody_plan.java
+manifest에 액티비티 추가한거 언급되어있음
+
 [2021_06_24] bottom_navigation move
 bottom navigation 추가 xml 파일:
     +R.layout.fragment_home.xml
@@ -8,7 +17,7 @@ bottom navigation 추가 xml 파일:
 까지 총 5개의 파일 생성
 
 bottom_navigation 추가 java 파일:
-    +com.example.front_end_home_fragment_home.java
+    +com.example.front_end_home.fragment_home.java
     +com.example.front_end_home_fragment_feed.java
     +com.example.front_end_home_fragment_mypage.java
     +com.example.front_end_home_fragment_setting.java
