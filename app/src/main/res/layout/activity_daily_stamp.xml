@@ -20,18 +20,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--하단 네비게이션의 위치를 잡아줍니다-->
+
+    <!--하단 네비게이션-->
     <FrameLayout
         android:id="@+id/content_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-36dp" />
 
-    <!--하단 네비게이션-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/daily_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        app:itemIconTint="@color/purple_200"
+        app:itemTextColor="#523A7C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
