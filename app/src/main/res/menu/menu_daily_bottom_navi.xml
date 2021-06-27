@@ -4,7 +4,7 @@
     <item
         android:id="@+id/daily_camera"
         android:enabled="true"
-        android:icon="@android:drawable/ic_dialog_email"
+        android:icon="@drawable/daily_camera_icon"
         android:title="카메라"
         app:showAsAction="ifRoom" />
     <item

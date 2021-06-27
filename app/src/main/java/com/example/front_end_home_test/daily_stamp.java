@@ -23,26 +23,13 @@ public class daily_stamp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_stamp);
-/*
-        //매일 인증 화면에서 하단 네비게이션의 카메라 버튼을 누르면 카메라 창으로 넘어가는 코드
-        Button imageButton = findViewById(R.id.daily_camera);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), daily_stamp_camera.class);
-                startActivity(intent);
-            }
-        });*/
 
-        //하단 네비게이션 화면 선택하면 눌리는 함수
+        //하단 네비게이션 화면을 선택하면 실행됨
         dBottomNV = findViewById(R.id.daily_bottom_navigation);
         dBottomNV.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() { //NavigationItemSelecte
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 BottomNavigate(menuItem.getItemId());
-                //activity 가져오기
-                //Intent intent = new Intent(getApplicationContext(), daily_stamp_camera.class);
-                //startActivity(intent);
 
                 return true;
             }
@@ -50,7 +37,7 @@ public class daily_stamp extends AppCompatActivity {
         //dBottomNV.setSelectedItemId(R.id.home);
 
     }
-    //BottomNavigation 페이지 변경
+    //BottomNavigation 화면 전환 ex) 카메라 아이콘 누르면 카메라창 열림
     private void BottomNavigate(int id) {
 
         if (id == R.id.daily_camera){
