@@ -59,6 +59,9 @@ public class daily_stamp extends AppCompatActivity {
         } else if(id == R.id.daily_write){
             Intent intent = new Intent(getApplicationContext(), daily_stamp_write.class);
             startActivity(intent);
+        }else {
+            Intent intent = new Intent(getApplicationContext(), daily_stamp_gallery.class);
+            startActivity(intent);
         }
 
     }
