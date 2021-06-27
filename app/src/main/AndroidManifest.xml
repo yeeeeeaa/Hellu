@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Front_end_home_test">
-        <activity android:name=".pchoose_inbody_plan"></activity>
+        <activity android:name=".daily_stamp_write"></activity>
+        <activity android:name=".daily_stamp_camera" />
+        <activity android:name=".pchoose_inbody_plan" />
         <activity android:name=".pchoose_QnA_plan" />
         <activity android:name=".record" />
         <activity android:name=".walking" />
