@@ -1,3 +1,8 @@
+[2021_06_27] slight decoration
+추가한 파일은 없음, 글씨색상 바꾸고 텍스트뷰 찍은정도
+fragment_home의 상단 액션바 제거(values.themes에서 NoActionBar 써줌), 헬루 텍스트뷰 넣고 검색창 크기&위치 수정
+activity_main에서 하단 네비게이션 색상 없앰(맨 아래에 주석으로 빼놨음)
+
 [2021_06_25] plan_choose two button clear
 추가 xml 파일 :
 +R.layout.activity_pchoose_qn_a_plan.xml
