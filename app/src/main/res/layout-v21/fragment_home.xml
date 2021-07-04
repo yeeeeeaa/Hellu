@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".fragment_home">
 
-    <!--여기는 앱을 열면 처음으로 보이는 홈입니다~8개의 버튼이 있고 검색창이 있고 하단에 네비가 있습니다
+    <!--여기는 앱을 열면 처음으로 보이는 홈입니다~ 6개의 버튼이 있고 검색창이 있고 하단에 네비가 있습니다
 
     //검색창-->
 
@@ -32,7 +32,7 @@
         android:layout_height="134dp"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
-        android:layout_marginBottom="424dp"
+        android:layout_marginTop="104dp"
         android:background="#00FFFFFF"
         android:shadowColor="#00FFFFFF"
         android:textColor="@color/black"
@@ -40,18 +40,17 @@
         app:icon="@drawable/daily_camera_icon"
         app:iconSize="100dp"
         app:iconTint="#404040"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="#00FFFFFF" />
-
 
     <Button
         android:id="@+id/plan_choose_button"
-        android:layout_width="122dp"
-        android:layout_height="122dp"
-        android:layout_marginEnd="61dp"
-        android:layout_marginRight="61dp"
-        android:layout_marginBottom="432dp"
+        android:layout_width="120dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginLeft="224dp"
+        android:layout_marginTop="108dp"
         android:background="#00FFFFFF"
         android:shadowColor="#00FFFFFF"
         android:textColor="#000000"
@@ -59,8 +58,8 @@
         app:icon="@drawable/ic_baseline_find_in_page_24"
         app:iconSize="100dp"
         app:iconTint="#404040"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="#00FFFFFF" />
 
     <Button
