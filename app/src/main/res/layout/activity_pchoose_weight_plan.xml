@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ranking">
+    tools:context=".pchoose_weight_plan">
 
-    //여기는 홈에 있는 랭킹(ranking) 버튼을 누르면 나오는 화면입니다.
+    <!--플랜추천 화면에서 '일반 체중계로 연동하기'버튼을 누르면 나오는 화면-->
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginLeft="152dp"
-        android:layout_marginTop="204dp"
-        android:text="랭킹 화면"
+        android:layout_marginStart="108dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="196dp"
+        android:text="일반 체중계로 연동하기 화면"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

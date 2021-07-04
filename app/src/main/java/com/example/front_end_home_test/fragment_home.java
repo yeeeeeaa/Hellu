@@ -31,15 +31,6 @@ public class fragment_home extends Fragment {
             }
         });
 
-        //홈에 있는 이벤트 인증(event_stamp)버튼을 누르면 이벤트 인증 화면으로 넘어감
-        imageButton = view.findViewById(R.id.event_stamp_button);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), event_stamp.class);
-                startActivity(intent);
-            }
-        });
 
         //홈에 있는 플랜 선택(plan_choose)버튼을 누르면 플랜 선택 화면으로 넘어감
         imageButton = view.findViewById(R.id.plan_choose_button);
@@ -71,15 +62,6 @@ public class fragment_home extends Fragment {
             }
         });
 
-        //홈에 있는 랭킹(ranking)버튼을 누르면 랭킹 화면으로 넘어감
-        imageButton = view.findViewById(R.id.ranking_button);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ranking.class);
-                startActivity(intent);
-            }
-        });
 
         //홈에 있는 걷기 운동(walking)버튼을 누르면 걷기 운동 화면으로 넘어감
         imageButton = view.findViewById(R.id.walking_button);

@@ -15,7 +15,7 @@
         android:layout_marginStart="152dp"
         android:layout_marginLeft="152dp"
         android:layout_marginTop="204dp"
-        android:text="걷기 운동 화면"
+        android:text="걷기 운동과 랭킹"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

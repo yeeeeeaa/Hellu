@@ -34,6 +34,16 @@ public class plan_choose extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //플랜추천에 있는 'ai의 정확한 인바디 분석'버튼을 누르면 pchoose_weight창으로 넘어감
+        imageButton = findViewById(R.id.pch_button_weight);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), pchoose_weight_plan.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
