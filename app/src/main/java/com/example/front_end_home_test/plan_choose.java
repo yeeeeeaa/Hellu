@@ -45,5 +45,4 @@ public class plan_choose extends AppCompatActivity {
             }
         });
     }
-
 }

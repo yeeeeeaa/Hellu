@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 public class fragment_setting extends Fragment {
 
+    //설정.java
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -25,4 +26,5 @@ public class fragment_setting extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
 }

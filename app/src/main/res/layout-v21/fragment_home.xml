@@ -8,10 +8,9 @@
     android:orientation="vertical"
     tools:context=".fragment_home">
 
-    <!--여기는 앱을 열면 처음으로 보이는 홈입니다~ 6개의 버튼이 있고 검색창이 있고 하단에 네비가 있습니다
+    <!--여기는 앱을 열면 처음으로 보이는 홈입니다~ 6개의 버튼이 있고 검색창이 있고 하단에 네비가 있습니다-->
 
-    //검색창-->
-
+    <!--검색창-->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="275dp"
@@ -25,7 +24,7 @@
         app:queryHint="검색어를 입력하세요"
         tools:ignore="MissingConstraints" />
 
-
+    <!--매일 인증 버튼-->
     <Button
         android:id="@+id/daily_stamp_button"
         android:layout_width="150dp"
@@ -45,6 +44,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="#00FFFFFF" />
 
+    <!--AI 플랜 선택 버튼-->
     <Button
         android:id="@+id/plan_choose_button"
         android:layout_width="150dp"
@@ -67,6 +67,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="#00FFFFFF" />
 
+    <!--소통 버튼-->
     <Button
         android:id="@+id/community_button"
         android:layout_width="150dp"
@@ -84,6 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daily_stamp_button" />
 
+    <!--인바디 체크 버튼-->
     <Button
         android:id="@+id/inbody_check_button"
         android:layout_width="150dp"
@@ -105,6 +107,7 @@
         app:layout_constraintStart_toEndOf="@+id/community_button"
         app:layout_constraintTop_toBottomOf="@+id/plan_choose_button" />
 
+    <!--걷기 운동 버튼-->
     <Button
         android:id="@+id/walking_button"
         android:layout_width="150dp"
@@ -122,6 +125,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/community_button" />
 
+    <!--역대 기록 버튼-->
     <Button
         android:id="@+id/record_button"
         android:layout_width="150dp"
@@ -142,6 +146,7 @@
         app:layout_constraintStart_toEndOf="@+id/walking_button"
         app:layout_constraintTop_toBottomOf="@+id/inbody_check_button" />
 
+    <!--앱 이름: 헬루-->
     <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"

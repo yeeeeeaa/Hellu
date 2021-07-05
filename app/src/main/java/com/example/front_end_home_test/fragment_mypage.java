@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 public class fragment_mypage extends Fragment {
 
+    //마이페이지.java
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -25,4 +26,5 @@ public class fragment_mypage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
 }

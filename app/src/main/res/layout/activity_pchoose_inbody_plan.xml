@@ -7,7 +7,6 @@
     tools:context=".pchoose_inbody_plan">
 
     <!--플랜추천 화면에서 '인바디 체중계로 분석하기'버튼을 누르면 나오는 화면-->
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

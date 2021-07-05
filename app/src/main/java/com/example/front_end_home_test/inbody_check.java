@@ -12,4 +12,5 @@ public class inbody_check extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbody_check);
     }
+
 }

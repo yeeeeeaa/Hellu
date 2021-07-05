@@ -15,6 +15,7 @@ import android.widget.Button;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
     //하단 네비게이션
     private BottomNavigationView mBottomNV;
 
@@ -34,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mBottomNV.setSelectedItemId(R.id.home);
-
     }
+
     //BottomNavigation 페이지 변경
     private void BottomNavigate(int id) {
         String tag = String.valueOf(id);
@@ -70,8 +71,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.setPrimaryNavigationFragment(fragment);
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commitNow();
-
-
     }
-
 }

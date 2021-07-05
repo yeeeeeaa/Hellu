@@ -18,6 +18,7 @@ public class daily_stamp extends AppCompatActivity {
 
     //하단 네비게이션
     private BottomNavigationView dBottomNV;
+
     //매일 인증.java
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +35,8 @@ public class daily_stamp extends AppCompatActivity {
                 return true;
             }
         });
-        //dBottomNV.setSelectedItemId(R.id.home);
-
     }
+
     //BottomNavigation 화면 전환 ex) 카메라 아이콘 누르면 카메라창 열림
     private void BottomNavigate(int id) {
 
@@ -50,7 +50,5 @@ public class daily_stamp extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), daily_stamp_gallery.class);
             startActivity(intent);
         }
-
     }
-
 }

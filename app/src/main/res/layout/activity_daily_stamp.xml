@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".daily_stamp">
 
-    //여기는 홈에 있는 매일인증(daily_stamp) 버튼을 누르면 나오는 화면입니다.
-
+    <!--여기는 홈에 있는 매일인증(daily_stamp) 버튼을 누르면 나오는 화면입니다.-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -20,7 +19,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--하단 네비게이션의 위치를 잡아줍니다-->
-
     <!--하단 네비게이션-->
     <FrameLayout
         android:id="@+id/content_layout"
@@ -35,13 +33,11 @@
         android:id="@+id/daily_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         app:itemIconTint="@color/purple_200"
         app:itemTextColor="#523A7C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
         app:menu="@menu/menu_daily_bottom_navi" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
