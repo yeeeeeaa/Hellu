@@ -7,15 +7,22 @@
     tools:context=".walking">
 
     <!--여기는 홈에 있는 걷기운동(walking) 버튼을 누르면 나오는 화면입니다.-->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginLeft="152dp"
-        android:layout_marginTop="204dp"
-        android:text="걷기 운동과 랭킹"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--하단 네비게이션의 위치를 잡아줍니다-->
+    <FrameLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/walking_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/menu_walking_navi" />
+    </FrameLayout>
+
+    <!--하단 네비게이션-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
