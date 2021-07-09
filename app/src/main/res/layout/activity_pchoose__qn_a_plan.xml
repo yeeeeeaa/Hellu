@@ -6,16 +6,274 @@
     android:layout_height="match_parent"
     tools:context=".pchoose_QnA_plan">
 
-    <!--플랜추천 화면에서 'ai가 선별해주는 플랜'버튼을 누르면 나오는 화면-->
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginLeft="108dp"
-        android:layout_marginTop="196dp"
-        android:text="질의응답해서 플랜 추천해줄 화면"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--1번 문제-->
+            <TextView
+                android:id="@+id/AI_question_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. 운동 주 횟수(일주일에 몇 번 운동할 계획이신가요?)" />
+
+            <!--RadioGroup은 RadioButton들을 묶어서 중복선택이 되지 않도록 도와줍니다.-->
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/q1_radio_Button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1~2일" />
+
+                <RadioButton
+                    android:id="@+id/q1_radio_Button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2~3일" />
+
+                <RadioButton
+                    android:id="@+id/q1_radio_Button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3~4일" />
+
+                <RadioButton
+                    android:id="@+id/q1_radio_Button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4~5일" />
+
+                <RadioButton
+                    android:id="@+id/q1_radio_Button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5~6일" />
+
+                <RadioButton
+                    android:id="@+id/q1_radio_Button6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="6~7일" />
+            </RadioGroup>
+
+            <!--2번 문제-->
+            <TextView
+                android:id="@+id/AI_question_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. 하루에 몇 분 운동할 계획이신가요?" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/q2_radio_Button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="30분 미만" />
+
+                <RadioButton
+                    android:id="@+id/q2_radio_Button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="30분~1시간" />
+
+                <RadioButton
+                    android:id="@+id/q2_radio_Button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1~2시간" />
+
+                <RadioButton
+                    android:id="@+id/q2_radio_Button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2시간 이상" />
+            </RadioGroup>
+
+            <!--3번 문제-->
+            <TextView
+                android:id="@+id/AI_question_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3. 어떤 강도로 운동할 계획이신가요?" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/q3_radio_Button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="아주 가볍게" />
+
+                <RadioButton
+                    android:id="@+id/q3_radio_Button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="조금 가볍게" />
+
+                <RadioButton
+                    android:id="@+id/q3_radio_Button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="보통" />
+
+                <RadioButton
+                    android:id="@+id/q3_radio_Button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="조금 강하게" />
+
+                <RadioButton
+                    android:id="@+id/q3_radio_Button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="아주 강하게" />
+            </RadioGroup>
+
+            <!--4번 문제-->
+            <TextView
+                android:id="@+id/AI_question_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4. 평소 활동량을 알려주세요." />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/q4_radio_Button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="운동을 하지 않는다." />
+
+                <RadioButton
+                    android:id="@+id/q4_radio_Button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="30분" />
+
+                <RadioButton
+                    android:id="@+id/q4_radio_Button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1시간" />
+
+                <RadioButton
+                    android:id="@+id/q4_radio_Button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2시간" />
+
+                <RadioButton
+                    android:id="@+id/q4_radio_Button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3시간 이상" />
+
+            </RadioGroup>
+
+            <!--5번 문제-->
+            <TextView
+                android:id="@+id/AI_question_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5. 언제 식사할 예정이신가요?" />
+
+
+            <RadioButton
+                android:id="@+id/q5_radio_Button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="아침" />
+
+            <RadioButton
+                android:id="@+id/q5_radio_Button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="늦은 아침" />
+
+            <RadioButton
+                android:id="@+id/q5_radio_Button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="점심" />
+
+            <RadioButton
+                android:id="@+id/q5_radio_Button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="늦은 점심" />
+
+            <RadioButton
+                android:id="@+id/q5_radio_Button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="저녁" />
+
+            <RadioButton
+                android:id="@+id/q5_radio_Button6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="늦은 저녁" />
+
+
+            <!--6번 문제-->
+            <TextView
+                android:id="@+id/AI_question_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6.계기" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/q6_radio_Button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="건강 목적" />
+
+                <RadioButton
+                    android:id="@+id/q6_radio_Button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="다이어트 목적" />
+
+                <RadioButton
+                    android:id="@+id/q6_radio_Button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="균형 목적" />
+
+                <RadioButton
+                    android:id="@+id/q6_radio_Button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="스트레스 해소 목적" />
+
+                <RadioButton
+                    android:id="@+id/q6_radio_Button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="근육 및 힘 증가 목적" />
+            </RadioGroup>
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
