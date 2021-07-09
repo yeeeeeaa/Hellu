@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".plan_choose">
 
+    <!--홈에서 'AI 플랜 추천' 아이콘을 누르면 나오는 화면-->
     <TextView
         android:id="@+id/pch_text_welcome"
         android:layout_width="wrap_content"
