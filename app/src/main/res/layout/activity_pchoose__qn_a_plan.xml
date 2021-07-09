@@ -8,62 +8,67 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="72dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!--1번 문제-->
-            <TextView
-                android:id="@+id/AI_question_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1. 운동 주 횟수(일주일에 몇 번 운동할 계획이신가요?)" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="253dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="4dp"
 
-            <!--RadioGroup은 RadioButton들을 묶어서 중복선택이 되지 않도록 도와줍니다.-->
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                >
 
-                <RadioButton
-                    android:id="@+id/q1_radio_Button1"
+                <!--1번 문제-->
+                <TextView
+                    android:id="@+id/AI_question_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1~2일" />
+                    android:text="1. 운동 주 횟수(일주일에 몇 번 운동할 계획이신가요?)" />
 
-                <RadioButton
-                    android:id="@+id/q1_radio_Button2"
+                <!--RadioGroup은 RadioButton들을 묶어서 중복선택이 되지 않도록 도와줍니다.-->
+                <RadioGroup
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="2~3일" />
+                    android:layout_height="wrap_content">
 
-                <RadioButton
-                    android:id="@+id/q1_radio_Button3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="3~4일" />
+                    <RadioButton
+                        android:id="@+id/q1_radio_Button1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1~2일" />
 
-                <RadioButton
-                    android:id="@+id/q1_radio_Button4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="4~5일" />
+                    <RadioButton
+                        android:id="@+id/q1_radio_Button2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2~3일" />
 
-                <RadioButton
-                    android:id="@+id/q1_radio_Button5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="5~6일" />
+                    <RadioButton
+                        android:id="@+id/q1_radio_Button4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="4~5일" />
 
-                <RadioButton
-                    android:id="@+id/q1_radio_Button6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="6~7일" />
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/q1_radio_Button5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5~6일" />
 
+                    <RadioButton
+                        android:id="@+id/q1_radio_Button6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="6~7일" />
+                </RadioGroup>
+            </androidx.cardview.widget.CardView>
             <!--2번 문제-->
             <TextView
                 android:id="@+id/AI_question_2"
@@ -74,6 +79,12 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/q1_radio_Button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3~4일" />
 
                 <RadioButton
                     android:id="@+id/q2_radio_Button1"
