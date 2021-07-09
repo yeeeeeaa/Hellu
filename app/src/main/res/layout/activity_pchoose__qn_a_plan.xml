@@ -321,6 +321,15 @@
                         android:text="근육 및 힘 증가 목적" />
                 </RadioGroup>
             </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/pch_button_plan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="AI가 선별해주는 플랜"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
 
     </ScrollView>
