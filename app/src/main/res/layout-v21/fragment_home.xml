@@ -32,17 +32,14 @@
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="125dp"
-        android:background="#00FFFFFF"
-        android:drawableTop="@drawable/daily_camera_icon"
-        android:shadowColor="#00FFFFFF"
-        android:text="매일 인증"
-        android:textColor="@color/black"
+        android:background="@drawable/shape_button"
         app:backgroundTint="#00FFFFFF"
+        app:icon="@drawable/camera"
+        app:iconGravity="textTop"
         app:iconSize="100dp"
-        app:iconTint="#404040"
+        app:iconTint="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="#00FFFFFF" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--AI 플랜 선택 버튼-->
     <Button
