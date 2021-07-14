@@ -235,37 +235,37 @@
                         android:text="5. 언제 식사할 예정이신가요?" />
 
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/q5_radio_Button1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="아침" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/q5_radio_Button2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="늦은 아침" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/q5_radio_Button3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="점심" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/q5_radio_Button4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="늦은 점심" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/q5_radio_Button5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="저녁" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/q5_radio_Button6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
