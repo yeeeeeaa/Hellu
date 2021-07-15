@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="176dp"
-        android:background="#000000"
+        android:background="@color/dark_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +60,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="204dp"
         android:text="AI가 선별해주는 플랜"
+        app:backgroundTint="@color/key_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,6 +70,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
         android:text="인바디 체중계로 연동하기"
+        app:backgroundTint="@color/key_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pch_button_plan" />
 
@@ -78,6 +80,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
         android:text=" 일반 체중계로 연동하기"
+        app:backgroundTint="@color/key_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pch_button_inbody" />
 

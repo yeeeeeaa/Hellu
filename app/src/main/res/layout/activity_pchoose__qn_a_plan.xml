@@ -19,8 +19,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="#BFE6C0"
-                app:cardCornerRadius="10dp">
+                app:cardBackgroundColor="@color/light_gray"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="10dp">
 
                 <!--1번 문제-->
                 <TextView
@@ -78,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="#A7D9DD"
+                app:cardBackgroundColor="@color/light_gray"
                 app:cardCornerRadius="10dp">
 
                 <TextView
@@ -122,7 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="#EDD0D0"
+                app:cardBackgroundColor="@color/light_gray"
                 app:cardCornerRadius="10dp">
                 <!--3번 문제-->
                 <TextView
@@ -171,7 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="#DACEED"
+                app:cardBackgroundColor="@color/light_gray"
                 app:cardCornerRadius="10dp">
                 <!--4번 문제-->
                 <TextView
@@ -220,7 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="#BDD4DA"
+                app:cardBackgroundColor="@color/light_gray"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
@@ -277,7 +278,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="#DBEFDC"
+                app:cardBackgroundColor="@color/light_gray"
                 app:cardCornerRadius="10dp">
                 <!--6번 문제-->
                 <TextView
@@ -328,6 +329,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="AI가 선별해주는 플랜"
+                app:backgroundTint="@color/key_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>

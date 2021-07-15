@@ -20,6 +20,8 @@
             android:id="@+id/walking_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:itemIconTint="@color/dark_blue"
+            app:itemTextColor="@color/dark_blue"
             app:menu="@menu/menu_walking_navi" />
     </FrameLayout>
 
