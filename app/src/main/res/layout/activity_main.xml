@@ -24,6 +24,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
+        android:theme="@style/Widget.BottomNavigationView"
         app:menu="@menu/menu_home_bottom_navi" />
 
     <!--app:itemBackground="@color/black" 일단 하단 네비게이션 색상 없앰-->

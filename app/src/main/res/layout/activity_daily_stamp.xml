@@ -38,6 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
+        android:theme="@style/Widget.BottomNavigationView"
         app:menu="@menu/menu_daily_bottom_navi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
