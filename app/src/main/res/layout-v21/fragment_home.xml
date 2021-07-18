@@ -42,139 +42,12 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/plan_choose_button"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="132dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/shape_button"
-        app:backgroundTint="@color/light_gray"
-        app:icon="@drawable/pchoose"
-        app:iconGravity="textTop"
-        app:iconSize="70dp"
-        app:iconTint="@color/blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toEndOf="@+id/daily_stamp_button"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="110dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="10dp"
-        android:text="매일 인증"
-        android:fontFamily="@font/nanumbarungothic"
-        android:gravity="center"
-        android:textColor="@color/dark_blue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daily_stamp_button" />
-
-    <Button
-        android:id="@+id/walking_button"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/shape_button"
-        app:backgroundTint="@color/light_gray"
-        app:icon="@drawable/walking"
-        app:iconGravity="textTop"
-        app:iconSize="80dp"
-        app:iconTint="@color/blue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/community_button" />
-
-    <Button
-        android:id="@+id/community_button"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/shape_button"
-        app:backgroundTint="@color/light_gray"
-        app:icon="@drawable/community"
-        app:iconGravity="textTop"
-        app:iconSize="80dp"
-        app:iconTint="@color/blue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daily_stamp_button" />
-
-    <TextView
-        android:layout_width="110dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:fontFamily="@font/nanumbarungothic"
-        android:gravity="center"
-        android:text="AI 플랜 선택"
-        android:textColor="@color/dark_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plan_choose_button" />
-
-    <Button
-        android:id="@+id/record_button"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/shape_button"
-        app:backgroundTint="@color/light_gray"
-        app:icon="@drawable/record"
-        app:iconGravity="textTop"
-        app:iconSize="70dp"
-        app:iconTint="@color/blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toEndOf="@+id/walking_button"
-        app:layout_constraintTop_toBottomOf="@+id/inbody_check_button" />
-
-    <TextView
-        android:layout_width="110dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:gravity="center"
-        android:text="인바디 체크"
-        android:fontFamily="@font/nanumbarungothic"
-        android:textColor="@color/dark_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inbody_check_button" />
-
-    <Button
-        android:id="@+id/daily_stamp_button"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="132dp"
-        android:background="@drawable/shape_button"
-        app:backgroundTint="@color/light_gray"
-        app:icon="@drawable/camera"
-        app:iconGravity="textTop"
-        app:iconSize="80dp"
-        app:iconTint="@color/blue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/inbody_check_button"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/shape_button"
@@ -184,32 +57,61 @@
         app:iconSize="70dp"
         app:iconTint="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toEndOf="@+id/community_button"
+        app:layout_constraintTop_toBottomOf="@+id/plan_choose_button" />
+
+    <Button
+        android:id="@+id/daily_stamp_button"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/shape_button"
+        app:backgroundTint="@color/light_gray"
+        app:icon="@drawable/camera"
+        app:iconGravity="textTop"
+        app:iconSize="80dp"
+        app:iconTint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="110dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
+        android:fontFamily="@font/nanumbarungothic"
+        android:gravity="center"
+        android:text="AI 플랜 선택"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plan_choose_button" />
 
     <TextView
         android:layout_width="110dp"
         android:layout_height="20dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="걷기"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
         android:fontFamily="@font/nanumbarungothic"
+        android:gravity="center"
+        android:text="인바디 체크"
         android:textColor="@color/dark_blue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/walking_button" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inbody_check_button" />
 
     <TextView
         android:layout_width="110dp"
         android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
+        android:fontFamily="@font/nanumbarungothic"
         android:gravity="center"
         android:text="역대 기록"
-        android:fontFamily="@font/nanumbarungothic"
         android:textColor="@color/dark_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/record_button" />
@@ -219,13 +121,111 @@
         android:layout_height="20dp"
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/nanumbarungothic"
         android:gravity="center"
         android:text="소통"
-        android:fontFamily="@font/nanumbarungothic"
         android:textColor="@color/dark_blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/community_button" />
+
+    <Button
+        android:id="@+id/walking_button"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/shape_button"
+        app:backgroundTint="@color/light_gray"
+        app:icon="@drawable/walking"
+        app:iconGravity="textTop"
+        app:iconSize="80dp"
+        app:iconTint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/community_button" />
+
+    <TextView
+        android:layout_width="110dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/nanumbarungothic"
+        android:gravity="center"
+        android:text="매일 인증"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daily_stamp_button" />
+
+    <Button
+        android:id="@+id/community_button"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/shape_button"
+        app:backgroundTint="@color/light_gray"
+        app:icon="@drawable/community"
+        app:iconGravity="textTop"
+        app:iconSize="80dp"
+        app:iconTint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daily_stamp_button" />
+
+    <Button
+        android:id="@+id/record_button"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/shape_button"
+        app:backgroundTint="@color/light_gray"
+        app:icon="@drawable/record"
+        app:iconGravity="textTop"
+        app:iconSize="70dp"
+        app:iconTint="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@+id/walking_button"
+        app:layout_constraintTop_toBottomOf="@+id/inbody_check_button" />
+
+    <Button
+        android:id="@+id/plan_choose_button"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/shape_button"
+        app:backgroundTint="@color/light_gray"
+        app:icon="@drawable/pchoose"
+        app:iconGravity="textTop"
+        app:iconSize="70dp"
+        app:iconTint="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@+id/daily_stamp_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="110dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/nanumbarungothic"
+        android:gravity="center"
+        android:text="걷기"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/walking_button" />
 
     <!--인바디 체크 버튼-->
 
