@@ -8,12 +8,14 @@
     tools:context=".plan_choose">
 
     <!--홈에서 'AI 플랜 추천' 아이콘을 누르면 나오는 화면-->
+
     <TextView
         android:id="@+id/pch_text_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:text=" 환영합니다"
+        android:textColor="@color/dark_blue"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.055"
@@ -26,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:text="인공지능이 당신의 상태를 분석하여"
+        android:textColor="@color/dark_blue"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.082"
@@ -38,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="맞춤 플랜을 추천해 줄 거예요!"
+        android:textColor="@color/dark_blue"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.07"
@@ -88,12 +92,14 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="플랜을 정하면 전문 트레이너를 매칭시켜 드려요~~"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="플랜을 정하면 \n전문 트레이너를 매칭시켜 드려요~~"
+        android:textColor="@color/dark_blue"
+        android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.91" />
+        app:layout_constraintVertical_bias="0.914" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
