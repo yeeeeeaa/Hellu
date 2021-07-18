@@ -6,11 +6,9 @@
     android:layout_height="match_parent"
     android:background="#00FFFFFF"
     android:orientation="vertical"
+    android:theme="@style/Widget.BottomNavigationView"
     tools:context=".fragment_home">
 
-    <!--여기는 앱을 열면 처음으로 보이는 홈입니다~ 6개의 버튼이 있고 검색창이 있고 하단에 네비가 있습니다-->
-
-    <!--앱 이름: 헬루-->
     <TextView
         android:id="@+id/app_name"
         android:layout_width="75dp"
@@ -25,7 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--검색창-->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="275dp"
@@ -218,13 +215,5 @@
         android:textColor="@color/dark_blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/walking_button" />
-
-    <!--인바디 체크 버튼-->
-
-    <!--걷기 운동 버튼-->
-
-
-    <!--역대 기록 버튼-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
