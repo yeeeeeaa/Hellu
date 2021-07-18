@@ -6,17 +6,20 @@
         android:enabled="true"
         android:icon="@drawable/camera"
         android:title="카메라"
+        android:fontFamily="@font/nanumbarungothic"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/daily_write"
         android:enabled="true"
         android:icon="@drawable/write"
+        android:fontFamily="@font/nanumbarungothic"
         android:title="글쓰기"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/daily_gallery"
         android:enabled="true"
         android:icon="@drawable/gallery"
+        android:fontFamily="@font/nanumbarungothic"
         android:title="갤러리"
         app:showAsAction="ifRoom" />
 </menu>
