@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             app:itemIconTint="@color/dark_blue"
             app:itemTextColor="@color/dark_blue"
-            android:theme="@style/Widget.BottomNavigationView"
+            android:theme="@style/Widget.fontChange_nanum"
             app:menu="@menu/menu_walking_navi" />
     </FrameLayout>
 

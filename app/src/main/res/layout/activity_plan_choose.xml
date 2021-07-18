@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/Widget.BottomNavigationView"
+    android:theme="@style/Widget.fontChange_nanum"
     tools:context=".plan_choose">
 
     <!--홈에서 'AI 플랜 추천' 아이콘을 누르면 나오는 화면-->

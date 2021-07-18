@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#00FFFFFF"
     android:orientation="vertical"
-    android:theme="@style/Widget.BottomNavigationView"
+    android:theme="@style/Widget.fontChange_nanum"
     tools:context=".fragment_home">
 
     <TextView
