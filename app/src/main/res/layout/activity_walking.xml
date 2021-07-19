@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <!--하단 네비게이션-->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/walking_navigation"
             android:layout_width="match_parent"
@@ -26,6 +27,6 @@
             app:menu="@menu/menu_walking_navi" />
     </FrameLayout>
 
-    <!--하단 네비게이션-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,10 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+    //걷기 운동_걷기.java
 
 public class walking_walking extends Fragment {
 
-    //걷기 운동_걷기.java
+    //fragment_walking_walking과 연결하는 함수, 프래그먼트 파일을 생성하면 자동으로 생기는 코드임
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
