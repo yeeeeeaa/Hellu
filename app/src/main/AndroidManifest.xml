@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Front_end_home_test">
-        <activity android:name=".pchoose_QnA_plan_result"></activity>
+<!--        <activity android:name=".login"></activity>-->
+        <activity android:name=".pchoose_QnA_plan_result" />
         <activity android:name=".pchoose_weight_plan" />
         <activity android:name=".daily_stamp_gallery" />
         <activity android:name=".daily_stamp_write" />
@@ -23,9 +24,10 @@
         <activity android:name=".plan_choose" />
         <activity android:name=".daily_stamp" />
         <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

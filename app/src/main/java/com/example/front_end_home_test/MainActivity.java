@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mBottomNV.setSelectedItemId(R.id.home);
+
+        //홈 화면에서 뒤로가기 누르면 로그인화면이 안뜨게
+        login firstActivity = (login) login.firstActivity;
+        firstActivity.finish();
     }
 
     //BottomNavigation 페이지 변경
@@ -72,4 +76,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commitNow();
     }
+
 }
