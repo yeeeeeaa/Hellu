@@ -77,3 +77,5 @@ AndroidManifest.xml 수정
     <activity android:name=".plan_choose" />
     <activity android:name=".daily_stamp" />
 코드 추가로 activity 파일 추가 설정
+
+210720 add naver map api
