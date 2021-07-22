@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:theme="@style/Widget.fontChange_nanum"
-    tools:context=".fragment_home">
+    tools:context=".MainFragment.fragment_home">
 
     <TextView
         android:id="@+id/app_name"
@@ -34,7 +34,7 @@
         android:gravity="center"
         android:layout_marginVertical="30dp"
         android:theme="@style/Widget.fontChange_nanum"
-        tools:context=".fragment_home">
+        tools:context=".MainFragment.fragment_home">
 
         <!--    매일인증과 플랜추천 아이콘을 위한 리니어-->
         <LinearLayout
@@ -45,7 +45,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:theme="@style/Widget.fontChange_nanum"
-            tools:context=".fragment_home">
+            tools:context=".MainFragment.fragment_home">
 
             <Button
                 android:id="@+id/daily_stamp_button"
@@ -82,7 +82,7 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:theme="@style/Widget.fontChange_nanum"
-            tools:context=".fragment_home">
+            tools:context=".MainFragment.fragment_home">
 
             <TextView
                 android:id="@+id/textView1"
@@ -113,7 +113,7 @@
             android:gravity="center_horizontal"
             android:layout_marginVertical="20dp"
             android:theme="@style/Widget.fontChange_nanum"
-            tools:context=".fragment_home">
+            tools:context=".MainFragment.fragment_home">
 
             <TextView
                 android:id="@+id/textView7"
@@ -134,7 +134,7 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:theme="@style/Widget.fontChange_nanum"
-            tools:context=".fragment_home">
+            tools:context=".MainFragment.fragment_home">
 
             <Button
                 android:id="@+id/community_button"
@@ -172,7 +172,7 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:theme="@style/Widget.fontChange_nanum"
-            tools:context=".fragment_home">
+            tools:context=".MainFragment.fragment_home">
 
             <TextView
                 android:id="@+id/textView3"
@@ -204,7 +204,7 @@
             android:gravity="center_horizontal"
             android:layout_marginVertical="20dp"
             android:theme="@style/Widget.fontChange_nanum"
-            tools:context=".fragment_home">
+            tools:context=".MainFragment.fragment_home">
 
             <TextView
                 android:id="@+id/textView8"
@@ -224,7 +224,7 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:theme="@style/Widget.fontChange_nanum"
-            tools:context=".fragment_home">
+            tools:context=".MainFragment.fragment_home">
 
             <Button
                 android:id="@+id/walking_button"
@@ -262,7 +262,7 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:theme="@style/Widget.fontChange_nanum"
-            tools:context=".fragment_home">
+            tools:context=".MainFragment.fragment_home">
 
             <TextView
                 android:id="@+id/textView5"
@@ -294,7 +294,7 @@
             android:gravity="center_horizontal"
             android:layout_marginVertical="20dp"
             android:theme="@style/Widget.fontChange_nanum"
-            tools:context=".fragment_home">
+            tools:context=".MainFragment.fragment_home">
 
             <TextView
                 android:id="@+id/textView9"

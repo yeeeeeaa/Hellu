@@ -9,31 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelluApp">
-<!--        <activity android:name=".login"></activity>-->
+        <!--<activity android:name=".login"></activity>-->
         <activity android:name="com.example.HelluApp.pchoose_QnA_plan_result" />
         <activity android:name="com.example.HelluApp.pchoose_weight_plan" />
-        <activity android:name="com.example.HelluApp.daily_stamp_gallery" />
-        <activity android:name="com.example.HelluApp.daily_stamp_write" />
-        <activity android:name="com.example.HelluApp.daily_stamp_camera" />
+        <activity android:name="com.example.HelluApp.DailyStamp.daily_stamp_gallery" />
+        <activity android:name="com.example.HelluApp.DailyStamp.daily_stamp_write" />
+        <activity android:name="com.example.HelluApp.DailyStamp.daily_stamp_camera" />
         <activity android:name="com.example.HelluApp.pchoose_inbody_plan" />
         <activity android:name="com.example.HelluApp.pchoose_QnA_plan" />
-        <activity android:name="com.example.HelluApp.record" />
-        <activity android:name="com.example.HelluApp.walking" />
-        <activity android:name="com.example.HelluApp.inbody_check" />
-        <activity android:name="com.example.HelluApp.community" />
+        <activity android:name="com.example.HelluApp.Record.record" />
+        <activity android:name="com.example.HelluApp.Walking.walking" />
+        <activity android:name="com.example.HelluApp.InbodyCheck.inbody_check" />
+        <activity android:name="com.example.HelluApp.Community.community" />
         <activity android:name="com.example.HelluApp.plan_choose" />
-        <activity android:name="com.example.HelluApp.daily_stamp" />
-        <activity android:name="com.example.HelluApp.MainActivity">
-        </activity>
+        <activity android:name="com.example.HelluApp.DailyStamp.daily_stamp" />
+        <activity android:name="com.example.HelluApp.MainActivity"></activity>
         <activity android:name="com.example.HelluApp.login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="c52owlfktp"/>
+            android:value="c52owlfktp" />
     </application>
 
 </manifest>

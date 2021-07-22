@@ -1,4 +1,4 @@
-package com.example.HelluApp;
+package com.example.HelluApp.MainFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.HelluApp.Community.community;
+import com.example.HelluApp.DailyStamp.daily_stamp;
+import com.example.HelluApp.InbodyCheck.inbody_check;
+import com.example.HelluApp.R;
+import com.example.HelluApp.Record.record;
+import com.example.HelluApp.Walking.walking;
+import com.example.HelluApp.plan_choose;
 
 
 public class fragment_home extends Fragment {

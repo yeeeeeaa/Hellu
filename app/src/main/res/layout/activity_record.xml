@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".record">
+    tools:context=".Record.record">
 
     <!--여기는 홈에 있는 역대기록(record) 버튼을 누르면 나오는 화면입니다.-->
     <TextView

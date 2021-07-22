@@ -1,4 +1,4 @@
-package com.example.HelluApp;
+package com.example.HelluApp.DailyStamp;
 
 public class daily_stamp_write_note {
     int _id;

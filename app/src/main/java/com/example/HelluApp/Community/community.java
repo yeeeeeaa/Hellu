@@ -1,8 +1,10 @@
-package com.example.HelluApp;
+package com.example.HelluApp.Community;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.HelluApp.R;
 
 public class community extends AppCompatActivity {
 

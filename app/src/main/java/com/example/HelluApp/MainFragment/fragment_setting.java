@@ -1,4 +1,4 @@
-package com.example.HelluApp;
+package com.example.HelluApp.MainFragment;
 
 
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.HelluApp.R;
 
 
 public class fragment_setting extends Fragment {
