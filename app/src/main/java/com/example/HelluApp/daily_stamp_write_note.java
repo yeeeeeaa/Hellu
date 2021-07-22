@@ -1,4 +1,4 @@
-package com.example.front_end_home_test;
+package com.example.HelluApp;
 
 public class daily_stamp_write_note {
     int _id;

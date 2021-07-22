@@ -1,4 +1,4 @@
-package com.example.front_end_home_test;
+package com.example.HelluApp;
 
 import android.content.Intent;
 import android.os.Bundle;

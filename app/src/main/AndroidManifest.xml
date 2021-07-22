@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.front_end_home_test">
+    package="com.example.HelluApp">
 
     <application
         android:allowBackup="true"
@@ -8,24 +8,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Front_end_home_test">
+        android:theme="@style/Theme.HelluApp">
 <!--        <activity android:name=".login"></activity>-->
-        <activity android:name=".pchoose_QnA_plan_result" />
-        <activity android:name=".pchoose_weight_plan" />
-        <activity android:name=".daily_stamp_gallery" />
-        <activity android:name=".daily_stamp_write" />
-        <activity android:name=".daily_stamp_camera" />
-        <activity android:name=".pchoose_inbody_plan" />
-        <activity android:name=".pchoose_QnA_plan" />
-        <activity android:name=".record" />
-        <activity android:name=".walking" />
-        <activity android:name=".inbody_check" />
-        <activity android:name=".community" />
-        <activity android:name=".plan_choose" />
-        <activity android:name=".daily_stamp" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.HelluApp.pchoose_QnA_plan_result" />
+        <activity android:name="com.example.HelluApp.pchoose_weight_plan" />
+        <activity android:name="com.example.HelluApp.daily_stamp_gallery" />
+        <activity android:name="com.example.HelluApp.daily_stamp_write" />
+        <activity android:name="com.example.HelluApp.daily_stamp_camera" />
+        <activity android:name="com.example.HelluApp.pchoose_inbody_plan" />
+        <activity android:name="com.example.HelluApp.pchoose_QnA_plan" />
+        <activity android:name="com.example.HelluApp.record" />
+        <activity android:name="com.example.HelluApp.walking" />
+        <activity android:name="com.example.HelluApp.inbody_check" />
+        <activity android:name="com.example.HelluApp.community" />
+        <activity android:name="com.example.HelluApp.plan_choose" />
+        <activity android:name="com.example.HelluApp.daily_stamp" />
+        <activity android:name="com.example.HelluApp.MainActivity">
         </activity>
-        <activity android:name=".login">
+        <activity android:name="com.example.HelluApp.login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

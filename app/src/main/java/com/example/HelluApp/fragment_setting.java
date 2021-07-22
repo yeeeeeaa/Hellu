@@ -1,4 +1,4 @@
-package com.example.front_end_home_test;
+package com.example.HelluApp;
 
 
 import android.os.Bundle;
@@ -12,14 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class fragment_mypage extends Fragment {
+public class fragment_setting extends Fragment {
 
-    //마이페이지.java
+    //설정.java
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mypage, container, false);
+        return inflater.inflate(R.layout.fragment_setting, container, false);
     }
 
     @Override

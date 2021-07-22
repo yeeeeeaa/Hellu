@@ -1,11 +1,8 @@
-package com.example.front_end_home_test;
+package com.example.HelluApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 public class pchoose_QnA_plan_result extends AppCompatActivity {
 

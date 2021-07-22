@@ -1,4 +1,4 @@
-package com.example.front_end_home_test;
+package com.example.HelluApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
