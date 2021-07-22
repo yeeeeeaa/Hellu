@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Widget.fontChange_nanum"
-    tools:context=".daily_stamp">
+    tools:context=".DailyStamp.daily_stamp">
 
     <!--여기는 홈에 있는 매일인증(daily_stamp) 버튼을 누르면 나오는 화면입니다.-->
 

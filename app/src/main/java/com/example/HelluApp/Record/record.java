@@ -1,8 +1,10 @@
-package com.example.HelluApp;
+package com.example.HelluApp.Record;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.HelluApp.R;
 
 public class record extends AppCompatActivity {
 

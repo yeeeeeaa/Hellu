@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_setting">
+    tools:context=".MainFragment.fragment_setting">
 
     <!--설정 화면-->
     <TextView

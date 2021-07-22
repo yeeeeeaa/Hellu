@@ -1,4 +1,4 @@
-package com.example.HelluApp;
+package com.example.HelluApp.DailyStamp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.HelluApp.R;
 
 import java.util.List;
 
