@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         });
         mBottomNV.setSelectedItemId(R.id.home);
 
-        //홈 화면에서 뒤로가기 누르면 로그인화면이 안뜨게
-        login firstActivity = (login) login.firstActivity;
-        firstActivity.finish();
+        //홈 화면에서 뒤로가기 누르면 로그인 화면이 안뜨게
+        login loginActivity = (login) login.loginActivity;
+        loginActivity.finish();
     }
 
     //BottomNavigation 페이지 변경

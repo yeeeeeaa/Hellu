@@ -9,24 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelluApp">
-        <!--<activity android:name=".login"></activity>-->
-        <activity android:name="com.example.HelluApp.pchoose_QnA_plan_result" />
-        <activity android:name="com.example.HelluApp.pchoose_weight_plan" />
-        <activity android:name="com.example.HelluApp.DailyStamp.daily_stamp_gallery" />
-        <activity android:name="com.example.HelluApp.DailyStamp.daily_stamp_write" />
-        <activity android:name="com.example.HelluApp.DailyStamp.daily_stamp_camera" />
-        <activity android:name="com.example.HelluApp.pchoose_inbody_plan" />
-        <activity android:name="com.example.HelluApp.pchoose_QnA_plan" />
-        <activity android:name="com.example.HelluApp.Record.record" />
-        <activity android:name="com.example.HelluApp.Walking.walking" />
-        <activity android:name="com.example.HelluApp.InbodyCheck.inbody_check" />
-        <activity android:name="com.example.HelluApp.Community.community" />
-        <activity android:name="com.example.HelluApp.plan_choose" />
-        <activity android:name="com.example.HelluApp.DailyStamp.daily_stamp" />
-        <activity android:name="com.example.HelluApp.MainActivity"></activity>
-        <activity android:name="com.example.HelluApp.login">
+        <activity android:name=".pchoose_QnA_plan_result" />
+        <activity
+            android:name=".signup"
+            android:parentActivityName=".login" />
+        <activity android:name=".pchoose_weight_plan" />
+        <activity android:name=".DailyStamp.daily_stamp_gallery" />
+        <activity android:name=".DailyStamp.daily_stamp_write" />
+        <activity android:name=".DailyStamp.daily_stamp_camera" />
+        <activity android:name=".pchoose_inbody_plan" />
+        <activity android:name=".pchoose_QnA_plan" />
+        <activity android:name=".Record.record" />
+        <activity android:name=".Walking.walking" />
+        <activity android:name=".InbodyCheck.inbody_check" />
+        <activity android:name=".Community.community" />
+        <activity android:name=".plan_choose" />
+        <activity android:name=".DailyStamp.daily_stamp" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
