@@ -2,6 +2,7 @@ package com.example.HelluApp.DailyStamp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -24,10 +25,10 @@ public class daily_stamp extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.daily_recyclerview); //리사이클러뷰 연결
         /*recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this)); //레이아웃 매니저와 리사이클러뷰 연결
+        recyclerView.setLayoutManager(new LinearLayoutManager(this)); //레이아웃 매니저와 리사이클러뷰 연결*/
 
-        daily_stamp_write_noteAdapter adapter = new daily_stamp_write_noteAdapter(this, createItemList(),R.layout.daily_stamp_write_item);
-        recyclerView.setAdapter(adapter); //어댑터와 연결*/
+        //daily_stamp_write_noteAdapter adapter = new daily_stamp_write_noteAdapter();
+       // recyclerView.setAdapter(adapter); //어댑터와 연결
 
 
 
