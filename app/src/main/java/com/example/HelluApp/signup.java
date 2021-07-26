@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.HelluApp.MainFragment.fragment_mypage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,7 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-
 
 //신규회원으로 Email과 암호를 적고 가입한다.
 public class signup extends AppCompatActivity {
@@ -33,20 +33,26 @@ public class signup extends AppCompatActivity {
     TextView to_sign_up;
 
     //define firebase object
-    FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth;
+
+    //데이터베이스에서 데이터를 읽거나 쓰려면 DatabaseReference의 인스턴스가 필요
+    private DatabaseReference rDatabase;
 
     @Override
 
     //activity_signup 화면을 보여줌
-   protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        editTextTextName = (EditText) findViewById(R.id.editTextTextName);
         editTextTextEmailAddress = (EditText) findViewById(R.id.editTextTextEmailAddress);
         editTextTextPassword = (EditText) findViewById(R.id.editTextTextPassword);
         signup_button = (Button) findViewById(R.id.signup_button);
         to_sign_up = (TextView) findViewById(R.id.to_sign_up);
 
+        //firebase정의
+        rDatabase = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser() != null){
@@ -56,42 +62,50 @@ public class signup extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
 
-
         signup_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = editTextTextEmailAddress.getText().toString().trim();
-                String pwd = editTextTextPassword.getText().toString().trim();
+                String Email = editTextTextEmailAddress.getText().toString().trim();
+                String Password = editTextTextPassword.getText().toString().trim();
 
-                firebaseAuth.createUserWithEmailAndPassword(email, pwd)
+                firebaseAuth.createUserWithEmailAndPassword(Email, Password)
                         .addOnCompleteListener(signup.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    String email = user.getEmail();
-                                    String uid = user.getUid();
+                                    String Email = user.getEmail();
+                                    String Uid = user.getUid();
+                                    String Nickname = editTextTextName.getText().toString().trim();
 
+                                    User user1 = new User(Nickname, Email, Uid);
+                                    HashMap<String, Object> user_data = user1.usertomap();
+
+                                    /*
                                     //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
                                     HashMap<Object,String> hashMap = new HashMap<>();
-                                    hashMap.put("Email",email);
-                                    hashMap.put("Uid",uid);
+                                    hashMap.put("Name",Email); //키, 값
+                                    hashMap.put("Email",Nickname);
+                                    hashMap.put("Uid",Uid);
+                                     */
 
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference reference = database.getReference("User");
-                                    reference.child(uid).setValue(hashMap);
+                                    reference.child(Uid).setValue(user_data);
 
                                     ////가입이 이루어졌을시 가입 화면을 빠져나감.
                                     Intent intent = new Intent(signup.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
+
                                 } else {
                                     Toast.makeText(signup.this, "등록 에러", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
                             }
                         });
+
             }
         });
 

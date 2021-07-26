@@ -9,16 +9,27 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.HelluApp.MainActivity;
 import com.example.HelluApp.R;
+import com.example.HelluApp.User;
 import com.example.HelluApp.login;
+import com.example.HelluApp.signup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class fragment_mypage extends Fragment {
@@ -28,6 +39,8 @@ public class fragment_mypage extends Fragment {
 
     //firebase auth object 가져와서 선언
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference rDatabase;
+    private FirebaseDatabase firebaseDatabase;
 
     //fragment_mypage 화면을 보여줌
     @SuppressLint("SetTextI18n")
@@ -46,14 +59,39 @@ public class fragment_mypage extends Fragment {
         FirebaseUser userEmail = firebaseAuth.getCurrentUser();
         textViewUserEmail.setText(userEmail.getEmail()+"으로 로그인");
 
-//        //마이페이지에 무슨 닉네임으로 로그인했는지 보여줌(textviewviewUserName에 찍어줌) 예린이가 닉네임설정 넣어주면 주석풀기
-//        TextView textViewUserName = view.findViewById(R.id.textviewUserName);
-//
-//        //initializing firebase authentication object
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        FirebaseUser userName = firebaseAuth.getCurrentUser();
-//        textViewUserName.setText("닉네임:"+userName.getDisplayName());
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
+        String Uid = user.getUid();
 
+        //firebase 정의
+        rDatabase = FirebaseDatabase.getInstance().getReference("User");
+
+        //마이페이지에 무슨 닉네임으로 로그인했는지 보여줌(textviewviewUserName에 찍어줌) 예린이가 닉네임설정 넣어주면 주석풀기
+        TextView textViewUserName = view.findViewById(R.id.textviewUserName);
+
+        if (user != null){
+            rDatabase.child(Uid).addValueEventListener(new ValueEventListener() {
+                @Override
+                //리스너는 이벤트 발생 시점에 데이터베이스에서 지정된 위치에 있던 데이터를 포함하는 DataSnapshot을 수신한다.
+                //스냅샷에 대해 getValue()를 호출하면 데이터의 자바 객체 표현이 반환된다.
+                //해당 위치에 데이터가 없는 경우 getValue()를 호출하면 null이 반환된다.
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    User user1 = dataSnapshot.getValue(User.class);
+
+                    //값 받아오기
+                    String Nickname = user1.Nickname;
+
+                    //텍스트뷰에 받아온 문자열 대입하기
+                    textViewUserName.setText("닉네임: "+Nickname);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                    Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException());
+                }
+            });
+        }
 
         //로그아웃 버튼
         logout_button = (Button) view.findViewById(R.id.logout_button);

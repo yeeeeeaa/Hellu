@@ -47,7 +47,6 @@ public class login extends AppCompatActivity {
 
         firebaseAuth = firebaseAuth.getInstance();
 
-
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
