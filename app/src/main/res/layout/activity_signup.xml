@@ -8,6 +8,7 @@
     android:background="@color/key_color"
     tools:context=".login">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,14 +30,26 @@
         android:layout_marginVertical="10dp"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/editTextTextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:ems="10"
+            android:hint="Nickname"
+            android:inputType="text"
+            android:textColor="#A3A3A3" />
+
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="20dp"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:hint="Email"

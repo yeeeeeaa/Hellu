@@ -30,8 +30,8 @@
         android:layout_gravity="center"
         android:src="@drawable/ic_baseline_person_24" />
 
-        <EditText
-            android:id="@+id/editTextTextName"
+        <TextView
+            android:id="@+id/textviewUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColorHint="@color/dark_blue"
@@ -39,8 +39,8 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
             android:ems="10"
-            android:hint="닉네임"
-            android:textColor="#A3A3A3" />
+            android:hint=""
+            android:textColor="@color/dark_blue"/>
 
         <TextView
             android:id="@+id/textviewUserEmail"

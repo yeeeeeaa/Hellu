@@ -28,6 +28,7 @@ public class signup extends AppCompatActivity {
     //이메일, 패스워드, 로그인버튼, 회원가입버튼
     EditText editTextTextEmailAddress;
     EditText editTextTextPassword;
+    EditText editTextTextName;
     Button signup_button;
     TextView to_sign_up;
 

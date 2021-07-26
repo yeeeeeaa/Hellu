@@ -23,10 +23,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class fragment_mypage extends Fragment {
 
-    //로그아웃 (일단 로그아웃 버튼을 연결하는 코드만 씀. 로그아웃 버튼이 눌리면, 로그아웃 기능이 실행되는거 해주면 돼 예린이 화이팅^-^!)
+    //로그아웃 버튼 선언
     Button logout_button;
 
-    //firebase auth object 가져와서 선언 (필요한건진 모르겠는데 일단 써봄...)
+    //firebase auth object 가져와서 선언
     private FirebaseAuth firebaseAuth;
 
     //fragment_mypage 화면을 보여줌
@@ -43,8 +43,17 @@ public class fragment_mypage extends Fragment {
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        textViewUserEmail.setText(user.getEmail()+"으로 로그인");
+        FirebaseUser userEmail = firebaseAuth.getCurrentUser();
+        textViewUserEmail.setText(userEmail.getEmail()+"으로 로그인");
+
+//        //마이페이지에 무슨 닉네임으로 로그인했는지 보여줌(textviewviewUserName에 찍어줌) 예린이가 닉네임설정 넣어주면 주석풀기
+//        TextView textViewUserName = view.findViewById(R.id.textviewUserName);
+//
+//        //initializing firebase authentication object
+//        firebaseAuth = FirebaseAuth.getInstance();
+//        FirebaseUser userName = firebaseAuth.getCurrentUser();
+//        textViewUserName.setText("닉네임:"+userName.getDisplayName());
+
 
         //로그아웃 버튼
         logout_button = (Button) view.findViewById(R.id.logout_button);
