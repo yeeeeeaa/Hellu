@@ -48,14 +48,13 @@ public class signup extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        /* 이거 일단 빼둘게 자동로그인 되어서!
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
             //그리고 MainActivity를 연다.
-            startActivity(new Intent(getApplicationContext(), MainActivity.class)); //추가해 줄 ProfileActivity
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
-         */
+
 
         signup_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +81,7 @@ public class signup extends AppCompatActivity {
                                     DatabaseReference reference = database.getReference("User");
                                     reference.child(uid).setValue(hashMap);
 
-                                    ////가입이 이루어져을시 가입 화면을 빠져나감.
+                                    ////가입이 이루어졌을시 가입 화면을 빠져나감.
                                     Intent intent = new Intent(signup.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
