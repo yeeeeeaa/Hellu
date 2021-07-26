@@ -3,10 +3,10 @@ package com.example.HelluApp.DailyStamp;
 public class daily_stamp_write_note {
     int _id;
     String contents;
-    int picture;
+    String picture;
     String createDateStr;
 
-    public daily_stamp_write_note(int _id, String contents, int  picture, String createDateStr) {
+    public daily_stamp_write_note(int _id, String contents, String picture, String createDateStr) {
         this._id = _id;
         this.contents = contents;
         this.picture = picture;
@@ -29,11 +29,11 @@ public class daily_stamp_write_note {
         this.contents = contents;
     }
 
-    public int getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(int picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 
