@@ -56,6 +56,7 @@ public class login extends AppCompatActivity {
         }
          */
 
+
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +79,7 @@ public class login extends AppCompatActivity {
             }
         });
 
+        //로그인 화면에서 sign up 버튼을 누르면 회원가입 화면으로 넘어감
         TextView TextView = findViewById(R.id.to_sign_up);
         TextView.setOnClickListener(new View.OnClickListener() {
 

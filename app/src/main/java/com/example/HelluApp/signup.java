@@ -95,5 +95,16 @@ public class signup extends AppCompatActivity {
             }
         });
 
+        //로그인 화면에서 sign in 버튼을 누르면 로그인 화면으로 넘어감
+        TextView TextView = findViewById(R.id.to_sign_in);
+        TextView.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), login.class);
+                startActivity(intent);
+            }
+
+        });
+
     }
 }

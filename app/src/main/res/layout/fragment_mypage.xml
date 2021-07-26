@@ -6,11 +6,6 @@
     tools:context=".MainFragment.fragment_mypage">
 
     <!--마이페이지 화면-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="마이페이지"
-        android:textSize="50sp"
-        android:gravity="center"/>
+
 
 </FrameLayout>

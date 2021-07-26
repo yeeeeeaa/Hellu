@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginVertical="30dp"
     android:background="@color/key_color"
     tools:context=".login">
 
@@ -41,7 +40,7 @@
             android:layout_marginHorizontal="20dp"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:text="Email"
+            android:hint="Email"
             android:textColor="#A3A3A3" />
 
         <EditText
@@ -52,7 +51,7 @@
             android:layout_marginHorizontal="20dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="Password"
+            android:hint="Password"
             android:textColor="#A3A3A3" />
 
         <Button
@@ -77,7 +76,6 @@
             android:text="Sign up"
             android:textSize="15dp"
             android:layout_marginRight="30dp" />
-
 
     </LinearLayout>
 
