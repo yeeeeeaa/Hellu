@@ -66,7 +66,7 @@ public class fragment_mypage extends Fragment {
         //firebase 정의
         rDatabase = FirebaseDatabase.getInstance().getReference("User");
 
-        //마이페이지에 무슨 닉네임으로 로그인했는지 보여줌(textviewviewUserName에 찍어줌) 예린이가 닉네임설정 넣어주면 주석풀기
+        //마이페이지에 무슨 닉네임으로 로그인했는지 보여줌(textviewviewUserName에 찍어줌)
         TextView textViewUserName = view.findViewById(R.id.textviewUserName);
 
         if (user != null){
