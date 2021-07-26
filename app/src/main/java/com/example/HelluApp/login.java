@@ -47,14 +47,15 @@ public class login extends AppCompatActivity {
 
         firebaseAuth = firebaseAuth.getInstance();
 
-        /* 이거 일단 빼둘게 자동로그인 되어서!
+        //이거 일단 빼둘게 자동로그인 되어서!
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
             //그리고 MainActivity를 연다.
             startActivity(new Intent(getApplicationContext(), MainActivity.class)); //추가해 줄 ProfileActivity
         }
-         */
+
+
 
 
         login_button.setOnClickListener(new View.OnClickListener() {
