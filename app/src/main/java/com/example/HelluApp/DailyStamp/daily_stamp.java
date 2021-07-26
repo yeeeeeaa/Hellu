@@ -2,6 +2,7 @@ package com.example.HelluApp.DailyStamp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,9 @@ import android.view.MenuItem;
 
 import com.example.HelluApp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class daily_stamp extends AppCompatActivity {
 
@@ -24,15 +28,23 @@ public class daily_stamp extends AppCompatActivity {
         setContentView(R.layout.activity_daily_stamp);
 
         RecyclerView recyclerView = findViewById(R.id.daily_recyclerview); //리사이클러뷰 연결
-        /*recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this)); //레이아웃 매니저와 리사이클러뷰 연결*/
+        List items;
+        items = new ArrayList();
+        for(int i = 0; i <5; i++){
+            daily_stamp_write_note note = new daily_stamp_write_note(i, "내용"+i, "", "2021_07_0"+i);
+            //note.set_id(i);
+            //note.setContents("내용"+i);
+            //note.setCreateDateStr("2021_07"+i);
+            items.add(note);
+        }
 
-        //daily_stamp_write_noteAdapter adapter = new daily_stamp_write_noteAdapter();
-       // recyclerView.setAdapter(adapter); //어댑터와 연결
+        recyclerView.setAdapter(new daily_stamp_write_noteAdapter(items));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
 
-        //하단 네비게이션 화면을 선택하면 실행됨
+                //하단 네비게이션 화면을 선택하면 실행됨
         dBottomNV = findViewById(R.id.daily_bottom_navigation);
         dBottomNV.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() { //NavigationItemSelecte
             @Override

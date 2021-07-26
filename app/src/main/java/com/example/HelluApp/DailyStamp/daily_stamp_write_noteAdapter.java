@@ -28,6 +28,11 @@ public class daily_stamp_write_noteAdapter extends RecyclerView.Adapter<daily_st
     int itemLayout;
     OnNoteItemClickListener listener;
 
+    public daily_stamp_write_noteAdapter(List items) {
+        this.items=items;
+    }
+
+
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
