@@ -71,12 +71,4 @@ public class daily_stamp extends AppCompatActivity {
             startActivity(intent);
         }
     }
-    /*private List<String> createItemList() {
-        List<String> items = new ArrayList<>();
-        for(int i=0; i<20; i++){
-            items.add("아이템"+i); //아이템 19개만큼 추가
-        }
-        return items;
-    } //위에서 쓴 createItemList()라는 메서드를 정의*/
-
 }
