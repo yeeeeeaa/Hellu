@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home);
+        setContentView(R.layout.activity_main);
 
         //하단 네비게이션 화면 선택하면 눌리는 함수
         mBottomNV = findViewById(R.id.bottom_navigation);
@@ -36,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mBottomNV.setSelectedItemId(R.id.home);
-
-        //홈 화면에서 뒤로가기 누르면 로그인 화면이 안뜨게
-        //login loginActivity = (login) login.loginActivity;
-        //loginActivity.finish();
     }
 
     //BottomNavigation 페이지 변경

@@ -292,7 +292,6 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="50dp"
-                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="역대기록"
                 android:textColor="@color/dark_blue" />
@@ -306,7 +305,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--하단 네비게이션-->
+        <!--아마도 기능은 안하고 화면비율맞춤용 하단 네비게이션-->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
