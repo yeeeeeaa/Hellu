@@ -30,8 +30,8 @@ public class daily_stamp extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.daily_recyclerview); //리사이클러뷰 연결
         List items;
         items = new ArrayList();
-        for(int i = 0; i <5; i++){
-            daily_stamp_write_note note = new daily_stamp_write_note(i, "내용"+i, "", "2021_07_0"+i);
+        for(int i = 0; i <30; i++){
+            daily_stamp_write_note note = new daily_stamp_write_note(i, "제목"+i,"내용"+i, "", "2021_07_0"+i);
             //note.set_id(i);
             //note.setContents("내용"+i);
             //note.setCreateDateStr("2021_07"+i);

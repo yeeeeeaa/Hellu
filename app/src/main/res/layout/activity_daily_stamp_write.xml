@@ -8,19 +8,25 @@
     tools:context=".DailyStamp.daily_stamp_write">
 
     <EditText
+        android:id="@+id/daily_write_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="top"
+        android:hint="제목을 입력하세요"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/daily_write_context"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="top"
         android:hint="내용을 입력하세요"
-        android:textColorHighlight="@color/dark_blue"
-        android:textColorLink="@color/dark_blue"
-        android:textCursorDrawable="@color/dark_blue"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/daily_write_save_button"
+        app:layout_constraintTop_toBottomOf="@+id/daily_write_title" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/daily_write_save_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:text="저장하기"
