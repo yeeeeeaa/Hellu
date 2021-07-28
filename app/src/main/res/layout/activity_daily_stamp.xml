@@ -10,10 +10,11 @@
     <!--여기는 홈에 있는 매일인증(daily_stamp) 버튼을 누르면 나오는 화면입니다.-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toomOf="@id/daily_bottom_navigation"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/daily_bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/daily_recyclerview"
