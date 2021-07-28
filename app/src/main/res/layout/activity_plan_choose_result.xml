@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pchoose_QnA_plan_result">
+    tools:context=".plan_choose_result">
 
     <!-- 'ai로 선별해주는 플랜 결과 보기' 버튼을 누르면 나오는 화면-->
 

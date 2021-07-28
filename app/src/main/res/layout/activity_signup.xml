@@ -21,7 +21,7 @@
         android:text="Sign Up"/>
 
 
-    <!--    //이메일, 비밀번호, 로그인버튼-->
+    <!--    닉네임, 이메일, 비밀번호, 로그인버튼-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
