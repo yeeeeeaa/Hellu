@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_home);
 
         //하단 네비게이션 화면 선택하면 눌리는 함수
         mBottomNV = findViewById(R.id.bottom_navigation);

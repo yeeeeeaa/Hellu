@@ -21,8 +21,8 @@
             android:layout_marginHorizontal="100dp"
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="20dp"
             android:text="헬루"
+            android:layout_marginVertical="5dp"
             android:textColor="@color/dark_blue"
             android:textSize="36sp"
             android:textStyle="bold|italic" />
@@ -30,9 +30,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginHorizontal="10dp"
             android:textSize="25sp"
+            android:layout_marginVertical="5dp"
             android:textStyle="normal"
             android:textColor="@color/blue"
             android:text="Healthy Routine" />
@@ -41,7 +41,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_gravity="center"
         android:background="#00FFFFFF"
         android:gravity="center"
@@ -121,7 +122,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
+            android:layout_marginVertical="10dp"
             android:background="#00FFFFFF"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
@@ -212,7 +213,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
+            android:layout_marginVertical="10dp"
             android:background="#00FFFFFF"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
@@ -291,11 +292,29 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="50dp"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="역대기록"
                 android:textColor="@color/dark_blue" />
 
         </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--하단 네비게이션-->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Widget.fontChange_nanum"
+            app:itemIconTint="@color/dark_blue"
+            app:itemTextColor="@color/dark_blue"
+            app:menu="@menu/menu_home_bottom_navi" />
 
     </LinearLayout>
 
