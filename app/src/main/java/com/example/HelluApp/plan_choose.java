@@ -11,13 +11,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +43,11 @@ public class plan_choose extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_plan_choose);
 
+        //맨아래 버튼 누르면 결과화면으로
+        result_btn = findViewById(R.id.pch_result_button);
+        result_btn.setOnClickListener(v -> {
+            Checked();
+
             HashMap<String, Object> Plan_result = new HashMap<>();
             Plan_result.put("성별", Gender);
             Plan_result.put("나이", Age);
@@ -63,12 +63,6 @@ public class plan_choose extends AppCompatActivity {
             Plan_result.put("운동 목적", purposeOfExercise);
 
             databaseReference.child("User_Plan").push().setValue(Plan_result);
-
-            //맨아래 버튼 누르면 결과화면으로
-            result_btn = findViewById(R.id.pch_result_button);
-
-            result_btn.setOnClickListener(v -> {
-            Checked();
 
             Intent intent = new Intent(getApplicationContext(), plan_choose_result.class);
             startActivity(intent);
