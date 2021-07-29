@@ -23,7 +23,10 @@
             android:parentActivityName=".login" />
         <activity android:name=".DailyStamp.daily_stamp_gallery" />
         <activity android:name=".DailyStamp.daily_stamp_write" />
+
+        <activity android:name=".camera_permission"> </activity>
         <activity android:name=".DailyStamp.daily_stamp_camera" />
+
         <activity android:name=".Record.record" />
         <activity android:name=".Walking.walking" />
         <activity android:name=".InbodyCheck.inbody_check" />
@@ -42,16 +45,6 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="c52owlfktp" />
-
-<!--        <provider-->
-<!--            android:name="androidx.core.content.FileProvider"-->
-<!--            android:authorities="com.shuvic.alumni.cameraalbum"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/file_paths" />-->
-<!--        </provider>-->
 
     </application>
 
