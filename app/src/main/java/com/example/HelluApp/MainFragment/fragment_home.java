@@ -40,7 +40,6 @@ public class fragment_home extends Fragment {
             }
         });
 
-
         //홈에 있는 플랜 선택(plan_choose)버튼을 누르면 플랜 선택 화면으로 넘어감
         imageButton = view.findViewById(R.id.plan_choose_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
