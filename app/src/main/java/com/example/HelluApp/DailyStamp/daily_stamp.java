@@ -68,8 +68,15 @@ public class daily_stamp extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), daily_stamp_write.class);
             startActivity(intent);
         }else {
+            // 네비게이션 바에서 갤러리를 누르면 바로 갤러리로 연동하는걸로 코드 수정함.
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(intent, 1);
+            /*
             Intent intent = new Intent(getApplicationContext(), daily_stamp_gallery.class);
             startActivity(intent);
+             */
         }
     }
 }

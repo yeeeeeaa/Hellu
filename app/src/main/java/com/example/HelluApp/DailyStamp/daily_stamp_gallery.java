@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import java.io.InputStream;
 
+//이 부분 이제 안써도 될 것 같음
 public class daily_stamp_gallery extends AppCompatActivity {
 
     ImageView imageView;

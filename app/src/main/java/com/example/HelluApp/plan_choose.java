@@ -46,6 +46,7 @@ public class plan_choose extends AppCompatActivity {
         result_btn = findViewById(R.id.pch_result_button);
 
         result_btn.setOnClickListener(v -> {
+
             Checked();
 
             HashMap<String, Object> Plan_result = new HashMap<>();
@@ -66,6 +67,7 @@ public class plan_choose extends AppCompatActivity {
 
             Intent intent = new Intent(getApplicationContext(), plan_choose_result.class);
             startActivity(intent);
+
         });
     }
 
