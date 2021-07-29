@@ -82,7 +82,7 @@ public class fragment_mypage extends Fragment {
                     String Nickname = user1.Nickname;
 
                     //텍스트뷰에 받아온 문자열 대입하기
-                    textViewUserName.setText("닉네임: "+Nickname);
+                    textViewUserName.setText("닉네임: " + Nickname);
                 }
 
                 @Override
