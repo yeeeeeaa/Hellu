@@ -7,32 +7,5 @@
     tools:context=".DailyStamp.daily_stamp_camera"
     android:orientation="vertical">
 
-    <!--
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="320dp"
-        android:text="매일인증_카메라 화면"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-        -->
-
-    <Button
-        android:id="@+id/btn_capture"
-        android:text="사진찍기"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn_album"
-        android:text="앨범열기"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/iv_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>

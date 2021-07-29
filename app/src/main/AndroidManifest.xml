@@ -40,15 +40,15 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="c52owlfktp" />
 
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.shuvic.alumni.cameraalbum"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
+<!--        <provider-->
+<!--            android:name="androidx.core.content.FileProvider"-->
+<!--            android:authorities="com.shuvic.alumni.cameraalbum"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/file_paths" />-->
+<!--        </provider>-->
 
     </application>
 
