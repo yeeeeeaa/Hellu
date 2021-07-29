@@ -7,6 +7,7 @@
     android:theme="@style/Widget.fontChange_nanum"
     tools:context=".DailyStamp.daily_stamp_write">
 
+    <!--매일인증 제목 입력창-->
     <EditText
         android:id="@+id/daily_write_title"
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--사진을 매일인증 글에 가져올 때 쓸 버튼-->
     <Button
         android:id="@+id/daily_write_image_button"
         android:layout_width="wrap_content"
@@ -24,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
+    <!--매일인증글 내용 입력창-->
     <EditText
         android:id="@+id/daily_write_context"
         android:layout_width="match_parent"
@@ -34,6 +36,7 @@
         app:layout_constraintBottom_toTopOf="@+id/daily_write_save_button"
         app:layout_constraintTop_toBottomOf="@+id/daily_write_title" />
 
+    <!--매일인증글 저장하기 버튼-->
     <Button
         android:id="@+id/daily_write_save_button"
         android:layout_width="match_parent"

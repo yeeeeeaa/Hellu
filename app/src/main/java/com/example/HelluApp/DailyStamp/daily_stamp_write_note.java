@@ -2,10 +2,10 @@ package com.example.HelluApp.DailyStamp;
 
 public class daily_stamp_write_note {
     int _id;
-    String title;
-    String contents;
-    String picture;
-    String createDateStr;
+    String title;               //제목
+    String contents;            //내용
+    String picture;             //이미지 경로
+    String createDateStr;       //날짜
 
     public daily_stamp_write_note(int _id, String title, String contents, String picture, String createDateStr) {
         this._id = _id;

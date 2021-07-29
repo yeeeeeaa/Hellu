@@ -85,7 +85,6 @@ public class daily_stamp_write_noteAdapter extends RecyclerView.Adapter<daily_st
             daily_image = itemView.findViewById(R.id.daily_write_image);
             daily_date = itemView.findViewById(R.id.daily_write_date);
             daily_text = itemView.findViewById(R.id.daily_write_text);
-            //사진이 없을 때를 대비하여 pictureImageView = itemView.findViewById(사진 하나);
 
             itemView.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View view){

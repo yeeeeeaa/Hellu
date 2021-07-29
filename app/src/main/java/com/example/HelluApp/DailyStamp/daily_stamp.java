@@ -27,24 +27,25 @@ public class daily_stamp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_stamp);
 
-        RecyclerView recyclerView = findViewById(R.id.daily_recyclerview); //리사이클러뷰 연결
+        //리사이클러뷰 연결
+        RecyclerView recyclerView = findViewById(R.id.daily_recyclerview);
         List items;
         items = new ArrayList();
+        //임의로 글들을 매일 인증 글들을 띄워주는 반복문
         for(int i = 0; i <30; i++){
             daily_stamp_write_note note = new daily_stamp_write_note(i, "제목"+i,"내용"+i, "", "2021_07_0"+i);
-            //note.set_id(i);
-            //note.setContents("내용"+i);
-            //note.setCreateDateStr("2021_07"+i);
+
             items.add(note);
         }
 
+        //잘 모르지만 리사이클러뷰와 어뎁터를 연결시켜주나봅니다.
         recyclerView.setAdapter(new daily_stamp_write_noteAdapter(items));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
 
-                //하단 네비게이션 화면을 선택하면 실행됨
+        //하단 네비게이션 화면을 선택하면 실행됨
         dBottomNV = findViewById(R.id.daily_bottom_navigation);
         dBottomNV.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() { //NavigationItemSelecte
             @Override
