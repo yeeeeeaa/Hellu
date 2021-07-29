@@ -4,16 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -133,10 +136,29 @@ public class plan_choose extends AppCompatActivity {
         }
 
         //나이
+        if (optionAge != null){
+            Age = optionAge.getText().toString().trim();
+        } else {
+            Toast.makeText(plan_choose.this, "나이를 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         //신장, 체중
+        if (optionHeight != null || optionWeight != null){
+            EditHeight = optionHeight.getText().toString().trim();
+            EditWeight = optionWeight.getText().toString().trim();
+        } else {
+            Toast.makeText(plan_choose.this, "키와 체중을 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        //목표
+        //목표감량 체중, 아직 계산은 안했음
+        if (optionLose != null){
+            LoseWeight = optionLose.getText().toString().trim();
+        } else {
+            Toast.makeText(plan_choose.this, "나이를 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // 1. 운동 주 횟수
         if (option11.isChecked()) {
