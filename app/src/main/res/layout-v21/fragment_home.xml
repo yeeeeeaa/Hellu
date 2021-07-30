@@ -203,11 +203,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="50dp"
                 android:gravity="center"
-                android:text="결과 다시보기"
+                android:text="AI 플랜 다시보기"
                 android:textColor="@color/dark_blue" />
 
         </LinearLayout>
-
 
         <!--    공백을 위한 리니어-->
         <LinearLayout

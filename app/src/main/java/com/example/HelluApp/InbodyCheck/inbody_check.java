@@ -12,7 +12,7 @@ public class inbody_check extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inbody_check);
+        setContentView(R.layout.activity_plan_reivew);
     }
 
 }
