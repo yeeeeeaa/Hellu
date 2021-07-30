@@ -83,8 +83,7 @@ public class daily_stamp_write extends AppCompatActivity {
         //내용 입력
         EditText optionContent = findViewById(R.id.daily_write_content);
 
-        //날짜
-        String optionDate;
+        //날짜는 입력을 받지 않아서 따로 변수를 만들지 않았습니다.
 
         //제목
         if (optionTitle != null) {
@@ -104,7 +103,7 @@ public class daily_stamp_write extends AppCompatActivity {
 
         //날짜
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        optionDate = simpleDateFormat.format(new Date().getTime());
+        DateWrite= simpleDateFormat.format(new Date().getTime());
         */
     }
 
