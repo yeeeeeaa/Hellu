@@ -9,11 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.HelluApp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class daily_stamp extends AppCompatActivity {
@@ -31,6 +34,7 @@ public class daily_stamp extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.daily_recyclerview);
         List items;
         items = new ArrayList();
+
         //임의로 글들을 매일 인증 글들을 띄워주는 반복문
         for(int i = 0; i <30; i++){
             daily_stamp_write_note note = new daily_stamp_write_note(i, "제목"+i,"내용"+i, "", "2021_07_0"+i);

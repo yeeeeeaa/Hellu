@@ -7,16 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.HelluApp.R;
+import com.example.HelluApp.plan_choose;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 
 public class daily_stamp_write extends AppCompatActivity {
 
@@ -55,30 +55,56 @@ public class daily_stamp_write extends AppCompatActivity {
 
 
         save_button = findViewById(R.id.daily_write_save_button);
-        save_button.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
+        save_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
 
                 //모르지만 예린이 코드 훔쳐오기
                 //Input_daily();
-                /*HashMap<String, Object> Daily_write = new HashMap<>();
+                /*
+                HashMap<String, Object> Daily_write = new HashMap<>();
                 Daily_write.put("글 번호", ID);
                 Daily_write.put("제목", Title);
                 Daily_write.put("내용", Content);
                 Daily_write.put("사진", Picture);
                 Daily_write.put("날짜", DateWrite);
 
-                databaseReference.child("User_Write").push().setValue(Daily_write);*/
+                databaseReference.child("User_Write").push().setValue(Daily_write);
+                */
             }
         });
     }
-    public void Input_daily(){
+
+    public void Input_daily() {
 
         /*
         //제목 입력
-        EditText Title = findViewById(R.id.daily_write_title);
+        EditText optionTitle = findViewById(R.id.daily_write_title);
 
         //내용 입력
-        EditText Context = findViewById(R.id.daily_write_context);
+        EditText optionContent = findViewById(R.id.daily_write_content);
+
+        //날짜
+        String optionDate;
+
+        //제목
+        if (optionTitle != null) {
+            Title = optionTitle.getText().toString().trim();
+        } else {
+            Toast.makeText(this, "나이를 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //내용
+        if (optionContent != null) {
+            Content = optionContent.getText().toString().trim();
+        } else {
+            Toast.makeText(this, "나이를 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //날짜
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        optionDate = simpleDateFormat.format(new Date().getTime());
         */
     }
 
