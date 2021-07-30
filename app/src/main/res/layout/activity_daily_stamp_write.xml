@@ -26,6 +26,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/daily_write_title"
+        app:layout_constraintBottom_toTopOf="@id/daily_write_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/daily_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/daily_stamp_write_image_item"/>
+    </LinearLayout>
+
     <!--매일인증글 내용 입력창-->
     <EditText
         android:id="@+id/daily_write_content"
@@ -34,7 +54,7 @@
         android:gravity="top"
         android:hint="내용을 입력하세요"
         app:layout_constraintBottom_toTopOf="@+id/daily_write_save_button"
-        app:layout_constraintTop_toBottomOf="@+id/daily_write_title" />
+        app:layout_constraintTop_toBottomOf="@+id/linear" />
 
     <!--매일인증글 저장하기 버튼-->
     <Button
