@@ -29,7 +29,7 @@
 
         <activity android:name=".Record.record" />
         <activity android:name=".Walking.walking" />
-        <activity android:name=".InbodyCheck.inbody_check" />
+        <activity android:name=".PlanReview.plan_reivew" />
         <activity android:name=".Community.community" />
         <activity android:name=".plan_choose" />
         <activity android:name=".DailyStamp.daily_stamp" />

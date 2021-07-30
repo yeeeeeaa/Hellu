@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.example.HelluApp.Community.community;
 import com.example.HelluApp.DailyStamp.daily_stamp;
-import com.example.HelluApp.InbodyCheck.inbody_check;
+import com.example.HelluApp.PlanReview.plan_reivew;
 import com.example.HelluApp.R;
 import com.example.HelluApp.Record.record;
 import com.example.HelluApp.Walking.walking;
@@ -60,12 +60,12 @@ public class fragment_home extends Fragment {
             }
         });
 
-        //홈에 있는 인바디 체크(inbody_check)버튼을 누르면 인바디 체크 화면으로 넘어감
+        //홈에 있는 인바디 체크(plan_reivew)버튼을 누르면 인바디 체크 화면으로 넘어감
         imageButton = view.findViewById(R.id.inbody_check_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), inbody_check.class);
+                Intent intent = new Intent(getActivity(), plan_reivew.class);
                 startActivity(intent);
             }
         });

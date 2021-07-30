@@ -1,4 +1,4 @@
-package com.example.HelluApp.InbodyCheck;
+package com.example.HelluApp.PlanReview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,8 @@ import android.os.Bundle;
 
 import com.example.HelluApp.R;
 
-public class inbody_check extends AppCompatActivity {
+public class plan_reivew extends AppCompatActivity {
 
-    //인바디체크.java
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
