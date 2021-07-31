@@ -30,7 +30,6 @@ public class camera_permission extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //퍼미션 상태 확인
             if (!hasPermissions(PERMISSIONS)) {
-
                 //퍼미션 허가 안되어있다면 사용자에게 요청
                 requestPermissions(PERMISSIONS, PERMISSIONS_REQUEST_CODE);
             }else{

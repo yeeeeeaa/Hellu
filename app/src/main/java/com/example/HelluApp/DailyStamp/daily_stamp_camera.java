@@ -310,6 +310,8 @@ public class daily_stamp_camera extends AppCompatActivity{
             mSession.capture(mCaptureRequest, mSessionCaptureCallback, mHandler);
         } catch (CameraAccessException e) {
             e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 

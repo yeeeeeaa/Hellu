@@ -12,4 +12,5 @@ public class plan_choose_result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_choose_result);
     }
+
 }

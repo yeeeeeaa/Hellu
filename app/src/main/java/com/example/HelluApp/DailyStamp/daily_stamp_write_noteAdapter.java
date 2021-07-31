@@ -47,9 +47,7 @@ public class daily_stamp_write_noteAdapter extends RecyclerView.Adapter<daily_st
     }
 
     @Override
-    public int getItemCount() {
-        return items.size();
-    }
+    public int getItemCount() { return items.size(); }
 
     public void addItem(daily_stamp_write_note item){
         items.add(item);

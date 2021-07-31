@@ -55,5 +55,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
+    //image_upload때문에 추가한 firebase-storage
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
+
     implementation'com.naver.maps:map-sdk:3.12.0'
 }
