@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.HelluApp">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -9,7 +10,9 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.location.gps" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,20 +20,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelluApp">
+        <activity android:name=".Community.community" />
+        <activity android:name=".Community.ExChat" />
+        <activity android:name=".Community.ChatActivity" />
+        <activity android:name=".Community.my_msgbox" />
+        <activity android:name=".Community.other_msgbox" />
+        <activity android:name=".Community.Char" />
         <activity android:name=".plan_choose_result" />
         <activity
             android:name=".signup"
             android:parentActivityName=".login" />
         <activity android:name=".DailyStamp.daily_stamp_gallery" />
         <activity android:name=".DailyStamp.daily_stamp_write" />
-
-        <activity android:name=".camera_permission"> </activity>
+        <activity android:name=".camera_permission" />
         <activity android:name=".DailyStamp.daily_stamp_camera" />
-
         <activity android:name=".Metaverse.metaverse" />
         <activity android:name=".Walking.walking" />
         <activity android:name=".PlanReview.plan_reivew" />
-        <activity android:name=".Community.community" />
         <activity android:name=".plan_choose" />
         <activity android:name=".DailyStamp.daily_stamp" />
         <activity android:name=".MainActivity" />
@@ -45,7 +51,6 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="c52owlfktp" />
-
     </application>
 
 </manifest>

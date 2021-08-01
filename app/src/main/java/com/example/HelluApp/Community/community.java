@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.HelluApp.DailyStamp.daily_stamp_camera;
+import com.example.HelluApp.DailyStamp.daily_stamp_write;
 import com.example.HelluApp.R;
 import com.example.HelluApp.Walking.walking_raking;
 import com.example.HelluApp.Walking.walking_walking;
@@ -51,11 +54,11 @@ public class community extends AppCompatActivity {
 
         Fragment fragment = fragmentManager.findFragmentByTag(tag);
         if (fragment == null) {
-            if (id == R.id.community_user) {
-                fragment = new community_user();
+            if (id == R.id.community_chat) {
+                fragment = new community_chatting();
 
             } else{
-                fragment=new community_chatting();
+                fragment=new community_user();
             }
 
             fragmentTransaction.add(R.id.content_layout, fragment, tag);

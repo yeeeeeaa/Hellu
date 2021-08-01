@@ -1,5 +1,6 @@
 package com.example.HelluApp.Community;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.HelluApp.DailyStamp.daily_stamp_write;
 import com.example.HelluApp.R;
 
 public class community_chatting extends Fragment {
@@ -19,6 +21,9 @@ public class community_chatting extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //Intent intent = new Intent(getActivity(), ExChat.class);
+        //startActivity(intent);
+        startActivity(new Intent(getContext(), ExChat.class));
         return inflater.inflate(R.layout.fragment_community_chatting, container, false);
     }
 
