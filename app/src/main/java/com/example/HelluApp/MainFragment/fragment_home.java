@@ -16,7 +16,7 @@ import com.example.HelluApp.Community.community;
 import com.example.HelluApp.DailyStamp.daily_stamp;
 import com.example.HelluApp.PlanReview.plan_reivew;
 import com.example.HelluApp.R;
-import com.example.HelluApp.Record.record;
+import com.example.HelluApp.Metaverse.metaverse;
 import com.example.HelluApp.Walking.walking;
 import com.example.HelluApp.plan_choose;
 
@@ -81,12 +81,12 @@ public class fragment_home extends Fragment {
             }
         });
 
-        //홈에 있는 역대 기록(record)버튼을 누르면 역대 기록 화면으로 넘어감
+        //홈에 있는 역대 기록(metaverse)버튼을 누르면 역대 기록 화면으로 넘어감
         imageButton = view.findViewById(R.id.metaverse_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), record.class);
+                Intent intent = new Intent(getActivity(), metaverse.class);
                 startActivity(intent);
             }
         });

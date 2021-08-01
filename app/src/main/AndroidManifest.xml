@@ -27,7 +27,7 @@
         <activity android:name=".camera_permission"> </activity>
         <activity android:name=".DailyStamp.daily_stamp_camera" />
 
-        <activity android:name=".Record.record" />
+        <activity android:name=".Metaverse.metaverse" />
         <activity android:name=".Walking.walking" />
         <activity android:name=".PlanReview.plan_reivew" />
         <activity android:name=".Community.community" />

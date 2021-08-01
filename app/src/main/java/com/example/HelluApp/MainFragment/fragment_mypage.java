@@ -47,7 +47,7 @@ public class fragment_mypage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment 레이아웃에 프래그먼트 뿌리기 view 앞에 return 지움
+        // Inflate the layout for this fragment 레이아웃에 프래그먼트 뿌리기
         View view = inflater.inflate(R.layout.fragment_mypage, container, false);
         //View view = inflater.inflate(R.layout.fragment_mypage, container, false);
 

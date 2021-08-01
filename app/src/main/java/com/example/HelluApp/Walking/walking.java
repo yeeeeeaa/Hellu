@@ -16,7 +16,7 @@ public class walking extends AppCompatActivity {
 
     //하단 네비게이션
     private BottomNavigationView mBottomNV;
-    //걷기.java
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
