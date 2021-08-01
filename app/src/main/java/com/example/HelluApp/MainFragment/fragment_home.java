@@ -60,8 +60,8 @@ public class fragment_home extends Fragment {
             }
         });
 
-        //홈에 있는 인바디 체크(plan_reivew)버튼을 누르면 인바디 체크 화면으로 넘어감
-        imageButton = view.findViewById(R.id.inbody_check_button);
+        //홈에 있는 ai 플랜 다시보기(plan_reivew)버튼을 누르면 ai 플랜 다시보기 화면으로 넘어감
+        imageButton = view.findViewById(R.id.plan_review_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +82,7 @@ public class fragment_home extends Fragment {
         });
 
         //홈에 있는 역대 기록(record)버튼을 누르면 역대 기록 화면으로 넘어감
-        imageButton = view.findViewById(R.id.record_button);
+        imageButton = view.findViewById(R.id.metaverse_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

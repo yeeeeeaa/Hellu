@@ -164,7 +164,7 @@
                 app:iconTint="@color/blue" />
 
             <Button
-                android:id="@+id/inbody_check_button"
+                android:id="@+id/plan_review_button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginHorizontal="50dp"
@@ -253,14 +253,14 @@
                 app:iconTint="@color/blue" />
 
             <Button
-                android:id="@+id/record_button"
+                android:id="@+id/metaverse_button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginHorizontal="50dp"
                 android:background="@drawable/shape_button"
                 android:gravity="center"
                 app:backgroundTint="@color/light_gray"
-                app:icon="@drawable/record"
+                app:icon="@drawable/metaverse"
                 app:iconGravity="textTop"
                 app:iconSize="60dp"
                 app:iconTint="@color/blue" />
@@ -292,7 +292,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="50dp"
                 android:gravity="center"
-                android:text="역대기록"
+                android:text="메타버스"
                 android:textColor="@color/dark_blue" />
 
         </LinearLayout>
