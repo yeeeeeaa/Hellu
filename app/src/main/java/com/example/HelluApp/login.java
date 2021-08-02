@@ -12,10 +12,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.HelluApp.Community.G;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 //회원가입이 되어 있다면 로그인. 신규회원가입 버튼을 누르면 신규회원가입 이동
 public class login extends AppCompatActivity {
@@ -46,7 +53,7 @@ public class login extends AppCompatActivity {
         to_sign_up = (TextView) findViewById(R.id.to_sign_up);
 
         firebaseAuth = firebaseAuth.getInstance();
-
+        G.nickName = User.Nickname;
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
             finish();

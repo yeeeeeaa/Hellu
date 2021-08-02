@@ -22,44 +22,54 @@
         android:textStyle="bold"
         android:text="My Page"/>
 
-    <ImageButton
-        android:id="@+id/mypage_profile"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/et_name"
+        android:layout_marginBottom="16dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textviewUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/light_gray"
+        android:textColorHint="@color/dark_blue"
+        android:layout_marginVertical="20dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_baseline_person_24" />
+        android:gravity="center"
+        android:ems="10"
+        android:text=""
+        android:textColor="@color/dark_blue"/>
 
-        <TextView
-            android:id="@+id/textviewUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/dark_blue"
-            android:layout_marginVertical="20dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:ems="10"
-            android:text=""
-            android:textColor="@color/dark_blue"/>
+    <TextView
+        android:id="@+id/textviewUserEmail"
+        android:text=""
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/dark_blue"
+        android:layout_marginVertical="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/change_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="5dp"
+        android:text="변경"
+        app:backgroundTint="@color/key_color"
+        app:iconTint="#FFFFFF" />
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="5dp"
+        android:text="로그아웃"
+        app:backgroundTint="@color/key_color"
+        app:iconTint="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/textviewUserEmail"
-            android:text=""
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/dark_blue"
-            android:layout_marginVertical="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
-
-        <Button
-            android:id="@+id/logout_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="20dp"
-            android:text="로그아웃"
-            app:backgroundTint="@color/key_color"
-            app:iconTint="#FFFFFF" />
 
 </LinearLayout>

@@ -2,7 +2,10 @@ package com.example.HelluApp.MainFragment;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,12 +18,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.HelluApp.Community.G;
 import com.example.HelluApp.MainActivity;
 import com.example.HelluApp.R;
 import com.example.HelluApp.User;
+import com.example.HelluApp.UserChange;
 import com.example.HelluApp.login;
 import com.example.HelluApp.signup;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,27 +37,59 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.text.BreakIterator;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class fragment_mypage extends Fragment {
 
     //로그아웃 버튼 선언
     Button logout_button;
+    Button change_button;
+
+    EditText etName;
+    CircleImageView ivProfile = null;
+
 
     //firebase auth object 가져와서 선언
     private FirebaseAuth firebaseAuth;
     private DatabaseReference rDatabase;
     private FirebaseDatabase firebaseDatabase;
 
+    Uri imgUri;//선택한 프로필 이미지 경로 Uri
+
     //fragment_mypage 화면을 보여줌
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //etName = getView().findViewById(R.id.et_name);
+        ivProfile = getView().findViewById(R.id.iv_profile);
+        loadData();
+        if(G.nickName!=null){
+            //etName.setText(G.nickName);
+            Picasso.get().load(G.porfileUrl).into(ivProfile);
+
+        }
+        //TextView etName=(TextView)getView().findViewById(R.id.et_name);
+        //CircleImageView ivProfile=(CircleImageView)getView().findViewById(R.id.iv_profile);
+        //SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        //G.nickName=preferences.getString("nickName", null);
+        //G.porfileUrl=preferences.getString("profileUrl", null);
+        //etName.setText(G.nickName);
+        //Picasso.get().load(G.porfileUrl).into(ivProfile);
+        //1. Firebase Database에 nickName, profileUrl을 저장
+        //firebase DB관리자 객체 소환
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        //'profiles'라는 이름의 자식 노드 참조 객체 얻어오기
+        DatabaseReference profileRef= firebaseDatabase.getReference("profiles");
+
         // Inflate the layout for this fragment 레이아웃에 프래그먼트 뿌리기
         View view = inflater.inflate(R.layout.fragment_mypage, container, false);
         //View view = inflater.inflate(R.layout.fragment_mypage, container, false);
-
         //마이페이지에 무슨 이메일로 로그인했는지 보여줌(textviewUserEmail에 찍어줌)
         TextView textViewUserEmail = view.findViewById(R.id.textviewUserEmail);
 
@@ -79,7 +118,7 @@ public class fragment_mypage extends Fragment {
                     User user1 = dataSnapshot.getValue(User.class);
 
                     //값 받아오기
-                    String Nickname = user1.Nickname;
+                    String Nickname = G.nickName;
 
                     //텍스트뷰에 받아온 문자열 대입하기
                     textViewUserName.setText("닉네임: " + Nickname);
@@ -95,6 +134,7 @@ public class fragment_mypage extends Fragment {
 
         //로그아웃 버튼
         logout_button = (Button) view.findViewById(R.id.logout_button);
+        change_button = (Button) view.findViewById(R.id.change_button);
 
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
         //유저가 있다면, null이 아니면 계속 진행
@@ -118,6 +158,16 @@ public class fragment_mypage extends Fragment {
             }
         });
 
+        change_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                if (view == change_button) {
+                    Intent intent = new Intent(view.getContext(), UserChange.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
         return view;
     }
 
@@ -125,6 +175,13 @@ public class fragment_mypage extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+    }
+    void loadData(){
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        //G.nickName=preferences.getString("nickName", null);
+        G.porfileUrl=preferences.getString("profileUrl", null);
     }
 
 }
