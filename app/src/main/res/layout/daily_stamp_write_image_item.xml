@@ -8,8 +8,10 @@
     android:layout_marginRight="4dp"
     android:layout_marginBottom="4dp">
     <ImageView
+        android:id="@+id/image_view_select"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:scaleType="fitXY"
         android:layout_margin="5dp"
         android:src="@drawable/pchoose"/>
 </androidx.cardview.widget.CardView>

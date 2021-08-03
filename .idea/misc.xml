@@ -6,7 +6,7 @@
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout-v21/fragment_home.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/activity_daily_stamp.xml" value="0.1" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/activity_daily_stamp_write.xml" value="0.22" />
-        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/daily_stamp_write_image_item.xml" value="0.10625" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/daily_stamp_write_image_item.xml" value="0.22" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/daily_stamp_write_item.xml" value="0.1" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/fragment_daily_stamp_write_list.xml" value="0.1" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/fragment_feed.xml" value="0.10625" />
@@ -14,7 +14,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
