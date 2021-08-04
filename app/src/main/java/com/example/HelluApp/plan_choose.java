@@ -155,9 +155,19 @@ public class plan_choose extends AppCompatActivity {
         //목표감량 체중, 아직 계산은 안했음
         if (optionLose != null){
             LoseWeight = optionLose.getText().toString().trim();
+
+            //현재 체중 = 입력한 체중값
+            PresentWeight = EditWeight;
+
+            //문자를 숫자로 바꿈(형변환)
+            double d_presentWeight = Double.parseDouble(PresentWeight);
+            double d_loseWeight = Double.parseDouble(LoseWeight);
+            double d_goalWeight = d_presentWeight - d_loseWeight;
+
+            //목표 체중 = 형변환한 목표 체중값 저장
+            GoalWeight = Double.toString(d_goalWeight);
         } else {
-            Toast.makeText(plan_choose.this, "나이를 입력해주세요.", Toast.LENGTH_SHORT).show();
-            return;
+            Toast.makeText(plan_choose.this, "목표감량 체중을 입력해주세요.", Toast.LENGTH_SHORT).show();
         }
 
         // 1. 운동 주 횟수
