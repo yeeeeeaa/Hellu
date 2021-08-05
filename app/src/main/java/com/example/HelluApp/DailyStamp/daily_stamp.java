@@ -33,7 +33,7 @@ public class daily_stamp extends AppCompatActivity {
         items = new ArrayList();
 
         //임의로 글들을 매일 인증 글들을 띄워주는 반복문
-        for(int i = 0; i <30; i++){
+        for(int i = 0; i <5; i++){
             daily_stamp_write_note note = new daily_stamp_write_note(i, "제목"+i,"내용"+i, "", "2021_07_0"+i);
 
             items.add(note);

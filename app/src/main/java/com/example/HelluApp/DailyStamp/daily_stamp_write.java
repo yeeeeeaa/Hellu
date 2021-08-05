@@ -2,11 +2,8 @@ package com.example.HelluApp.DailyStamp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
-import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -33,28 +30,23 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     //매일 인증 글쓰기.java
 
-    String ID;                  //글 번호-이건 파이어베이스에 필요한지는 모르겠어요
-    String Title;               //글 제목
-    String Content;             //글 내용
-    String Picture;             //글 사진 경로
-    String DateWrite;           //글에 대한 날짜
+    String ID;                              //글 번호-이건 파이어베이스에 필요한지는 모르겠어요
+    String Title;                           //글 제목
+    String Content;                         //글 내용
+    String DateWrite;                       //글에 대한 날짜
 
-    Button save_button;         //매일인증 저장하기 버튼
-    Button gallery;             //갤러리 열기 버튼
+    Button save_button;                     //매일인증 저장하기 버튼
+    Button gallery;                         //갤러리 열기 버튼
 
-    RecyclerView daily_recyclerview;
-    ImageView daily_imageView;
+    ImageView daily_imageView;              //선택된 이미지 미리보기
     int CODE_ALBUM_REQUEST = 111;
-    ImageView image;
 
     private static final String TAG = "daily_stamp_write";
     private Uri filePath;
@@ -72,8 +64,6 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);        //이것도 plan_choose.java에 있어서 가져왔습니다.
         setContentView(R.layout.activity_daily_stamp_write);
-
-        daily_recyclerview = findViewById(R.id.daily_recyclerview);
 
 
         //버튼을 누르면 갤러리로 넘어가는 코드 by 예린
@@ -115,7 +105,6 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
                 Daily_write.put("글 번호", ID);
                 Daily_write.put("제목", Title);
                 Daily_write.put("내용", Content);
-                Daily_write.put("사진", Picture);
                 Daily_write.put("날짜", DateWrite);
 
                 databaseReference.child("User_Write").push().setValue(Daily_write);
@@ -125,45 +114,15 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     }
 
-    //결과 처리
+    //결과 처리 - 선택된 이미지를 미리보기 imageView에 띄워준다.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        //리사이클러뷰일 때 사용하는 사진 선택. 실패
-        /*image = findViewById(R.id.image_view_select);
-
-        if (requestCode == CODE_ALBUM_REQUEST && resultCode == RESULT_OK && data != null) {
-            ArrayList<Uri> uriList = new ArrayList<>();
-            if (data.getClipData() != null) {
-                ClipData clipData = data.getClipData();
-                if (clipData.getItemCount() > 10) {
-                    Toast.makeText(getApplicationContext(), "사진은 10개까지 선택!", Toast.LENGTH_LONG).show();
-                    return;
-                } else if (clipData.getItemCount() == 1) {
-                    Uri filePath = clipData.getItemAt(0).getUri();
-                    uriList.add(filePath);
-                    Toast.makeText(getApplicationContext(), "사진은 1개가 선택됨", Toast.LENGTH_LONG).show();
-                } else if (clipData.getItemCount() > 1 && clipData.getItemCount() <= 10) {
-                    for (int i = 0; i < clipData.getItemCount(); i++) {
-                        uriList.add(clipData.getItemAt(i).getUri());
-                    }
-                }
-            }
-            daily_image_select_noteAdapter adapter = new daily_image_select_noteAdapter(uriList, this);
-            daily_recyclerview.setAdapter(adapter);
-            daily_recyclerview.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        }
-         */
-
-
-
-
-        daily_imageView = findViewById(R.id.image_view_select_test);
-        //request코드가 0이고 OK를 선택했고 data에 뭔가가 들어 있다면
-        if (requestCode == 111 && resultCode == RESULT_OK) {
+        daily_imageView = findViewById(R.id.image_select_preview);
+        //request코드가 111이고 OK를 선택했고 data에 뭔가가 들어 있다면
+        if (requestCode == CODE_ALBUM_REQUEST && resultCode == RESULT_OK) {
             filePath = data.getData();
-            Toast.makeText(getApplicationContext(), "잘 들어옴", Toast.LENGTH_LONG).show();
             Log.d(TAG, "uri:" + String.valueOf(filePath));
             try {
                 //Uri 파일을 Bitmap으로 만들어서 ImageView에 집어 넣는다.
@@ -224,7 +183,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
                         }
                     });
         } else {
-            //Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -236,7 +195,11 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         //내용 입력
         EditText optionContent = findViewById(R.id.daily_write_content);
 
+
         //날짜는 입력을 받지 않아서 따로 변수를 만들지 않았습니다.
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date now = new Date();
+        DateWrite = formatter.format(now);
 
         //제목
         if (optionTitle != null) {

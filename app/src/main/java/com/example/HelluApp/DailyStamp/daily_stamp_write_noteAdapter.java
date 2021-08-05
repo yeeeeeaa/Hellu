@@ -100,8 +100,8 @@ public class daily_stamp_write_noteAdapter extends RecyclerView.Adapter<daily_st
                 daily_image.setVisibility(View.VISIBLE);
                 daily_image.setImageURI(Uri.parse("file://"+picturePath));
             } else {
-                daily_image.setVisibility(View.GONE);
-                daily_image.setImageResource(R.drawable.camera);
+                daily_image.setVisibility(View.VISIBLE);
+                daily_image.setImageResource(R.drawable.no_image);
             }
 
             daily_text.setText(item.getContents());

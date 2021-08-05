@@ -39,19 +39,11 @@
 
 
         <ImageView
-            android:id="@+id/image_view_select_test"
+            android:id="@+id/image_select_preview"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="5dp"
             android:scaleType="fitXY" />
-
-        <!--<androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/daily_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/daily_stamp_write_image_item" />-->
     </LinearLayout>
 
     <!--매일인증글 내용 입력창-->
