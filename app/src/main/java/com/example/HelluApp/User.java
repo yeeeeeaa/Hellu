@@ -1,12 +1,10 @@
 package com.example.HelluApp;
 
-import com.example.HelluApp.Community.G;
-
 import java.util.HashMap;
 
 public class User {
 
-    public static String Nickname;
+    public String Nickname;
     public String Email;
     public String Uid;
 
@@ -27,7 +25,6 @@ public class User {
         user_result.put("Nickname", Nickname); //키, 값
         user_result.put("Email", Email);
         user_result.put("Uid", Uid);
-
 
         return user_result;
     }

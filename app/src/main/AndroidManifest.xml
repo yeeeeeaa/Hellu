@@ -23,13 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelluApp">
-        <activity android:name=".UserChange" />
         <activity android:name=".Community.community" />
-        <activity android:name=".Community.ExChat" />
-        <activity android:name=".Community.ChatActivity" />
-        <activity android:name=".Community.my_msgbox" />
-        <activity android:name=".Community.other_msgbox" />
-        <activity android:name=".Community.Char" />
         <activity android:name=".plan_choose_result" />
         <activity
             android:name=".signup"

@@ -23,7 +23,6 @@ public class community_chatting extends Fragment {
         // Inflate the layout for this fragment
         //Intent intent = new Intent(getActivity(), ExChat.class);
         //startActivity(intent);
-        startActivity(new Intent(getContext(), ExChat.class));
         return inflater.inflate(R.layout.fragment_community_chatting, container, false);
     }
 
