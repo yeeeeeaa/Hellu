@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.HelluApp.MainActivity;
+import com.example.HelluApp.MypageChange;
 import com.example.HelluApp.R;
 import com.example.HelluApp.User;
 import com.example.HelluApp.login;
@@ -36,6 +37,7 @@ public class fragment_mypage extends Fragment {
 
     //로그아웃 버튼 선언
     Button logout_button;
+    Button change_button;
 
     //firebase auth object 가져와서 선언
     private FirebaseAuth firebaseAuth;
@@ -95,6 +97,7 @@ public class fragment_mypage extends Fragment {
 
         //로그아웃 버튼
         logout_button = (Button) view.findViewById(R.id.logout_button);
+        change_button = (Button) view.findViewById(R.id.change_button);
 
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
         //유저가 있다면, null이 아니면 계속 진행
@@ -108,13 +111,18 @@ public class fragment_mypage extends Fragment {
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                if (view == logout_button) {
-                    firebaseAuth.signOut();
-                    getActivity().finish();
-                    Intent intent = new Intent(view.getContext(), login.class);
-                    intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-                    view.getContext().startActivity(intent);
-                }
+                firebaseAuth.signOut();
+                getActivity().finish();
+                Intent intent = new Intent(view.getContext(), login.class);
+                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                view.getContext().startActivity(intent);
+            }
+        });
+        change_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(view.getContext(), MypageChange.class);
+                startActivity(intent);
             }
         });
 
