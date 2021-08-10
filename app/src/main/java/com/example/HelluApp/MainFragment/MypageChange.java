@@ -1,13 +1,16 @@
-package com.example.HelluApp;
+package com.example.HelluApp.MainFragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+<<<<<<< HEAD:app/src/main/java/com/example/HelluApp/MypageChange.java
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+=======
+>>>>>>> 2900dbdc9ac132aac151d7271e9ef76366f61e6a:app/src/main/java/com/example/HelluApp/MainFragment/MypageChange.java
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +18,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+<<<<<<< HEAD:app/src/main/java/com/example/HelluApp/MypageChange.java
 import com.example.HelluApp.MainFragment.fragment_mypage;
 import com.google.android.gms.tasks.OnSuccessListener;
+=======
+import com.example.HelluApp.R;
+>>>>>>> 2900dbdc9ac132aac151d7271e9ef76366f61e6a:app/src/main/java/com/example/HelluApp/MainFragment/MypageChange.java
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

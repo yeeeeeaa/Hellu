@@ -2,8 +2,11 @@ package com.example.HelluApp.DailyStamp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,48 +19,54 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.HelluApp.Post;
 import com.example.HelluApp.R;
+import com.example.HelluApp.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
-
-    //매일 인증 글쓰기.java
-
-    String ID;                              //글 번호-이건 파이어베이스에 필요한지는 모르겠어요
-    String Title;                           //글 제목
-    String Content;                         //글 내용
-    String DateWrite;                       //글에 대한 날짜
-
-    Button save_button;                     //매일인증 저장하기 버튼
-    Button gallery;                         //갤러리 열기 버튼
-
-    ImageView daily_imageView;              //선택된 이미지 미리보기
-    int CODE_ALBUM_REQUEST = 111;
-
     private static final String TAG = "daily_stamp_write";
+    private static final String REQUIRED = "Required";
     private Uri filePath;
 
-    //이 두 줄은 예린이의 plan_choose.java에서 가져왔습니다. 아마 파이어베이스에서 뭘 가져오나봐요.
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    FirebaseUser user = mAuth.getCurrentUser();
 
-    public daily_stamp_write() {
-    }
+    String Uid;
+    String Author;
+    String Title;
+    String Content;
+
+    Button save_button;         //매일인증 저장하기 버튼
+    Button gallery;             //갤러리 열기 버튼
+
+    RecyclerView daily_recyclerview;
+    ImageView daily_imageView;
+    int CODE_ALBUM_REQUEST = 111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +74,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         FirebaseApp.initializeApp(this);        //이것도 plan_choose.java에 있어서 가져왔습니다.
         setContentView(R.layout.activity_daily_stamp_write);
 
+        daily_recyclerview = findViewById(R.id.daily_recyclerview);
 
         //버튼을 누르면 갤러리로 넘어가는 코드 by 예린
         gallery = findViewById(R.id.daily_write_image_button);
@@ -76,53 +86,72 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
                 firebaseDatabase = FirebaseDatabase.getInstance();
                 databaseReference = firebaseDatabase.getReference();
 
-                //원래 예린이의 갤러리 열기 코드
-                /*
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, 1);
-                 */
-
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(intent, CODE_ALBUM_REQUEST);
 
-
-                //이미지 업로드 부분
-                picture_upload();
             }
         });
 
         save_button = findViewById(R.id.daily_write_save_button);
-        save_button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
+        save_button.setOnClickListener(view -> {
 
-                //모르지만 예린이 코드 훔쳐오기
-                Input_daily();
-                HashMap<String, Object> Daily_write = new HashMap<>();
-                Daily_write.put("글 번호", ID);
-                Daily_write.put("제목", Title);
-                Daily_write.put("내용", Content);
-                Daily_write.put("날짜", DateWrite);
+            //모르지만 예린이 코드 훔쳐오기
+            Input_daily();
 
-                databaseReference.child("User_Write").push().setValue(Daily_write);
+            /*
+            HashMap<String, Object> Daily_write = new HashMap<>();
+            Daily_write.put("글 번호", ID);
+            Daily_write.put("제목", Title);
+            Daily_write.put("내용", Content);
+            Daily_write.put("날짜", DateWrite);
 
-            }
+            databaseReference.child("User_Write").push().setValue(Daily_write);
+             */
+
+            //이미지 업로드 부분
+            picture_upload();
         });
 
     }
 
-    //결과 처리 - 선택된 이미지를 미리보기 imageView에 띄워준다.
+    //결과 처리
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //리사이클러뷰일 때 사용하는 사진 선택. 실패
+        /*image = findViewById(R.id.image_view_select);
+
+        if (requestCode == CODE_ALBUM_REQUEST && resultCode == RESULT_OK && data != null) {
+            ArrayList<Uri> uriList = new ArrayList<>();
+            if (data.getClipData() != null) {
+                ClipData clipData = data.getClipData();
+                if (clipData.getItemCount() > 10) {
+                    Toast.makeText(getApplicationContext(), "사진은 10개까지 선택!", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (clipData.getItemCount() == 1) {
+                    Uri filePath = clipData.getItemAt(0).getUri();
+                    uriList.add(filePath);
+                    Toast.makeText(getApplicationContext(), "사진은 1개가 선택됨", Toast.LENGTH_LONG).show();
+                } else if (clipData.getItemCount() > 1 && clipData.getItemCount() <= 10) {
+                    for (int i = 0; i < clipData.getItemCount(); i++) {
+                        uriList.add(clipData.getItemAt(i).getUri());
+                    }
+                }
+            }
+            daily_image_select_noteAdapter adapter = new daily_image_select_noteAdapter(uriList, this);
+            daily_recyclerview.setAdapter(adapter);
+            daily_recyclerview.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        }
+         */
+
         daily_imageView = findViewById(R.id.image_select_preview);
-        //request코드가 111이고 OK를 선택했고 data에 뭔가가 들어 있다면
-        if (requestCode == CODE_ALBUM_REQUEST && resultCode == RESULT_OK) {
+        //request코드가 0이고 OK를 선택했고 data에 뭔가가 들어 있다면
+        if (requestCode == 111 && resultCode == RESULT_OK) {
             filePath = data.getData();
+            Toast.makeText(getApplicationContext(), "이미지가 첨부되었습니다.", Toast.LENGTH_LONG).show();
             Log.d(TAG, "uri:" + String.valueOf(filePath));
             try {
                 //Uri 파일을 Bitmap으로 만들어서 ImageView에 집어 넣는다.
@@ -132,7 +161,6 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
 
     }
 
@@ -151,39 +179,31 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             //Unique한 파일명을 만들자.
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
             Date now = new Date();
-            String filename = formatter.format(now) + ".png";
+            String filename = formatter.format(now) + ".jpg";
             //storage 주소와 폴더 파일명을 지정해 준다.
-            StorageReference storageRef = storage.getReferenceFromUrl("gs://yourStorage.appspot.com").child("images/" + filename);
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://eveproject-d838a.appspot.com").child("daily_stamp/" + filename);
+
             //올라가거라...
             storageRef.putFile(filePath)
                     //성공시
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            progressDialog.dismiss(); //업로드 진행 Dialog 상자 닫기
-                            Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
-                        }
+                    .addOnSuccessListener(taskSnapshot -> {
+                        progressDialog.dismiss(); //업로드 진행 Dialog 상자 닫기
+                        Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
                     })
                     //실패시
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "업로드 실패!", Toast.LENGTH_SHORT).show();
-                        }
+                    .addOnFailureListener(e -> {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), "업로드 실패!", Toast.LENGTH_SHORT).show();
                     })
                     //진행중
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            @SuppressWarnings("VisibleForTests") //이걸 넣어 줘야 아랫줄에 에러가 사라진다. 넌 누구냐?
-                            double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                            //dialog에 진행률을 퍼센트로 출력해 준다
-                            progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
-                        }
+                    .addOnProgressListener(taskSnapshot -> {
+                        @SuppressWarnings("VisibleForTests") //이걸 넣어 줘야 아랫줄에 에러가 사라진다. 넌 누구냐?
+                        double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                        //dialog에 진행률을 퍼센트로 출력해 준다
+                        progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
                     });
         } else {
-            Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -194,12 +214,6 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
         //내용 입력
         EditText optionContent = findViewById(R.id.daily_write_content);
-
-
-        //날짜는 입력을 받지 않아서 따로 변수를 만들지 않았습니다.
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-        Date now = new Date();
-        DateWrite = formatter.format(now);
 
         //제목
         if (optionTitle != null) {
@@ -217,6 +231,51 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             return;
         }
 
+        String Uid = user.getUid();
+        databaseReference.child("User").child(Uid).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        // Get user value
+                        User user = dataSnapshot.getValue(User.class);
+
+                        if (user == null) {
+                            // User is null, error out
+                            Log.e(TAG, "User " + Uid + " is unexpectedly null");
+
+                        } else {
+                            // Write new post
+                            writeNewPost(Uid, user.Nickname, Title, Content);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+                    }
+                });
+
+    }
+
+    private void writeNewPost(String Uid, String Nickname, String title, String body) {
+        // Create new post at /user-posts/$userid/$postid and at
+        // /posts/$postid simultaneously
+        String key = databaseReference.child("User_Write").push().getKey();
+        Post post = new Post(Uid, Nickname, title, body);
+        Map<String, Object> postValues = post.posttomap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        // realtime Database 들어가면 Post는 글만 모아둔 곳
+        // 즉, Post : 모든 글 (키 값으로 글 내용을 분류한 것임)
+        // Post -> 글 분류 키값 -> 글 내용
+        childUpdates.put("/All_Write/" + key, postValues);
+
+        // realtime Database 들어가면 User_Write는 각 user의 uid로 분류하여 글을 모아둔 곳.
+        // User_Write -> 각 user의 Uid -> 글 분류 키값 -> 글 내용
+        childUpdates.put("/User_Write/" + Uid + "/" + key, postValues);
+
+        databaseReference.updateChildren(childUpdates);
     }
 
 }
