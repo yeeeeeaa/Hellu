@@ -17,9 +17,8 @@
         android:layout_centerInParent="true"
         android:layout_above="@id/et_name"
         android:layout_marginBottom="16dp"
-        android:src="@mipmap/ic_launcher" />
-        //android:clickable="true"
-        //android:onClick="clickImage"
+        android:src="@mipmap/ic_launcher"
+        android:clickable="true" />
 
     <EditText
         android:id="@+id/et_name"

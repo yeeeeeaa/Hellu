@@ -7,6 +7,7 @@ public class User {
     public String Nickname;
     public String Email;
     public String Uid;
+    public String ProfileUrl;
 
     public HashMap<String, Object> usermap = new HashMap<>();
 
@@ -14,10 +15,11 @@ public class User {
         // Default constructor required for calls to DataSnapshot.getValue(user.class)
     }
 
-    public User(String Nickname, String Email, String Uid){
+    public User(String Nickname, String Email, String Uid, String ProfileUrl){
         this.Nickname = Nickname;
         this.Email = Email;
         this.Uid = Uid;
+        this.ProfileUrl = ProfileUrl;
     }
 
     public HashMap<String, Object> usertomap(){
@@ -25,6 +27,7 @@ public class User {
         user_result.put("Nickname", Nickname); //키, 값
         user_result.put("Email", Email);
         user_result.put("Uid", Uid);
+        user_result.put("ProfileUrl", ProfileUrl);
 
         return user_result;
     }
