@@ -9,7 +9,8 @@
 
     <!--여기는 홈에 있는 매일인증(daily_stamp) 버튼을 누르면 나오는 화면입니다.-->
     <!--매일 인증 글을 띄워주는 리니어 레이아웃-->
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/post_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/daily_bottom_navigation"
@@ -19,12 +20,14 @@
 
         <!--매일 인증 글들이 들어있는 리사이클러뷰-->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/daily_recyclerview"
+            android:id="@+id/messagesList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/daily_stamp_write_item" />
-    </LinearLayout>
+            android:clipToPadding="false"
+            android:padding="5dp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/item_post" />
+    </FrameLayout>
 
     <!--네비게이션의 위치를 잡아주는 프레임 레이아웃-->
     <FrameLayout
@@ -33,7 +36,8 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--하단 네비게이션-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -47,5 +51,4 @@
         app:layout_constraintRight_toLeftOf="parent"
         android:theme="@style/Widget.fontChange_nanum"
         app:menu="@menu/menu_daily_bottom_navi" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

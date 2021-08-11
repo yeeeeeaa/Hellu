@@ -2,49 +2,50 @@ package com.example.HelluApp.DailyStamp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.example.HelluApp.Post;
+import com.example.HelluApp.PostViewHolder;
 import com.example.HelluApp.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class daily_stamp extends AppCompatActivity {
 
     //하단 네비게이션
     private BottomNavigationView dBottomNV;
 
+    // [START define_database_reference]
+    private DatabaseReference mDatabase;
+    // [END define_database_reference]
+
+    private FirebaseRecyclerAdapter<Post, PostViewHolder> mAdapter;
+    private RecyclerView mRecycler;
+    private LinearLayoutManager mManager;
+
+
+    public daily_stamp() {}
+
     //매일 인증.java
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_stamp);
-
-        //리사이클러뷰 연결
-        RecyclerView recyclerView = findViewById(R.id.daily_recyclerview);
-        List items;
-        items = new ArrayList();
-
-        //임의로 글들을 매일 인증 글들을 띄워주는 반복문
-        for(int i = 0; i <5; i++){
-            daily_stamp_write_note note = new daily_stamp_write_note(i, "제목"+i,"내용"+i, "", "2021_07_0"+i);
-
-            items.add(note);
-        }
-
-        //잘 모르지만 리사이클러뷰와 어뎁터를 연결시켜주나봅니다.
-        recyclerView.setAdapter(new daily_stamp_write_noteAdapter(items));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
 
         //하단 네비게이션 화면을 선택하면 실행됨
         dBottomNV = findViewById(R.id.daily_bottom_navigation);
@@ -80,4 +81,6 @@ public class daily_stamp extends AppCompatActivity {
              */
         }
     }
+
+
 }
