@@ -2,7 +2,9 @@ package com.example.HelluApp.MainFragment;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,6 +28,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class fragment_mypage extends Fragment {
@@ -33,17 +38,25 @@ public class fragment_mypage extends Fragment {
     //로그아웃 버튼 선언
     Button logout_button;
     Button change_button;
+    //CircleImageView profile_img;
 
     //firebase auth object 가져와서 선언
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference rDatabase;
+
     private FirebaseDatabase firebaseDatabase;
+
+    private DatabaseReference rDatabase = FirebaseDatabase.getInstance().getReference("User");
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
+    private String Uid = user.getUid();
+
 
     //fragment_mypage 화면을 보여줌
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment 레이아웃에 프래그먼트 뿌리기
         View view = inflater.inflate(R.layout.fragment_mypage, container, false);
         //View view = inflater.inflate(R.layout.fragment_mypage, container, false);
@@ -65,7 +78,9 @@ public class fragment_mypage extends Fragment {
 
         //마이페이지에 무슨 닉네임으로 로그인했는지 보여줌(textviewviewUserName에 찍어줌)
         TextView textViewUserName = view.findViewById(R.id.textviewUserName);
+        CircleImageView profile_img = view.findViewById(R.id.iv_profile);
 
+        //loadData();
         if (user != null){
             rDatabase.child(Uid).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -80,6 +95,7 @@ public class fragment_mypage extends Fragment {
 
                     //텍스트뷰에 받아온 문자열 대입하기
                     textViewUserName.setText("닉네임: " + Nickname);
+                    Picasso.get().load(user1.ProfileUrl).into(profile_img);
                 }
 
                 @Override
@@ -123,7 +139,25 @@ public class fragment_mypage extends Fragment {
 
         return view;
     }
+    void loadData(){
+        SharedPreferences preferences=this.getActivity().getSharedPreferences("photo", Context.MODE_PRIVATE);
+        rDatabase.child(Uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            //리스너는 이벤트 발생 시점에 데이터베이스에서 지정된 위치에 있던 데이터를 포함하는 DataSnapshot을 수신한다.
+            //스냅샷에 대해 getValue()를 호출하면 데이터의 자바 객체 표현이 반환된다.
+            //해당 위치에 데이터가 없는 경우 getValue()를 호출하면 null이 반환된다.
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user1 = dataSnapshot.getValue(User.class);
+                user1.ProfileUrl=preferences.getString("profileUrl", null);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+    }
     //fragment 생성할때 생긴 코드
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

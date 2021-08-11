@@ -57,9 +57,9 @@ public class signup extends AppCompatActivity {
 
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
-            finish();
+            //finish();
             //그리고 MainActivity를 연다.
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
 
         signup_button.setOnClickListener(new View.OnClickListener() {
@@ -78,8 +78,8 @@ public class signup extends AppCompatActivity {
                                     String Email = user.getEmail();
                                     String Uid = user.getUid();
                                     String Nickname = editTextTextName.getText().toString().trim();
-
-                                    User user1 = new User(Nickname, Email, Uid);
+                                    String ProfileUrl = "https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2";
+                                    User user1 = new User(Nickname, Email, Uid, ProfileUrl);
                                     HashMap<String, Object> user_data = user1.usertomap();
 
                                     /*
