@@ -1,5 +1,8 @@
 package com.example.HelluApp.DailyStamp;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -37,6 +40,7 @@ import android.media.ImageReader;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import androidx.annotation.NonNull;
@@ -57,10 +61,15 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
-
+import java.util.Calendar;
+import java.util.Date;
 
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -117,8 +126,6 @@ public class daily_stamp_camera extends AppCompatActivity{
         deviceOrientation = new DeviceOrientation();
 
         initSurfaceView();
-
-
 
     }
 
@@ -249,13 +256,13 @@ public class daily_stamp_camera extends AppCompatActivity{
         mCameraDevice.createCaptureSession(Arrays.asList(mSurfaceViewHolder.getSurface(), mImageReader.getSurface()), mSessionPreviewStateCallback, mHandler);
     }
 
+    //카메라 콜백 이미지 캡처
     private CameraCaptureSession.StateCallback mSessionPreviewStateCallback = new CameraCaptureSession.StateCallback() {
         @Override
         public void onConfigured(@NonNull CameraCaptureSession session) {
             mSession = session;
 
             try {
-
                 mPreviewBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
                 mPreviewBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
                 mSession.setRepeatingRequest(mPreviewBuilder.build(), null, mHandler);
@@ -366,6 +373,7 @@ public class daily_stamp_camera extends AppCompatActivity{
         values.put(MediaStore.Images.Media.DISPLAY_NAME, title);
         values.put(MediaStore.Images.Media.DESCRIPTION, description);
         values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+
         // Add the date meta data to ensure the image is added at the front of the gallery
         values.put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis());
         values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
@@ -410,6 +418,7 @@ public class daily_stamp_camera extends AppCompatActivity{
             super.onPostExecute(aVoid);
 
             Toast.makeText(daily_stamp_camera.this, "사진을 저장하였습니다.", Toast.LENGTH_SHORT).show();
+
         }
 
         @Override
@@ -428,8 +437,8 @@ public class daily_stamp_camera extends AppCompatActivity{
 
     }
 
-
     // 출처 https://stackoverflow.com/a/43516672
+    // Camera 2 미리보기 크기 및 기기 종횡비
     private void setAspectRatioTextureView(int ResolutionWidth , int ResolutionHeight )
     {
         if(ResolutionWidth > ResolutionHeight){
@@ -452,3 +461,4 @@ public class daily_stamp_camera extends AppCompatActivity{
 
 
 }
+

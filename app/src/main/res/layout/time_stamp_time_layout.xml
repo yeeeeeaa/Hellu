@@ -29,4 +29,5 @@
         android:padding="0dp"
         android:text="타임스탬프가 들어갈 곳입니다." />
 
+
 </RelativeLayout>
