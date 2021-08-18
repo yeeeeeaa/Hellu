@@ -28,6 +28,7 @@ public class community_user_recycler_adapter extends RecyclerView.Adapter<commun
         return new ViewHolder(view);
     }
 
+
     @Override
     //onBindViewHolder(): RecyclerView는 ViewHolder를 데이터와 연결할 때 이 메서드를 호출합니다.
     public void onBindViewHolder(@NonNull community_user_recycler_adapter.ViewHolder holder, int position) {
@@ -49,20 +50,17 @@ public class community_user_recycler_adapter extends RecyclerView.Adapter<commun
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView profile;
         TextView name;
-        TextView message;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             profile = (ImageView) itemView.findViewById(R.id.profile);
             name = (TextView) itemView.findViewById(R.id.name);
-            message = (TextView) itemView.findViewById(R.id.message);
         }
 
         void onBind(community_user_item item){
             profile.setImageResource(item.getResourceId());
             name.setText(item.getName());
-            message.setText(item.getMessage());
         }
     }
 }

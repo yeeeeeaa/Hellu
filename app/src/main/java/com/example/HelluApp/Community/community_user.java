@@ -53,16 +53,17 @@ public class community_user extends Fragment {
 
         /* initiate recyclerview */
         mRecyclerView.setAdapter(mRecyclerAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         /* adapt data */
         mfriendItems = new ArrayList<>();
 
         for(int i=1;i<10;i++){
+
             if(i%2==0)
-                mfriendItems.add(new community_user_item(R.mipmap.ic_launcher,i+"번째 사람",i+"번째 상태메시지"));
+                mfriendItems.add(new community_user_item(R.mipmap.ic_launcher,i+"번째 사람"));
             else
-                mfriendItems.add(new community_user_item(R.mipmap.ic_launcher,i+"번째 사람",i+"번째 상태메시지"));
+                mfriendItems.add(new community_user_item(R.mipmap.ic_launcher,i+"번째 사람"));
 
         }
         mRecyclerAdapter.setFriendList(mfriendItems);

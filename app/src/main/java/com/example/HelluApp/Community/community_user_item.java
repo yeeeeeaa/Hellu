@@ -5,12 +5,10 @@ package com.example.HelluApp.Community;
 public class community_user_item {
 
     String name;
-    String message;
     int resourceId;
 
-    public community_user_item(int resourceId, String name, String message) {
+    public community_user_item(int resourceId, String name) {
         this.name = name;
-        this.message= message;
         this.resourceId = resourceId;
     }
 
@@ -18,17 +16,11 @@ public class community_user_item {
         return resourceId;
     }
 
-    public String getMessage() {
-        return message;
-    }
 
     public String getName() {
         return name;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public void setName(String name) {
         this.name = name;
