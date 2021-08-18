@@ -2,6 +2,9 @@ package com.example.HelluApp.DailyStamp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,7 +48,8 @@ public class daily_stamp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily_stamp);
+        setContentView(R.layout.activity_daily_stamp_allpost);
+        getFragmentDailyList();
 
         //하단 네비게이션 화면을 선택하면 실행됨
         dBottomNV = findViewById(R.id.daily_bottom_navigation);
@@ -80,6 +84,21 @@ public class daily_stamp extends AppCompatActivity {
             startActivity(intent);
              */
         }
+    }
+    private void getFragmentDailyList(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        Fragment currentFragment = fragmentManager.getPrimaryNavigationFragment();
+        if (currentFragment != null) {
+            fragmentTransaction.hide(currentFragment);
+        }
+        Fragment fragment = new daily_stamp_allpost_frag();
+        fragmentTransaction.add(R.id.content_layout, fragment);
+        fragmentTransaction.setPrimaryNavigationFragment(fragment);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.commitNow();
+
     }
 
 

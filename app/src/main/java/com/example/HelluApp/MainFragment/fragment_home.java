@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.Button;
 
 import com.example.HelluApp.Community.community;
 import com.example.HelluApp.DailyStamp.daily_stamp;
+import com.example.HelluApp.DailyStamp.daily_stamp_allpost_frag;
 import com.example.HelluApp.PlanReview.plan_reivew;
 import com.example.HelluApp.R;
 import com.example.HelluApp.Metaverse.metaverse;
@@ -93,12 +96,28 @@ public class fragment_home extends Fragment {
 
         return view;
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
     }
+    /*
+    private void getFragmentDailyList(){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        Fragment currentFragment = fragmentManager.getPrimaryNavigationFragment();
+        if (currentFragment != null) {
+            fragmentTransaction.hide(currentFragment);
+        }
+        Fragment fragment = new daily_stamp_allpost_frag();
+        fragmentTransaction.add(R.id.content_layout, fragment);
+        fragmentTransaction.setPrimaryNavigationFragment(fragment);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.commitNow();
 
+    }
+     */
 }

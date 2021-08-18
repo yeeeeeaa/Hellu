@@ -22,16 +22,28 @@
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/drawable/ic_launcher_background.xml" value="0.11979166666666667" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout-v21/fragment_home.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/activity_char.xml" value="0.22" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/activity_community.xml" value="0.1" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/activity_daily_stamp.xml" value="0.1" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/activity_daily_stamp_allpost.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/activity_daily_stamp_camera.xml" value="0.1" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/activity_daily_stamp_write.xml" value="0.22" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/daily_stamp_write_image_item.xml" value="0.22" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/daily_stamp_write_item.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/fragment_allpost_recyclerview.xml" value="0.10902777777777778" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/fragment_daily_stamp_allpost.xml" value="0.18171428571428572" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/fragment_daily_stamp_allpost_frag.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/fragment_daily_stamp_write_list.xml" value="0.1" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/fragment_feed.xml" value="0.10625" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/include_post_author.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/item_post.xml" value="0.22" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/my_msgbox.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/other_msgbox.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/permission.xml" value="0.10625" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/post_detail.xml" value="0.22" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/layout/time_stamp_time_layout.xml" value="0.22" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/menu/menu_daily_bottom_navi.xml" value="0.11944444444444445" />
+        <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/menu/menu_home_bottom_navi.xml" value="0.10902777777777778" />
       </map>
     </option>
   </component>
