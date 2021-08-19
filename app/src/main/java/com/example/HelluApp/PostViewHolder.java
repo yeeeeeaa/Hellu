@@ -18,8 +18,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         titleView = itemView.findViewById(R.id.postTitle);
         authorView = itemView.findViewById(R.id.postAuthor);
-        starView = itemView.findViewById(R.id.star);
-        numStarsView = itemView.findViewById(R.id.postNumStars);
         bodyView = itemView.findViewById(R.id.postBody);
     }
 
@@ -31,4 +29,5 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         starView.setOnClickListener(starClickListener);
     }
+
 }

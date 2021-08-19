@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DailyStamp.daily_stamp_allpost_frag">
+    tools:viewBindingIgnore="true">
 
+    <!--
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="이 텍스트뷰는 프레그먼트를 표시할 뿐이니 나중에 통째로 지워주세요"/>
+     -->
 
     <!--매일 인증 글들이 들어있는 리사이클러뷰-->
     <androidx.recyclerview.widget.RecyclerView
@@ -19,5 +21,6 @@
         android:padding="5dp"
         android:scrollbars="vertical"
         tools:listitem="@layout/item_post" />
+
 
 </FrameLayout>
