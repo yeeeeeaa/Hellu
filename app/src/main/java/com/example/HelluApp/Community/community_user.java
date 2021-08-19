@@ -46,13 +46,12 @@ public class community_user extends Fragment {
                              Bundle savedInstanceState) {
 
         View view =   inflater.inflate(R.layout.fragment_community_user,container,false);
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
+        mRecyclerView = view.findViewById(R.id.recyclerView);
 
         /* initiate adapter */
         mRecyclerAdapter = new community_user_recycler_adapter();
 
         /* initiate recyclerview */
-        mRecyclerView.setAdapter(mRecyclerAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         /* adapt data */
@@ -61,15 +60,18 @@ public class community_user extends Fragment {
         for(int i=1;i<10;i++){
 
             if(i%2==0)
-                mfriendItems.add(new community_user_item(R.mipmap.ic_launcher,i+"번째 사람"));
+                mfriendItems.add(new community_user_item(R.drawable.no_image,i+"번째 사람"));
             else
-                mfriendItems.add(new community_user_item(R.mipmap.ic_launcher,i+"번째 사람"));
+                mfriendItems.add(new community_user_item(R.drawable.pchoose,i+"번째 사람"));
 
         }
+
         mRecyclerAdapter.setFriendList(mfriendItems);
+        mRecyclerView.setAdapter(mRecyclerAdapter);
+
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_community_user, container, false);
+        return view;
     }
 
     //얜 fragment 만들 때 생긴 코드

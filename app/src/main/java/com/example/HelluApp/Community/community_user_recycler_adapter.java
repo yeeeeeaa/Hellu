@@ -36,7 +36,7 @@ public class community_user_recycler_adapter extends RecyclerView.Adapter<commun
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setFriendList(ArrayList<community_user_item> list){
+    public void setFriendList(ArrayList<community_user_item> list) {
         this.UserList = list;
         notifyDataSetChanged();
     }
@@ -54,11 +54,11 @@ public class community_user_recycler_adapter extends RecyclerView.Adapter<commun
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            profile = (ImageView) itemView.findViewById(R.id.profile);
-            name = (TextView) itemView.findViewById(R.id.name);
+            profile = itemView.findViewById(R.id.profile);
+            name = itemView.findViewById(R.id.name);
         }
 
-        void onBind(community_user_item item){
+        void onBind(community_user_item item) {
             profile.setImageResource(item.getResourceId());
             name.setText(item.getName());
         }
