@@ -27,11 +27,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:background="@color/light_gray"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/daily_write_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,9 +43,10 @@
             android:id="@+id/image_select_preview"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:layout_gravity="center"
             android:layout_margin="5dp"
             android:scaleType="fitXY" />
-    </LinearLayout>
+    </FrameLayout>
 
     <!--매일인증글 내용 입력창-->
     <EditText
