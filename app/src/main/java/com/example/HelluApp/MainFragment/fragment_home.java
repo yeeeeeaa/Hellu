@@ -6,8 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,6 @@ import android.widget.Button;
 
 import com.example.HelluApp.Community.community;
 import com.example.HelluApp.DailyStamp.daily_stamp;
-import com.example.HelluApp.DailyStamp.daily_stamp_allpost_frag;
 import com.example.HelluApp.PlanReview.plan_reivew;
 import com.example.HelluApp.R;
 import com.example.HelluApp.Metaverse.metaverse;

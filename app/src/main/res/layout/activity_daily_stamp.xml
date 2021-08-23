@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/daily_stamp_write_item" />
+            />
     </LinearLayout>
 
     <!--네비게이션의 위치를 잡아주는 프레임 레이아웃-->
@@ -47,5 +47,4 @@
         app:layout_constraintRight_toLeftOf="parent"
         android:theme="@style/Widget.fontChange_nanum"
         app:menu="@menu/menu_daily_bottom_navi" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

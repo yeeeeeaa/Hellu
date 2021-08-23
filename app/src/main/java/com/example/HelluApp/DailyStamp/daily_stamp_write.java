@@ -60,7 +60,6 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
     String Author;
     String Title;
     String Content;
-    private String imageUrl="";
 
     Button save_button;         //매일인증 저장하기 버튼
     Button gallery;             //갤러리 열기 버튼
@@ -100,6 +99,16 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
             //모르지만 예린이 코드 훔쳐오기
             Input_daily();
+
+            /*
+            HashMap<String, Object> Daily_write = new HashMap<>();
+            Daily_write.put("글 번호", ID);
+            Daily_write.put("제목", Title);
+            Daily_write.put("내용", Content);
+            Daily_write.put("날짜", DateWrite);
+
+            databaseReference.child("User_Write").push().setValue(Daily_write);
+             */
 
             //이미지 업로드 부분
             picture_upload();
@@ -249,11 +258,11 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     }
 
-    private void writeNewPost(String Uid, String Nickname, String title, String body) {
+    private void writeNewPost(String Uid, String Nickname, String Title, String Content) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = databaseReference.child("User_Write").push().getKey();
-        Post post = new Post(Uid, Nickname, title, body);
+        Post post = new Post(Uid, Nickname, Title, Content);
         Map<String, Object> postValues = post.posttomap();
 
         Map<String, Object> childUpdates = new HashMap<>();
