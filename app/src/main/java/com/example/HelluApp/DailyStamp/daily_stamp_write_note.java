@@ -1,5 +1,5 @@
 package com.example.HelluApp.DailyStamp;
-
+//이 파일은 지금 사용되지 않습니다.
 public class daily_stamp_write_note {
     int _id;                    //uid(로그인한 사용자)
     String title;               //제목
