@@ -25,8 +25,9 @@
 
     <!--여기는 홈에 있는 메타버스(metaverse) 버튼을 누르면 나오는 화면입니다.-->
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/meta_recylerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_marginTop="15dp"
         tools:listitem="@layout/metaverse_item"/>
 
