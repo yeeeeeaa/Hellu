@@ -46,14 +46,14 @@ public class daily_stamp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_stamp);
 
-        //
+        // 헤헤 성공했어 헤헤헿
         recyclerView = findViewById(R.id.daily_recyclerview); // 아디 연결
         recyclerView.setHasFixedSize(true); // 리사이클러뷰 기존성능 강화
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>(); // Post 객체를 담을 어레이 리스트 (어댑터쪽으로)
 
-        String Uid = user.getUid();
+        String Uid = user.getUid(); //각 사용자 Uid로 구별
         mAuth = FirebaseAuth.getInstance(); //파이어베이스 사용자 연동
         database = FirebaseDatabase.getInstance(); // 파이어베이스 데이터베이스 연동
         databaseReference = database.getReference("User_Write"); // DB 테이블 연결
