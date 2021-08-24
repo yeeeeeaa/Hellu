@@ -49,7 +49,7 @@ public class walking extends AppCompatActivity {
         Fragment fragment = fragmentManager.findFragmentByTag(tag);
         if (fragment == null) {
             if (id == R.id.ranking) {
-                fragment = new walking_raking();
+                fragment = new walking_ranking();
 
             } else{
                 fragment=new walking_walking();

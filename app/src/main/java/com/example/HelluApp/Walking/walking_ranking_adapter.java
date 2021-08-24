@@ -1,4 +1,4 @@
-package com.example.HelluApp.Community;
+package com.example.HelluApp.Walking;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -14,29 +14,29 @@ import com.example.HelluApp.R;
 
 import java.util.ArrayList;
 
-//fragment_community_user.xml과 community_user_item.xml을 이어주는 어댑터
+//fragment_walking_ranking.xml과 walking_ranking_item.xml을 이어주는 어댑터
 
-public class community_user_recycler_adapter extends RecyclerView.Adapter<community_user_recycler_adapter.ViewHolder> {
+public class walking_ranking_adapter extends RecyclerView.Adapter<walking_ranking_adapter.ViewHolder> {
 
-    private ArrayList<community_user_item> UserList;
+    private ArrayList<walking_ranking_item> UserList;
 
     @NonNull
     @Override
     //onCreateViewHolder(): RecyclerView는 ViewHolder를 새로 만들어야 할 때마다 이 메서드를 호출합니다.
-    public community_user_recycler_adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.community_user_item, parent, false);
+    public walking_ranking_adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ranking_item, parent, false);
         return new ViewHolder(view);
     }
 
 
     @Override
     //onBindViewHolder(): RecyclerView는 ViewHolder를 데이터와 연결할 때 이 메서드를 호출합니다.
-    public void onBindViewHolder(@NonNull community_user_recycler_adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull walking_ranking_adapter.ViewHolder holder, int position) {
         holder.onBind(UserList.get(position));
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setFriendList(ArrayList<community_user_item> list) {
+    public void setFriendList(ArrayList<walking_ranking_item> list) {
         this.UserList = list;
         notifyDataSetChanged();
     }
@@ -48,19 +48,22 @@ public class community_user_recycler_adapter extends RecyclerView.Adapter<commun
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView profile;
-        TextView name;
+        TextView rank_num;
+        ImageView rank_profile;
+        TextView rank_name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            profile = itemView.findViewById(R.id.profile);
-            name = itemView.findViewById(R.id.name);
+            rank_num = itemView.findViewById(R.id.rank_num);
+            rank_profile = itemView.findViewById(R.id.rank_profile);
+            rank_name = itemView.findViewById(R.id.rank_name);
         }
 
-        void onBind(community_user_item item) {
-            profile.setImageResource(item.getResourceId());
-            name.setText(item.getName());
+        void onBind(walking_ranking_item item) {
+            rank_num.setText(Integer.toString(item.getRank_num()));
+            rank_profile.setImageResource(item.getRank_ResourceId());
+            rank_name.setText(item.getRank_Name());
         }
     }
 }

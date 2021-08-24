@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import com.example.HelluApp.DailyStamp.daily_stamp_camera;
 import com.example.HelluApp.DailyStamp.daily_stamp_write;
 import com.example.HelluApp.R;
-import com.example.HelluApp.Walking.walking_raking;
+import com.example.HelluApp.Walking.walking_ranking;
 import com.example.HelluApp.Walking.walking_walking;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

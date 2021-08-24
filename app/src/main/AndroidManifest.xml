@@ -23,6 +23,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelluApp">
+        <activity
+            android:name=".walking_item"
+            android:exported="true" />
         <activity android:name=".MainFragment.MypageChange" />
         <activity android:name=".Community.community" />
         <activity android:name=".plan_choose_result" />
