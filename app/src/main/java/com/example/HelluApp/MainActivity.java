@@ -60,9 +60,12 @@ public class MainActivity extends AppCompatActivity {
             }else if (id == R.id.mypage){
                 fragment = new fragment_mypage();
 
-            }else{
+            }
+            /*
+            else{
                 fragment=new fragment_setting();
             }
+             */
 
             fragmentTransaction.add(R.id.content_layout, fragment, tag);
         } else {
