@@ -1,4 +1,4 @@
-package com.example.HelluApp;
+package com.example.HelluApp.DailyStamp;
 
 import java.util.HashMap;
 import java.util.Map;

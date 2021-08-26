@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.MenuItem;
 
 
-import com.example.HelluApp.Post;
 import com.example.HelluApp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
