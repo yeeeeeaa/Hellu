@@ -13,6 +13,7 @@ import com.google.firebase.ml.modeldownloader.FirebaseModelDownloader;
 import org.tensorflow.lite.Interpreter;
 
 import java.io.File;
+import java.text.DecimalFormat;
 
 public class plan_choose_result extends AppCompatActivity {
     TextView present_weight, goal_weight, exercise_plan, prefer_ex, usual_act, basal_meta;
@@ -157,6 +158,8 @@ public class plan_choose_result extends AppCompatActivity {
 
     public void CalculateBEE(String Gender, String strWeight, String strHeight, String strAge){
         double resultBEE = 0;
+        // 소수점 두 번째 자리까지
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
         if(Gender.equals("여")){
             resultBEE = 655.1 + (9.56 * Double.parseDouble(strWeight)) + (1.85 * Double.parseDouble(strHeight)) - (4.68 * Integer.parseInt(strAge));
@@ -164,7 +167,7 @@ public class plan_choose_result extends AppCompatActivity {
             resultBEE = 66.5 + (13.75 * Double.parseDouble(strWeight)) + (5 * Double.parseDouble(strHeight)) - (6.76 * Integer.parseInt(strAge));
         }
 
-        basal_meta.setText(String.valueOf(resultBEE));
+        basal_meta.setText(decimalFormat.format(resultBEE));
     }
 
     public void print(Interpreter interpreter, float[][] input, float[][] output){
