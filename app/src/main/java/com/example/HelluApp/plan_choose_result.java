@@ -15,10 +15,11 @@ import org.tensorflow.lite.Interpreter;
 import java.io.File;
 
 public class plan_choose_result extends AppCompatActivity {
-    TextView present_weight, goal_weight, exercise_plan, prefer_ex, usual_act;
-    double max_result;
+    TextView present_weight, goal_weight, exercise_plan, prefer_ex, usual_act, basal_meta;
+    float max_result;
     int index;
     String EditWeight, GoalWeight, numberOfWeekOfExercise, normalActivity;
+    String Gender, Height, Age;
 
     //'ai로 선별해주는 플랜 결과 보기' 버튼을 누르면 나오는 화면
     @Override
@@ -26,11 +27,12 @@ public class plan_choose_result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_choose_result);
 
-        present_weight = findViewById(R.id.present_weight);
-        goal_weight = findViewById(R.id.goal_weight);
-        prefer_ex = findViewById(R.id.prefer_ex);
-        exercise_plan = findViewById(R.id.exercise_plan);
-        usual_act = findViewById(R.id.usual_act);
+        present_weight = findViewById(R.id.present_weight);     // 현재 체중
+        goal_weight = findViewById(R.id.goal_weight);           // 목표 체중
+        prefer_ex = findViewById(R.id.prefer_ex);               // 선호 운동(ai)
+        exercise_plan = findViewById(R.id.exercise_plan);       // 운동 계획(일주일에 몇 번 운동할지)
+        usual_act = findViewById(R.id.usual_act);               // 평소 활동량
+        basal_meta = findViewById(R.id.basal_meta);             // 기초 대사량
 
         // plan_choose에서 넘어온 값 받기
         Intent intent = getIntent();
@@ -41,6 +43,9 @@ public class plan_choose_result extends AppCompatActivity {
         GoalWeight = bundle.getString("GoalWeight");
         numberOfWeekOfExercise = bundle.getString("numberOfWeekOfExercise");
         normalActivity = bundle.getString("normalActivity");
+        Gender = bundle.getString("Gender");
+        Height = bundle.getString("EditHeight");
+        Age = bundle.getString("Age");
 
         // 출력
         present_weight.setText(EditWeight);
@@ -48,7 +53,10 @@ public class plan_choose_result extends AppCompatActivity {
         exercise_plan.setText(numberOfWeekOfExercise);
         usual_act.setText(normalActivity);
 
+        // 선호 운동 출력
         prefer_Exercises();
+        // 기초대사량 계산
+        CalculateBEE(Gender, EditWeight, Height, Age);
     }
 
     public void prefer_Exercises(){
@@ -123,8 +131,23 @@ public class plan_choose_result extends AppCompatActivity {
                             default:
                                 break;
                         }
+                        for(int i = 0; i < 17; i++){    // 입력값 테스트
+                            prefer_ex.setText(prefer_ex.getText() + "\n" + input[0][i]);
+                        }
                         interpreter.close(); // 인터프리터 종료
                     }
                 });
+    }
+
+    public void CalculateBEE(String Gender, String strWeight, String strHeight, String strAge){
+        double resultBEE = 0;
+
+        if(Gender.equals("여")){
+            resultBEE = 655.1 + (9.56 * Double.parseDouble(strWeight)) + (1.85 * Double.parseDouble(strHeight)) - (4.68 * Integer.parseInt(strAge));
+        }else if(Gender.equals("남")){
+            resultBEE = 66.5 + (1.37 * Double.parseDouble(strWeight)) + (5 * Double.parseDouble(strHeight)) - (6.8 * Integer.parseInt(strAge));
+        }
+
+        basal_meta.setText(String.valueOf(resultBEE));
     }
 }

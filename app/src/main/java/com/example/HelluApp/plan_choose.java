@@ -75,6 +75,9 @@ public class plan_choose extends AppCompatActivity {
             intent.putExtra("GoalWeight", GoalWeight);
             intent.putExtra("numberOfWeekOfExercise", numberOfWeekOfExercise);
             intent.putExtra("normalActivity", normalActivity);
+            intent.putExtra("Gender", Gender);
+            intent.putExtra("EditHeight", EditHeight);
+            intent.putExtra("Age", Age);
 
             startActivity(intent);
         });
