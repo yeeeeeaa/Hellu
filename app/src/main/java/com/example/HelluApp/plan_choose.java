@@ -30,8 +30,8 @@ public class plan_choose extends AppCompatActivity {
     String LoseWeight = "";             //목표감량체중 (5를 써준다면 5키로를 빼는것)
     String PresentWeight = "";          //현재체중 (EditWeight와 값이 똑같을 것)
     String GoalWeight = "";             //목표체중 (PresentWeight - LoseWeight 한 값)
-    String numberOfWeekOfExercise = "";
-    String normalActivity = "";
+    String numberOfWeekOfExercise = ""; // 운동 계획
+    String normalActivity = "";         // 평소 활동량
     String amountOfExercise = "";
     List<String> mealTime = new ArrayList<>();
     String purposeOfExercise = "";
@@ -69,8 +69,14 @@ public class plan_choose extends AppCompatActivity {
             databaseReference.child("User_Plan").push().setValue(Plan_result);
 
             Intent intent = new Intent(getApplicationContext(), plan_choose_result.class);
-            startActivity(intent);
 
+            // plan_choose_result로 값을 넘김.
+            intent.putExtra("EditWeight", EditWeight);
+            intent.putExtra("GoalWeight", GoalWeight);
+            intent.putExtra("numberOfWeekOfExercise", numberOfWeekOfExercise);
+            intent.putExtra("normalActivity", normalActivity);
+
+            startActivity(intent);
         });
     }
 
