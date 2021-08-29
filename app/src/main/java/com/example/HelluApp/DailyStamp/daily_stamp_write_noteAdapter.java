@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.HelluApp.DailyStamp.OnNoteItemClickListener;
+//import com.example.HelluApp.DailyStamp.OnNoteItemClickListener;
 import com.example.HelluApp.DailyStamp.daily_stamp_write_note;
 import com.example.HelluApp.R;
 
@@ -22,6 +22,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 //이 파일은 지금 사용되지 않습니다.
+/*
 public class daily_stamp_write_noteAdapter extends RecyclerView.Adapter<daily_stamp_write_noteAdapter.ViewHolder> implements OnNoteItemClickListener{
     List<daily_stamp_write_note> items;
     Context context;
@@ -111,3 +112,4 @@ public class daily_stamp_write_noteAdapter extends RecyclerView.Adapter<daily_st
     }
 
 }
+ */

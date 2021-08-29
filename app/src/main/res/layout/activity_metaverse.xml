@@ -13,13 +13,14 @@
         android:text="메타버스 트레이닝"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="8dp"
+        android:textSize="15sp"
         android:text="메타버스로 다른 사용자와 함께 운동해보세요!"/>
 
 

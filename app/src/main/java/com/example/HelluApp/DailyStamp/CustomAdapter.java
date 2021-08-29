@@ -1,7 +1,6 @@
 package com.example.HelluApp.DailyStamp;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.HelluApp.Post;
 import com.example.HelluApp.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
