@@ -6,6 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.ml.modeldownloader.CustomModelDownloadConditions;
 import com.google.firebase.ml.modeldownloader.DownloadType;
 import com.google.firebase.ml.modeldownloader.FirebaseModelDownloader;
@@ -14,6 +19,8 @@ import org.tensorflow.lite.Interpreter;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class plan_choose_result extends AppCompatActivity {
     TextView present_weight, goal_weight, exercise_plan, prefer_ex, usual_act, basal_meta;
@@ -22,11 +29,21 @@ public class plan_choose_result extends AppCompatActivity {
     String EditWeight, GoalWeight, numberOfWeekOfExercise, normalActivity;
     String Gender, Height, Age;
     String purposeOfExercise;
+    String exercise = "";
+
+    // 파이어베이스 연결하는 코드 같아서 훔쳐옴(from. plan_choose.java)
+    private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private final DatabaseReference databaseReference = firebaseDatabase.getReference();
+    // 파이어베이스 유저 아이디 가져오는 코드인 듯? From. daily_stamp_write.java
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseUser user = mAuth.getCurrentUser();
 
     //'ai로 선별해주는 플랜 결과 보기' 버튼을 누르면 나오는 화면
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 훔쳐온 코드
+        FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_plan_choose_result);
 
         // 텍스트뷰
@@ -58,13 +75,23 @@ public class plan_choose_result extends AppCompatActivity {
         usual_act.setText(normalActivity);
 
         // 선호 운동 출력
+        String retnExercise = prefer_Exercises(Gender, Age, normalActivity, purposeOfExercise);
         prefer_Exercises(Gender, Age, normalActivity, purposeOfExercise);
         // 기초대사량 계산
-        CalculateBEE(Gender, EditWeight, Height, Age);
+        String BEE = CalculateBEE(Gender, EditWeight, Height, Age);
+
+        // 파이어베이스에 항목별 저장하는 코드?
+        HashMap<String, Object> Plan_result = new HashMap<>();
+        Plan_result.put("선호운동", retnExercise);
+        Plan_result.put("기초대사량", BEE);
+
+
+        // 파이어베이스에 저장하는 코드인가?
+        databaseReference.child("User_Plan").push().setValue(Plan_result);
     }
 
     // AI에 필요한 입력 값: 성별, 나이(구간), 평소 활동량, 운동 목적
-    public void prefer_Exercises(String Gender, String Age, String Time_spent, String Motivation){
+    public String prefer_Exercises(String Gender, String Age, String Time_spent, String Motivation){
         CustomModelDownloadConditions conditions = new CustomModelDownloadConditions.Builder()
                 .requireWifi()
                 .build();
@@ -89,74 +116,73 @@ public class plan_choose_result extends AppCompatActivity {
                         float[][] input = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
                         float[][] output = new float[1][7]; // 모델의 Output
 
-                        // Gender
-                        if(Gender.equals("여")){
-                            input[0][0] = 1;
-                        }else if (Gender.equals("남")){
-                            input[0][1] = 1;
-                        }
+                        input = surveyValueRetn(Gender, Age, Time_spent, Motivation, input);
 
-                        // Age
-                        int intAge = Integer.parseInt(Age);
-
-                        if(intAge >= 15 && intAge <= 18){
-                            input[0][2] = 1;
-                        }else if(intAge >= 19 && intAge <= 25){
-                            input[0][3] = 1;
-                        }else if(intAge >= 26 && intAge < 30){
-                            input[0][4] = 1;
-                        }else if(intAge >= 30 && intAge < 40){
-                            input[0][5] = 1;
-                        }else if(intAge >= 40){
-                            input[0][6] = 1;
-                        }
-
-                        // Time_spent
-                        switch (Time_spent) {
-                            case "1시간":
-                                input[0][7] = 1;
-                                break;
-                            case "2시간":
-                                input[0][8] = 1;
-                                break;
-                            case "3시간 이상":
-                                input[0][9] = 1;
-                                break;
-                            case "30분":
-                                input[0][10] = 1;
-                                break;
-                            case "운동을 하지 않는다.":
-                                input[0][11] = 1;
-                                break;
-                        }
-
-                        // Motivation
-                        switch (Motivation) {
-                            case "건강":
-                                input[0][12] = 1;
-                                break;
-                            case "균형":
-                                input[0][13] = 1;
-                                break;
-                            case "체력 단련":
-                                input[0][14] = 1;
-                                break;
-                            case "다이어트":
-                                input[0][15] = 1;
-                                break;
-                            case "스트레스 해소":
-                                input[0][16] = 1;
-                                break;
-                        }
                         // 결과 출력
-                        print(interpreter, input, output);
+                        //print(interpreter,input,output);
+
+                        interpreter.run(input, output); // 모델 실행
+
+                        // 모델 결과값 출력하기
+                        for (int i = 0; i < output[0].length; i++) {
+                            // 결과값 중에 최댓값 선정하기
+                            if(i == 0){
+                                index = 0;
+                                max_result = output[0][i];
+                            }
+                            if(max_result < output[0][i]){
+                                index = i;
+                                max_result = output[0][i];
+                            }
+                        }
+
+                        switch(index){
+                            case 0:
+                                exercise = "체육관 운동";
+                                break;
+
+                            case 1:
+                                exercise = "웨이트 트레이닝";
+                                break;
+
+                            case 2:
+                                exercise = "수영";
+                                break;
+
+                            case 3:
+                                exercise = "팀 스포츠";
+                                break;
+
+                            case 4:
+                                exercise = "조깅";
+                                break;
+
+                            case 5:
+                                exercise = "요가";
+                                break;
+
+                            case 6:
+                                exercise = "줌바 댄스";
+                                break;
+
+                            default:
+                                break;
+                        }
+                        /*
+                        for(int i = 0; i < input[0].length; i++){    // 입력값 테스트
+                            prefer_ex.setText(prefer_ex.getText() + "\n" + input[0][i]);
+                        }
+                        */
+                        // 변수에 저장해서 출력하기
+                        prefer_ex.setText(exercise);
 
                         interpreter.close(); // 인터프리터 종료
                     }
                 });
+        return exercise;
     }
 
-    public void CalculateBEE(String Gender, String strWeight, String strHeight, String strAge){
+    public String CalculateBEE(String Gender, String strWeight, String strHeight, String strAge){
         double resultBEE = 0;
         // 소수점 두 번째 자리까지
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
@@ -167,61 +193,74 @@ public class plan_choose_result extends AppCompatActivity {
             resultBEE = 66.5 + (13.75 * Double.parseDouble(strWeight)) + (5 * Double.parseDouble(strHeight)) - (6.76 * Integer.parseInt(strAge));
         }
 
-        basal_meta.setText(decimalFormat.format(resultBEE));
+        String BEE = decimalFormat.format(resultBEE);
+        basal_meta.setText(BEE);
+
+        return BEE;
     }
 
-    public void print(Interpreter interpreter, float[][] input, float[][] output){
-        interpreter.run(input, output); // 모델 실행
-
-        // 모델 결과값 출력하기
-        for (int i = 0; i < output[0].length; i++) {
-            // 결과값 중에 최댓값 선정하기
-            if(i == 0){
-                index = 0;
-                max_result = output[0][i];
-            }
-            if(max_result < output[0][i]){
-                index = i;
-                max_result = output[0][i];
-            }
+    float[][] surveyValueRetn(String Gender, String Age, String Time_spent,
+                                                                String Motivation, float[][] input){
+        // Gender
+        if(Gender.equals("여")){
+            input[0][0] = 1;
+        }else if (Gender.equals("남")){
+            input[0][1] = 1;
         }
 
-        switch(index){
-            case 0:
-                prefer_ex.setText("체육관 운동");
-                break;
+        // Age
+        int intAge = Integer.parseInt(Age);
 
-            case 1:
-                prefer_ex.setText("웨이트 트레이닝");
-                break;
+        if(intAge >= 15 && intAge <= 18){
+            input[0][2] = 1;
+        }else if(intAge >= 19 && intAge <= 25){
+            input[0][3] = 1;
+        }else if(intAge >= 26 && intAge < 30){
+            input[0][4] = 1;
+        }else if(intAge >= 30 && intAge < 40){
+            input[0][5] = 1;
+        }else if(intAge >= 40){
+            input[0][6] = 1;
+        }
 
-            case 2:
-                prefer_ex.setText("수영");
+        // Time_spent
+        switch (Time_spent) {
+            case "1시간":
+                input[0][7] = 1;
                 break;
-
-            case 3:
-                prefer_ex.setText("팀 스포츠");
+            case "2시간":
+                input[0][8] = 1;
                 break;
-
-            case 4:
-                prefer_ex.setText("조깅");
+            case "3시간 이상":
+                input[0][9] = 1;
                 break;
-
-            case 5:
-                prefer_ex.setText("요가");
+            case "30분":
+                input[0][10] = 1;
                 break;
-
-            case 6:
-                prefer_ex.setText("줌바 댄스");
-                break;
-
-            default:
+            case "운동을 하지 않는다.":
+                input[0][11] = 1;
                 break;
         }
-        /*
-        for(int i = 0; i < input[0].length; i++){    // 입력값 테스트
-            prefer_ex.setText(prefer_ex.getText() + "\n" + input[0][i]);
+
+        // Motivation
+        switch (Motivation) {
+            case "건강":
+                input[0][12] = 1;
+                break;
+            case "균형":
+                input[0][13] = 1;
+                break;
+            case "체력 단련":
+                input[0][14] = 1;
+                break;
+            case "다이어트":
+                input[0][15] = 1;
+                break;
+            case "스트레스 해소":
+                input[0][16] = 1;
+                break;
         }
-        */
+
+        return input;
     }
 }
