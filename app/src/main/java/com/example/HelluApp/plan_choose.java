@@ -51,6 +51,7 @@ public class plan_choose extends AppCompatActivity {
 
             Checked();
 
+            // 현재 체중 == 체중 ?
             HashMap<String, Object> Plan_result = new HashMap<>();
             Plan_result.put("성별", Gender);
             Plan_result.put("나이", Age);
