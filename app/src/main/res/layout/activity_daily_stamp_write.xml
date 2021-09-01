@@ -49,6 +49,7 @@
     </FrameLayout>
 
 
+    <!--매일인증글 내용 입력창-->
     <EditText
         android:id="@+id/daily_write_kcal"
         android:layout_width="match_parent"
@@ -57,7 +58,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear" />
 
-    <!--매일인증글 내용 입력창-->
     <EditText
         android:id="@+id/daily_write_content"
         android:layout_width="match_parent"

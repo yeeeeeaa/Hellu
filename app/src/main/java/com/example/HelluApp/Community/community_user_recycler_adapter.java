@@ -10,9 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.HelluApp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 //fragment_community_user.xml과 community_user_item.xml을 이어주는 어댑터
 
@@ -48,7 +52,7 @@ public class community_user_recycler_adapter extends RecyclerView.Adapter<commun
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView profile;
+        CircleImageView profile;
         TextView name;
 
         public ViewHolder(@NonNull View itemView) {
@@ -59,7 +63,7 @@ public class community_user_recycler_adapter extends RecyclerView.Adapter<commun
         }
 
         void onBind(community_user_item item) {
-            profile.setImageResource(item.getResourceId());
+            Glide.with(itemView).load(item.getResourceId()).into(profile);
             name.setText(item.getName());
         }
     }

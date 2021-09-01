@@ -2,17 +2,19 @@ package com.example.HelluApp.Community;
 
 //유저 데이터에 들어갈 내용 클래스
 
+import android.net.Uri;
+
 public class community_user_item {
 
     String name;
-    int resourceId;
+    String resourceId;
 
-    public community_user_item(int resourceId, String name) {
+    public community_user_item(String resourceId, String name) {
         this.name = name;
         this.resourceId = resourceId;
     }
 
-    public int getResourceId() {
+    public String getResourceId() {
         return resourceId;
     }
 
@@ -26,7 +28,7 @@ public class community_user_item {
         this.name = name;
     }
 
-    public void setResourceId(int resourceId) {
+    public void setResourceId(String resourceId) {
         this.resourceId = resourceId;
     }
 }
