@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--이 파일은 지금 사용되지 않습니다.-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
     android:theme="@style/Widget.fontChange_nanum"
     tools:context=".DailyStamp.daily_stamp">
 
@@ -13,16 +13,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/daily_bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:text="하루 권장 칼로리🥬:"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="오늘 먹은 칼로리🍔:"
+            android:layout_marginBottom="5dp"/>
 
         <!--매일 인증 글들이 들어있는 리사이클러뷰-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/daily_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
     </LinearLayout>

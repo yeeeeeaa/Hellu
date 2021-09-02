@@ -543,19 +543,19 @@
                         android:id="@+id/q7_radio_Button1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="밥" />
+                        android:text="밥 🍚" />
 
                     <CheckBox
                         android:id="@+id/q7_radio_Button2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="빵" />
+                        android:text="빵 🍞" />
 
                     <CheckBox
                         android:id="@+id/q7_radio_Button3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="면" />
+                        android:text="면 🍜" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
