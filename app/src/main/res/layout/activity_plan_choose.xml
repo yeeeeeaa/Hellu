@@ -517,6 +517,49 @@
                 </RadioGroup>
             </androidx.cardview.widget.CardView>
 
+            <!--6번 추가 문제-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/light_gray"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/Kcal_question"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="6. 자주 드시는 음식은 무엇인가요?" />
+
+
+                    <CheckBox
+                        android:id="@+id/q7_radio_Button1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="밥" />
+
+                    <CheckBox
+                        android:id="@+id/q7_radio_Button2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="빵" />
+
+                    <CheckBox
+                        android:id="@+id/q7_radio_Button3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="면" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <Button
                 android:id="@+id/pch_result_button"
                 android:layout_width="match_parent"
