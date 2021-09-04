@@ -39,6 +39,8 @@ public class community extends AppCompatActivity {
             }
         });
         mBottomNV.setSelectedItemId(R.id.community_user);
+
+
     }
 
     //BottomNavigation 페이지 변경
