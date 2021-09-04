@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,9 +34,10 @@ public class plan_choose extends AppCompatActivity {
     String numberOfWeekOfExercise = ""; // 운동 계획
     String normalActivity = "";         // 평소 활동량
     String amountOfExercise = "";       // 하루 목표 운동량
-    List<String> mealTime = new ArrayList<>();
+    List<String> mealTime = new ArrayList<>();          //식사 시간
     String purposeOfExercise = "";      // 운동 목적(Motivation)
     Button result_btn;
+    ArrayList<String> meal_feedback = new ArrayList<>();   // 식단가이드(피드백)
 
     private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private final DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -51,7 +54,7 @@ public class plan_choose extends AppCompatActivity {
 
             Checked();
 
-            // 현재 체중 == 체중 ?
+            // 현재 체중이랑 그냥 체중은 값은 다르고 용도가 다름
             HashMap<String, Object> Plan_result = new HashMap<>();
             Plan_result.put("성별", Gender);
             Plan_result.put("나이", Age);
@@ -65,6 +68,7 @@ public class plan_choose extends AppCompatActivity {
             Plan_result.put("평소 활동량", normalActivity);
             Plan_result.put("식사 시간", mealTime);
             Plan_result.put("운동 목적", purposeOfExercise);
+            Plan_result.put("식단 가이드", meal_feedback);
 
             databaseReference.child("User_Plan").push().setValue(Plan_result);
 
@@ -79,6 +83,7 @@ public class plan_choose extends AppCompatActivity {
             intent.putExtra("EditHeight", EditHeight);
             intent.putExtra("Age", Age);
             intent.putExtra("purposeOfExercise", purposeOfExercise);
+            intent.putExtra("meal_feedback", meal_feedback);
 
             startActivity(intent);
         });
@@ -137,6 +142,14 @@ public class plan_choose extends AppCompatActivity {
         RadioButton option63 = findViewById(R.id.q6_radio_Button3);
         RadioButton option64 = findViewById(R.id.q6_radio_Button4);
         RadioButton option65 = findViewById(R.id.q6_radio_Button5);
+
+        // 6. 식단 가이드(다중 선택)
+        CheckBox option71 = findViewById(R.id.q7_radio_Button1);
+        CheckBox option72 = findViewById(R.id.q7_radio_Button2);
+        CheckBox option73 = findViewById(R.id.q7_radio_Button3);
+        CheckBox option74 = findViewById(R.id.q7_radio_Button4);
+        CheckBox option75 = findViewById(R.id.q7_radio_Button5);
+        CheckBox option76 = findViewById(R.id.q7_radio_Button6);
 
         //성별
         if(optionG1.isChecked()){
@@ -250,6 +263,32 @@ public class plan_choose extends AppCompatActivity {
             purposeOfExercise = "스트레스 해소";
         } else if (option65.isChecked()) {
             purposeOfExercise = "체력 단련";
+        }
+
+        // 6. 식단가이드
+        if (option71.isChecked()) {
+            //meal_guide.add("밥");
+            meal_feedback.add("밥 줄이세요.");
+        }
+        if (option72.isChecked()) {
+            //meal_guide.add("빵");
+            meal_feedback.add("빵 줄이세요.");
+        }
+        if (option73.isChecked()) {
+            //meal_guide.add("라면");
+            meal_feedback.add("라면 줄이세요.");
+        }
+        if (option74.isChecked()) {
+            //meal_guide.add("패스트푸드");
+            meal_feedback.add("패스트푸드 줄이세요.");
+        }
+        if (option75.isChecked()) {
+            //meal_guide.add("각종 배달음식");
+            meal_feedback.add("배달음식 줄이세요.");
+        }
+        if (option76.isChecked()) {
+            //meal_guide.add("군것질, 간식");
+            meal_feedback.add("군것질,간식 줄이세요.");
         }
     }
 

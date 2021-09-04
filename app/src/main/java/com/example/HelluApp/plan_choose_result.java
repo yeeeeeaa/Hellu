@@ -19,14 +19,17 @@ import org.tensorflow.lite.Interpreter;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class plan_choose_result extends AppCompatActivity {
-    TextView present_weight, goal_weight, exercise_plan, prefer_ex, usual_act, basal_meta;
+    TextView present_weight, goal_weight, exercise_plan, prefer_ex, usual_act, basal_meta, meal_guide;
     float max_result;
     int index;
     String EditWeight, GoalWeight, numberOfWeekOfExercise, normalActivity;
+    List<String> meal_feedback = new ArrayList<>();
     String Gender, Height, Age;
     String purposeOfExercise;
     String exercise = "";
@@ -53,6 +56,7 @@ public class plan_choose_result extends AppCompatActivity {
         exercise_plan = findViewById(R.id.exercise_plan);       // 운동 계획(일주일에 몇 번 운동할지)
         usual_act = findViewById(R.id.usual_act);               // 평소 활동량
         basal_meta = findViewById(R.id.basal_meta);             // 기초 대사량
+        meal_guide = findViewById(R.id.meal_guide);          // 식단 가이드
 
         // plan_choose에서 넘어온 값 받기
         Intent intent = getIntent();
@@ -67,12 +71,20 @@ public class plan_choose_result extends AppCompatActivity {
         Height = bundle.getString("EditHeight");
         Age = bundle.getString("Age");
         purposeOfExercise = bundle.getString("purposeOfExercise");
+        meal_feedback = bundle.getStringArrayList("meal_feedback");
+
+        StringBuilder str_meal = new StringBuilder();
+        for (String meal_feedback : meal_feedback) {
+            str_meal.append(meal_feedback);
+            str_meal.append("\n");
+        }
 
         // 출력
         present_weight.setText(EditWeight);
         goal_weight.setText(GoalWeight);
         exercise_plan.setText(numberOfWeekOfExercise);
         usual_act.setText(normalActivity);
+        meal_guide.setText(str_meal);
 
         // 선호 운동 출력
         String retnExercise = prefer_Exercises(Gender, Age, normalActivity, purposeOfExercise);

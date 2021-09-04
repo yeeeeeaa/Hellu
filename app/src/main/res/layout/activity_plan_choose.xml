@@ -25,22 +25,22 @@
                 android:id="@+id/pch_text_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="36dp"
                 android:text="환영합니다!"
                 android:textColor="@color/dark_blue"
                 android:textSize="28dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="15dp" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/pch_text_explain1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:text="AI 플랜 선택은 인공지능이 당신의 상태를 분석하여\n맞춤 플랜을 추천하는 서비스입니다."
                 android:textColor="@color/dark_blue"
-                android:textSize="17dp"
-                android:layout_marginLeft="15dp"/>
+                android:textSize="17dp" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -50,7 +50,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="플랜을 정하면 전문 트레이너를 매칭해드립니다!"
                 android:textColor="@color/dark_blue"
-                android:textSize="17dp"/>
+                android:textSize="17dp" />
 
             <!--성별, 나이 입력하기-->
             <androidx.cardview.widget.CardView
@@ -111,15 +111,15 @@
                             android:layout_height="wrap_content"
                             android:ems="5"
                             android:hint="나이"
-                            android:textSize="17dp"
                             android:inputType="number"
-                            android:textColor="#A3A3A3" />
+                            android:textColor="#A3A3A3"
+                            android:textSize="17dp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="세"
-                            android:textSize="17dp">
-                        </TextView>
+                            android:textSize="17dp"></TextView>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -159,15 +159,15 @@
                             android:layout_height="wrap_content"
                             android:ems="5"
                             android:hint="신장"
-                            android:textSize="17dp"
                             android:inputType="number"
-                            android:textColor="#A3A3A3" />
+                            android:textColor="#A3A3A3"
+                            android:textSize="17dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="cm"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </LinearLayout>
 
                     <!--체중을 위한 리니어-->
@@ -183,14 +183,15 @@
                             android:layout_height="wrap_content"
                             android:ems="5"
                             android:hint="체중"
-                            android:textSize="17dp"
                             android:inputType="number"
-                            android:textColor="#A3A3A3" />
+                            android:textColor="#A3A3A3"
+                            android:textSize="17dp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="kg"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -227,17 +228,17 @@
                             android:id="@+id/editGoal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="목표 감량 체중"
                             android:ems="7"
-                            android:textSize="17dp"
+                            android:hint="목표 감량 체중"
                             android:inputType="number"
-                            android:textColor="#A3A3A3" />
+                            android:textColor="#A3A3A3"
+                            android:textSize="17dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="kg 감량"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
 
                     </LinearLayout>
 
@@ -555,7 +556,25 @@
                         android:id="@+id/q7_radio_Button3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="면 🍜" />
+                        android:text="라면 🥡" />
+
+                    <CheckBox
+                        android:id="@+id/q7_radio_Button4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="패스트푸드 🍔" />
+
+                    <CheckBox
+                        android:id="@+id/q7_radio_Button5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="각종 배달음식 🍜" />
+
+                    <CheckBox
+                        android:id="@+id/q7_radio_Button6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="군것질, 간식 🍫" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
