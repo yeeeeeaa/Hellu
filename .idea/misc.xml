@@ -13,7 +13,12 @@
         <entry key="..\:/Users/EEEUN/AndroidStudioProjects/21_if016/app/src/main/res/layout/daily_stamp_write_item.xml" value="0.25" />
         <entry key="..\:/Users/EEEUN/AndroidStudioProjects/21_if016/app/src/main/res/layout/fragment_community_chatting.xml" value="0.19746376811594202" />
         <entry key="..\:/Users/EEEUN/AndroidStudioProjects/21_if016/app/src/main/res/layout/fragment_community_user.xml" value="0.25" />
+<<<<<<< HEAD
         <entry key="..\:/Users/EEEUN/AndroidStudioProjects/21_if016/app/src/main/res/layout/fragment_walking_ranking.xml" value="0.13247213779128672" />
+=======
+        <entry key="..\:/Users/babyh/AndroidStudioProjects/21_if016/app/src/main/res/layout/community_user_item.xml" value="0.17753623188405798" />
+        <entry key="..\:/Users/babyh/AndroidStudioProjects/21_if016/app/src/main/res/layout/fragment_community_user.xml" value="0.17753623188405798" />
+>>>>>>> 97e4e78267ee15c8b8628806f3031c37d4c93866
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.11979166666666667" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/drawable/back_et_mymsgbox.xml" value="0.11979166666666667" />
         <entry key="..\:/Users/hongsi/21_if016/app/src/main/res/drawable/back_et_name.xml" value="0.11855670103092783" />

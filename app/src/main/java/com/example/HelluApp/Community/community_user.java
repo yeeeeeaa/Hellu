@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.example.HelluApp.Metaverse.metaverse_note;
 import com.example.HelluApp.R;
 import com.example.HelluApp.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -21,6 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +60,9 @@ public class community_user extends Fragment {
     private DatabaseReference rDatabase = FirebaseDatabase.getInstance().getReference("User");
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
+    private static String user_name = "";
+    private static String user_profile = "";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,7 +83,6 @@ public class community_user extends Fragment {
         FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
         String Uid = user.getUid();
 
-
         rDatabase.child(Uid).addValueEventListener(new ValueEventListener() {
             @Override
             //리스너는 이벤트 발생 시점에 데이터베이스에서 지정된 위치에 있던 데이터를 포함하는 DataSnapshot을 수신한다.
@@ -84,17 +91,20 @@ public class community_user extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user1 = dataSnapshot.getValue(User.class);
 
+                user_name = user1.Nickname;
+                user_profile = user1.ProfileUrl;
                     //값 받아오기
                 //텍스트뷰에 받아온 문자열 대입하기
-                mfriendItems.add(new community_user_item(user1.ProfileUrl, user1.Nickname));
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Getting Post failed, log a message
                 Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException());
-            }
-        });
+            }});
+
+
 
         rDatabase.addChildEventListener(new ChildEventListener() {
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
@@ -114,6 +124,10 @@ public class community_user extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });//addValueEventListener
+
+        mfriendItems.add(new community_user_item(user_profile, user_name));
+        mfriendItems.add(new community_user_item("https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2", "이예린"));
+
 
         // 임의로 이다영, 이예린, 이은서, 최서연, 주호은 이름 찍어주기
 /*
