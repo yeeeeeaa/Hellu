@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -30,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,8 +52,10 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     String Uid;
     String Author;
+
     String Title;
     String Content;
+    String Image_path;
 
     Button save_button;         //매일인증 저장하기 버튼
     Button gallery;             //갤러리 열기 버튼
@@ -90,16 +96,6 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             //모르지만 예린이 코드 훔쳐오기
             Input_daily();
 
-            /*
-            HashMap<String, Object> Daily_write = new HashMap<>();
-            Daily_write.put("글 번호", ID);
-            Daily_write.put("제목", Title);
-            Daily_write.put("내용", Content);
-            Daily_write.put("날짜", DateWrite);
-
-            databaseReference.child("User_Write").push().setValue(Daily_write);
-             */
-
             //이미지 업로드 부분
             picture_upload();
         });
@@ -112,37 +108,16 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         //리사이클러뷰일 때 사용하는 사진 선택. 실패
-        /*image = findViewById(R.id.image_view_select);
-
-        if (requestCode == CODE_ALBUM_REQUEST && resultCode == RESULT_OK && data != null) {
-            ArrayList<Uri> uriList = new ArrayList<>();
-            if (data.getClipData() != null) {
-                ClipData clipData = data.getClipData();
-                if (clipData.getItemCount() > 10) {
-                    Toast.makeText(getApplicationContext(), "사진은 10개까지 선택!", Toast.LENGTH_LONG).show();
-                    return;
-                } else if (clipData.getItemCount() == 1) {
-                    Uri filePath = clipData.getItemAt(0).getUri();
-                    uriList.add(filePath);
-                    Toast.makeText(getApplicationContext(), "사진은 1개가 선택됨", Toast.LENGTH_LONG).show();
-                } else if (clipData.getItemCount() > 1 && clipData.getItemCount() <= 10) {
-                    for (int i = 0; i < clipData.getItemCount(); i++) {
-                        uriList.add(clipData.getItemAt(i).getUri());
-                    }
-                }
-            }
-            daily_image_select_noteAdapter adapter = new daily_image_select_noteAdapter(uriList, this);
-            daily_recyclerview.setAdapter(adapter);
-            daily_recyclerview.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        }
-         */
 
         daily_imageView = findViewById(R.id.image_select_preview);
+
         //request코드가 0이고 OK를 선택했고 data에 뭔가가 들어 있다면
         if (requestCode == 111 && resultCode == RESULT_OK) {
             filePath = data.getData();
+            Image_path = getRealPathFromURI(filePath);
             Toast.makeText(getApplicationContext(), "이미지가 첨부되었습니다.", Toast.LENGTH_LONG).show();
             Log.d(TAG, "uri:" + String.valueOf(filePath));
+            Log.d(TAG, "getRealPathFromURI:" + Image_path);
             try {
                 //Uri 파일을 Bitmap으로 만들어서 ImageView에 집어 넣는다.
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
@@ -152,6 +127,19 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             }
         }
 
+    }
+
+    //Uri -> Path(파일경로)
+    public String getRealPathFromURI(Uri contentUri) {
+        String[] proj = { MediaStore.Images.Media.DATA };
+
+        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+        cursor.moveToNext();
+        String path = cursor.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA));
+        Uri uri = Uri.fromFile(new File(path));
+
+        cursor.close();
+        return path;
     }
 
     //upload the file
@@ -235,7 +223,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
                         } else {
                             // Write new post
-                            writeNewPost(Uid, user.Nickname, Title, Content);
+                            writeNewPost(Uid, user.Nickname, Title, Content, Image_path);
                         }
 
                     }
@@ -248,11 +236,11 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     }
 
-    private void writeNewPost(String Uid, String Nickname, String Title, String Content) {
+    private void writeNewPost(String Uid, String Nickname, String Title, String Content, String image_path) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = databaseReference.child("User_Write").push().getKey();
-        Post post = new Post(Uid, Nickname, Title, Content);
+        Post post = new Post(Uid, Nickname, Title, Content, Image_path);
         Map<String, Object> postValues = post.posttomap();
 
         Map<String, Object> childUpdates = new HashMap<>();

@@ -140,6 +140,7 @@ public class fragment_mypage extends Fragment {
 
         return view;
     }
+
     void loadData(){
         SharedPreferences preferences=this.getActivity().getSharedPreferences("photo", Context.MODE_PRIVATE);
         rDatabase.child(Uid).addValueEventListener(new ValueEventListener() {

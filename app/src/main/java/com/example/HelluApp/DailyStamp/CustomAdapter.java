@@ -28,14 +28,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_stamp_write_item, parent, false);
         CustomViewHolder holder = new CustomViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        Glide.with(holder.itemView).load(arrayList.get(position).uid).into(holder.iv_profile);
+        //Glide.with(holder.itemView).load(arrayList.get(position).uid).into(holder.iv_profile);
+        Glide.with(holder.itemView).load(arrayList.get(position).image_path).into(holder.iv_image);
         holder.tv_author.setText(String.valueOf(arrayList.get(position).author)); //글 작성자
         holder.tv_title.setText(arrayList.get(position).title); //제목
         holder.tv_content.setText(String.valueOf(arrayList.get(position).content)); //내용 일부
@@ -50,6 +51,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_profile;
+        ImageView iv_image;
         TextView tv_title;
         TextView tv_content;
         TextView tv_author;
@@ -57,6 +59,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             this.iv_profile = itemView.findViewById(R.id.iv_profile);
+            this.iv_image = itemView.findViewById(R.id.iv_image);
+
             this.tv_title = itemView.findViewById(R.id.tv_title);
             this.tv_content = itemView.findViewById(R.id.tv_content);
             this.tv_author = itemView.findViewById(R.id.tv_author);

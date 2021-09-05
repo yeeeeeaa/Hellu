@@ -141,6 +141,7 @@ public class MypageChange extends AppCompatActivity {
         //Firebase storage에 저장하기
         FirebaseStorage firebaseStorage= FirebaseStorage.getInstance();
         final StorageReference imgRef= firebaseStorage.getReference("profileImages/"+fileName);
+
         //파일 업로드
         UploadTask uploadTask=imgRef.putFile(imgUri);
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
