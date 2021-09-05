@@ -63,8 +63,6 @@ public class daily_stamp extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance(); //파이어베이스 사용자 연동
         database = FirebaseDatabase.getInstance(); // 파이어베이스 데이터베이스 연동
         databaseReference = database.getReference("User_Write"); // DB 테이블 연결
-
-        //loadData();
         databaseReference.child(Uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -102,31 +100,6 @@ public class daily_stamp extends AppCompatActivity {
 
 
     }
-
-    /*
-    void loadData(){
-        SharedPreferences preferences=getSharedPreferences("photo", Context.MODE_PRIVATE);
-        String Uid = user.getUid(); //각 사용자 Uid로 구별
-        mAuth = FirebaseAuth.getInstance(); //파이어베이스 사용자 연동
-        databaseReference = database.getReference("User_Write"); // DB 테이블 연결
-        databaseReference.child(Uid).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            //리스너는 이벤트 발생 시점에 데이터베이스에서 지정된 위치에 있던 데이터를 포함하는 DataSnapshot을 수신한다.
-            //스냅샷에 대해 getValue()를 호출하면 데이터의 자바 객체 표현이 반환된다.
-            //해당 위치에 데이터가 없는 경우 getValue()를 호출하면 null이 반환된다.
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Post post1 = dataSnapshot.getValue(Post.class);
-                post1.image_path = preferences.getString("image_path", null);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException());
-            }
-        });
-    }
-     */
 
     //BottomNavigation 화면 전환 ex) 카메라 아이콘 누르면 카메라창 열림
     private void BottomNavigate(int id) {

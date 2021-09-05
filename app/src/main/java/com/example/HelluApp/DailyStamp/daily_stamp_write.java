@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.HelluApp.R;
@@ -53,6 +54,8 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
     String Uid;
     String Author;
 
+    String Date;
+    View date;
     String Title;
     String Content;
     String Image_path;
@@ -252,6 +255,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         // realtime Database 들어가면 User_Write는 각 user의 uid로 분류하여 글을 모아둔 곳.
         // User_Write -> 각 user의 Uid -> 글 분류 키값 -> 글 내용
         childUpdates.put("/User_Write/" + Uid + "/" + key, postValues);
+
 
         databaseReference.updateChildren(childUpdates);
     }
