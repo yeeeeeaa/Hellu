@@ -1,5 +1,7 @@
 package com.example.HelluApp.MainFragment;
 
+
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,6 +43,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MypageChange extends AppCompatActivity {
+
+    private static final String TAG = "daily_stamp_write";
 
     Button change_button;
     EditText nickname_text;
@@ -119,6 +124,8 @@ public class MypageChange extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 assert data != null;
                 imgUri = data.getData();
+                Log.d(TAG, "uri:" + imgUri);
+
                 //Glide.with(this).load(imgUri).into(ivProfile);
                 //Glide는 이미지를 읽어와서 보여줄때 내 device의 외장메모리에 접근하는 퍼미션이 요구됨.
                 //(퍼미션이 없으면 이미지가 보이지 않음.)

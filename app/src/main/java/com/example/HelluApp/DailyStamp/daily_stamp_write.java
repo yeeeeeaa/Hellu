@@ -2,6 +2,7 @@ package com.example.HelluApp.DailyStamp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.content.CursorLoader;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
@@ -117,10 +118,10 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         //request코드가 0이고 OK를 선택했고 data에 뭔가가 들어 있다면
         if (requestCode == 111 && resultCode == RESULT_OK) {
             filePath = data.getData();
-            Image_path = getRealPathFromURI(filePath);
+            Image_path = getRealPathFromUri(filePath);
             Toast.makeText(getApplicationContext(), "이미지가 첨부되었습니다.", Toast.LENGTH_LONG).show();
             Log.d(TAG, "uri:" + String.valueOf(filePath));
-            Log.d(TAG, "getRealPathFromURI:" + Image_path);
+            Log.d(TAG, "getRealPathFromUri:" + Image_path);
             try {
                 //Uri 파일을 Bitmap으로 만들어서 ImageView에 집어 넣는다.
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
@@ -133,16 +134,18 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
     }
 
     //Uri -> Path(파일경로)
-    public String getRealPathFromURI(Uri contentUri) {
-        String[] proj = { MediaStore.Images.Media.DATA };
+    //절대경로를 구한다.
+    private String getRealPathFromUri(Uri uri)
+    {
+        String[] proj=  {MediaStore.Images.Media.DATA};
+        CursorLoader cursorLoader = new CursorLoader(this,uri,proj,null,null,null);
+        Cursor cursor = cursorLoader.loadInBackground();
 
-        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-        cursor.moveToNext();
-        String path = cursor.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA));
-        Uri uri = Uri.fromFile(new File(path));
-
+        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String url = cursor.getString(columnIndex);
         cursor.close();
-        return path;
+        return  url;
     }
 
     //upload the file
@@ -160,7 +163,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             //Unique한 파일명을 만들자.
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
             Date now = new Date();
-            String filename = formatter.format(now) + ".jpg";
+            String filename = formatter.format(now) + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
             StorageReference storageRef = storage.getReferenceFromUrl("gs://eveproject-d838a.appspot.com").child("daily_stamp/" + filename);
 
