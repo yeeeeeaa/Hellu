@@ -55,8 +55,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
     String Uid;
     String Author;
 
-    String Date;
-    View date;
+    String getDate;
     String Title;
     String Content;
     String Image_path;
@@ -134,7 +133,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
     }
 
     //Uri -> Path(파일경로)
-    //절대경로를 구한다.
+    //카메라 권한 설정했던 것처럼 앱 설정 들어가서 스토리지 권한 허용해주기!
     private String getRealPathFromUri(Uri uri)
     {
         String[] proj=  {MediaStore.Images.Media.DATA};
@@ -193,13 +192,18 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     public void Input_daily() {
 
-        //제목 입력
-        EditText optionTitle = findViewById(R.id.daily_write_title);
-
-        //내용 입력
-        EditText optionContent = findViewById(R.id.daily_write_content);
+        //날짜 저장
+        long now = System.currentTimeMillis(); //현재 시간 가져오기
+        Date mDate = new Date(now); // Date 형식으로 고치기
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm"); //가지고 싶은 형태
+        getDate = simpleDate.format(mDate);
 
         //제목
+        EditText optionTitle = findViewById(R.id.daily_write_title);
+        //내용
+        EditText optionContent = findViewById(R.id.daily_write_content);
+
+        //제목 입력
         if (optionTitle != null) {
             Title = optionTitle.getText().toString().trim();
         } else {
@@ -207,7 +211,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             return;
         }
 
-        //내용
+        //내용 입력
         if (optionContent != null) {
             Content = optionContent.getText().toString().trim();
         } else {
@@ -229,7 +233,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
                         } else {
                             // Write new post
-                            writeNewPost(Uid, user.Nickname, Title, Content, Image_path);
+                            writeNewPost(Uid, user.Nickname, Title, Content, Image_path, getDate);
                         }
 
                     }
@@ -242,11 +246,11 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     }
 
-    private void writeNewPost(String Uid, String Nickname, String Title, String Content, String image_path) {
+    private void writeNewPost(String Uid, String Nickname, String Title, String Content, String Image_path, String getDate) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = databaseReference.child("User_Write").push().getKey();
-        Post post = new Post(Uid, Nickname, Title, Content, Image_path);
+        Post post = new Post(Uid, Nickname, Title, Content, Image_path, getDate);
         Map<String, Object> postValues = post.posttomap();
 
         Map<String, Object> childUpdates = new HashMap<>();
