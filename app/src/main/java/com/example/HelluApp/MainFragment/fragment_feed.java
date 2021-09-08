@@ -14,6 +14,9 @@ import com.example.HelluApp.R;
 
 
 public class fragment_feed extends Fragment {
+    Fragment fragment1;
+    Fragment fragment2;
+    Fragment fragment3;
 
     //피드.java
     @Override
