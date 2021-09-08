@@ -85,25 +85,24 @@ public class plan_choose_result extends AppCompatActivity {
         exercise_plan.setText(numberOfWeekOfExercise);
         usual_act.setText(normalActivity);
         meal_guide.setText(str_meal);
-
+        
+        HashMap<String, Object> Plan_result = new HashMap<>();
+        
         // 선호 운동 출력
-        String retnExercise = prefer_Exercises(Gender, Age, normalActivity, purposeOfExercise);
+        //String retnExercise = prefer_Exercises(Plan_result, Gender, Age, normalActivity, purposeOfExercise);
         prefer_Exercises(Gender, Age, normalActivity, purposeOfExercise);
         // 기초대사량 계산
         String BEE = CalculateBEE(Gender, EditWeight, Height, Age);
 
-        // 파이어베이스에 항목별 저장하는 코드?
-        HashMap<String, Object> Plan_result = new HashMap<>();
-        Plan_result.put("선호운동", retnExercise);
+        // 파이어베이스에 항목 저장
         Plan_result.put("기초대사량", BEE);
-
 
         // 파이어베이스에 저장하는 코드인가?
         databaseReference.child("User_Plan").push().setValue(Plan_result);
     }
 
     // AI에 필요한 입력 값: 성별, 나이(구간), 평소 활동량, 운동 목적
-    public String prefer_Exercises(String Gender, String Age, String Time_spent, String Motivation){
+    public void prefer_Exercises(String Gender, String Age, String Time_spent, String Motivation){
         CustomModelDownloadConditions conditions = new CustomModelDownloadConditions.Builder()
                 .requireWifi()
                 .build();
@@ -182,16 +181,21 @@ public class plan_choose_result extends AppCompatActivity {
                         }
                         /*
                         for(int i = 0; i < input[0].length; i++){    // 입력값 테스트
-                            prefer_ex.setText(prefer_ex.getText() + "\n" + input[0][i]);
+                            System.out.println(input[0][i] + "\n");
                         }
                         */
                         // 변수에 저장해서 출력하기
                         prefer_ex.setText(exercise);
+                        System.out.println(exercise);   // 얘는 출력이 되고
 
-                        interpreter.close(); // 인터프리터 종료
+                        // 파베 저장 코드? ㅠㅠ 제발~~
+                        databaseReference.child("User_Plan").child("추천운동").setValue(exercise);
+
+                        interpreter.close();    // 인터프리터 종료
                     }
                 });
-        return exercise;
+        System.out.println(exercise);       // 얘는 출력이 안 됨.
+        //return exercise;
     }
 
     public String CalculateBEE(String Gender, String strWeight, String strHeight, String strAge){
@@ -212,7 +216,7 @@ public class plan_choose_result extends AppCompatActivity {
     }
 
     float[][] surveyValueRetn(String Gender, String Age, String Time_spent,
-                                                                String Motivation, float[][] input){
+                              String Motivation, float[][] input){
         // Gender
         if(Gender.equals("여")){
             input[0][0] = 1;
