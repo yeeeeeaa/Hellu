@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
@@ -31,8 +32,10 @@ public class plan_choose_result extends AppCompatActivity {
     String EditWeight, GoalWeight, numberOfWeekOfExercise, normalActivity;
     List<String> meal_feedback = new ArrayList<>();
     String Gender, Height, Age;
+    String EditHeight, LoseWeight, PresentWeight, amountOfExercise;
+    List<String> mealTime = new ArrayList<>();
     String purposeOfExercise;
-    String exercise = "";
+    String exercise;
 
     // 파이어베이스 연결하는 코드 같아서 훔쳐옴(from. plan_choose.java)
     private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -40,6 +43,7 @@ public class plan_choose_result extends AppCompatActivity {
     // 파이어베이스 유저 아이디 가져오는 코드인 듯? From. daily_stamp_write.java
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseUser user = mAuth.getCurrentUser();
+    String Uid = user.getUid();         // user의 고유 랜덤 값(?)을 문자열로 반환해줌
 
     //'ai로 선별해주는 플랜 결과 보기' 버튼을 누르면 나오는 화면
     @Override
@@ -72,6 +76,9 @@ public class plan_choose_result extends AppCompatActivity {
         Age = bundle.getString("Age");
         purposeOfExercise = bundle.getString("purposeOfExercise");
         meal_feedback = bundle.getStringArrayList("meal_feedback");
+        LoseWeight = bundle.getString("LoseWeight");
+        mealTime = bundle.getStringArrayList("mealTime");
+        amountOfExercise = bundle.getString("amountOfExercise");
 
         StringBuilder str_meal = new StringBuilder();
         for (String meal_feedback : meal_feedback) {
@@ -87,10 +94,25 @@ public class plan_choose_result extends AppCompatActivity {
         meal_guide.setText(str_meal);
         
         HashMap<String, Object> Plan_result = new HashMap<>();
-        
+
+        Plan_result.put("성별", Gender);
+        Plan_result.put("나이", Age);
+        Plan_result.put("신장", EditHeight);
+        Plan_result.put("체중", EditWeight);
+        Plan_result.put("목표 감량 체중", LoseWeight);
+        Plan_result.put("현재 체중", PresentWeight);
+        Plan_result.put("목표 체중", GoalWeight);
+        Plan_result.put("운동 주 횟수", numberOfWeekOfExercise);
+        Plan_result.put("하루 목표 운동량", amountOfExercise);
+        Plan_result.put("평소 활동량", normalActivity);
+        Plan_result.put("식사 시간", mealTime);
+        Plan_result.put("운동 목적", purposeOfExercise);
+        Plan_result.put("식단 가이드", meal_feedback);
+
         // 선호 운동 출력
         //String retnExercise = prefer_Exercises(Plan_result, Gender, Age, normalActivity, purposeOfExercise);
         prefer_Exercises(Gender, Age, normalActivity, purposeOfExercise);
+//        System.out.println(purposeOfExercise);
         // 기초대사량 계산
         String BEE = CalculateBEE(Gender, EditWeight, Height, Age);
 
@@ -98,7 +120,7 @@ public class plan_choose_result extends AppCompatActivity {
         Plan_result.put("기초대사량", BEE);
 
         // 파이어베이스에 저장하는 코드인가?
-        databaseReference.child("User_Plan").push().setValue(Plan_result);
+        databaseReference.child("User_Plan").child(Uid).setValue(Plan_result);
     }
 
     // AI에 필요한 입력 값: 성별, 나이(구간), 평소 활동량, 운동 목적
@@ -186,15 +208,15 @@ public class plan_choose_result extends AppCompatActivity {
                         */
                         // 변수에 저장해서 출력하기
                         prefer_ex.setText(exercise);
-                        System.out.println(exercise);   // 얘는 출력이 되고
+                        //System.out.println(exercise);   // 얘는 출력이 되고
 
-                        // 파베 저장 코드? ㅠㅠ 제발~~
-                        databaseReference.child("User_Plan").child("추천운동").setValue(exercise);
+                        // 파베 저장 코드
+                        databaseReference.child("User_Plan").child(Uid).child("추천운동").setValue(exercise);
 
                         interpreter.close();    // 인터프리터 종료
                     }
                 });
-        System.out.println(exercise);       // 얘는 출력이 안 됨.
+        //System.out.println(exercise);       // 얘는 출력이 안 됨.
         //return exercise;
     }
 

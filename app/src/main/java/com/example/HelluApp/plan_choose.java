@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,13 +36,17 @@ public class plan_choose extends AppCompatActivity {
     String numberOfWeekOfExercise = ""; // 운동 계획
     String normalActivity = "";         // 평소 활동량
     String amountOfExercise = "";       // 하루 목표 운동량
-    List<String> mealTime = new ArrayList<>();          //식사 시간
+    ArrayList<String> mealTime = new ArrayList<>();          //식사 시간
     String purposeOfExercise = "";      // 운동 목적(Motivation)
     Button result_btn;
     ArrayList<String> meal_feedback = new ArrayList<>();   // 식단가이드(피드백)
 
-    private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private final DatabaseReference databaseReference = firebaseDatabase.getReference();
+//    private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+//    private final DatabaseReference databaseReference = firebaseDatabase.getReference();
+    // 파이어베이스 유저 아이디 가져오는 코드인 듯? From. daily_stamp_write.java
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseUser user = mAuth.getCurrentUser();
+    String Uid = user.getUid();         // user의 고유 랜덤 값(?)을 문자열로 반환해줌
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,21 +62,21 @@ public class plan_choose extends AppCompatActivity {
 
             // 현재 체중이랑 그냥 체중은 값은 다르고 용도가 다름
             HashMap<String, Object> Plan_result = new HashMap<>();
-            Plan_result.put("성별", Gender);
-            Plan_result.put("나이", Age);
-            Plan_result.put("신장", EditHeight);
-            Plan_result.put("체중", EditWeight);
-            Plan_result.put("목표 감량 체중", LoseWeight);
-            Plan_result.put("현재 체중", PresentWeight);
-            Plan_result.put("목표 체중", GoalWeight);
-            Plan_result.put("운동 주 횟수", numberOfWeekOfExercise);
-            Plan_result.put("하루 목표 운동량", amountOfExercise);
-            Plan_result.put("평소 활동량", normalActivity);
-            Plan_result.put("식사 시간", mealTime);
-            Plan_result.put("운동 목적", purposeOfExercise);
-            Plan_result.put("식단 가이드", meal_feedback);
+//            Plan_result.put("성별", Gender);
+//            Plan_result.put("나이", Age);
+//            Plan_result.put("신장", EditHeight);
+//            Plan_result.put("체중", EditWeight);
+//            Plan_result.put("목표 감량 체중", LoseWeight);
+//            Plan_result.put("현재 체중", PresentWeight);
+//            Plan_result.put("목표 체중", GoalWeight);
+//            Plan_result.put("운동 주 횟수", numberOfWeekOfExercise);
+//            Plan_result.put("하루 목표 운동량", amountOfExercise);
+//            Plan_result.put("평소 활동량", normalActivity);
+//            Plan_result.put("식사 시간", mealTime);
+//            Plan_result.put("운동 목적", purposeOfExercise);
+//            Plan_result.put("식단 가이드", meal_feedback);
 
-            databaseReference.child("User_Plan").push().setValue(Plan_result);
+//            databaseReference.child("User_Plan").push().setValue(Plan_result);
 
             Intent intent = new Intent(getApplicationContext(), plan_choose_result.class);
 
@@ -83,6 +89,11 @@ public class plan_choose extends AppCompatActivity {
             intent.putExtra("EditHeight", EditHeight);
             intent.putExtra("Age", Age);
             intent.putExtra("purposeOfExercise", purposeOfExercise);
+            intent.putExtra("meal_feedback", meal_feedback);
+            intent.putExtra("LoseWeight", LoseWeight);
+            intent.putExtra("PresentWeight", PresentWeight);
+            intent.putExtra("amountOfExercise", amountOfExercise);
+            intent.putExtra("mealTime", mealTime);
             intent.putExtra("meal_feedback", meal_feedback);
 
             startActivity(intent);
