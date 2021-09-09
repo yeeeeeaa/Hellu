@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="1dp"
+            android:background="@color/light_gray"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:tabGravity="fill"
@@ -33,28 +34,29 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <FrameLayout
+            android:id="@+id/container_in_feed"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".MainFragment.fragment_feed">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <!--피드 화면-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
+<!--                &lt;!&ndash;피드 화면&ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent">-->
 
-                    <!--매일 인증 글들이 들어있는 리사이클러뷰-->
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerview"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/feed_item" />
-                </LinearLayout>
-            </LinearLayout>
+<!--                    &lt;!&ndash;매일 인증 글들이 들어있는 리사이클러뷰&ndash;&gt;-->
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/recyclerview"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                        tools:listitem="@layout/feed_item" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
         </FrameLayout>
 
     </androidx.core.widget.NestedScrollView>
