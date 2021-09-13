@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment.feed.feed_my_top_posts">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- TopPost fragment-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/meta_recylerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="My Top Posts"
-        android:textSize="50sp"/>
+        android:layout_height="fill_parent"
+        android:layout_marginTop="15dp"
+        tools:listitem="@layout/feed_item"/>
 
 </FrameLayout>
