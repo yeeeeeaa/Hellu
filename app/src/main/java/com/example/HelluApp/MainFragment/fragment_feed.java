@@ -1,6 +1,7 @@
 package com.example.HelluApp.MainFragment;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,11 +13,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.HelluApp.DailyStamp.daily_stamp;
+import com.example.HelluApp.DailyStamp.daily_stamp_write;
 import com.example.HelluApp.MainFragment.feed.feed_my_posts;
 import com.example.HelluApp.MainFragment.feed.feed_my_top_posts;
 import com.example.HelluApp.MainFragment.feed.feed_recent;
 import com.example.HelluApp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 
@@ -33,6 +38,14 @@ public class fragment_feed extends Fragment {
        ActionBar actionBar=getActivity().getActionBar();
         //actionBar = requireActivity().getActionBar();
         //actionBar.setDisplayShowTitleEnabled(false);
+        FloatingActionButton imageButton = view.findViewById(R.id.fab);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), daily_stamp_write.class);
+                startActivity(intent);
+            }
+        });
 
 
         fragment_recent = new feed_recent();
