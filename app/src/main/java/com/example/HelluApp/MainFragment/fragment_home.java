@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.example.HelluApp.Community.community;
 import com.example.HelluApp.DailyStamp.daily_stamp;
-import com.example.HelluApp.PlanReview.plan_reivew;
+import com.example.HelluApp.PlanReview.plan_review;
 import com.example.HelluApp.R;
 import com.example.HelluApp.Metaverse.metaverse;
 import com.example.HelluApp.Walking.walking;
@@ -65,7 +65,7 @@ public class fragment_home extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), plan_reivew.class);
+                Intent intent = new Intent(getActivity(), plan_review.class);
                 startActivity(intent);
             }
         });

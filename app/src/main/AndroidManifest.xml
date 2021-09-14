@@ -38,7 +38,7 @@
         <activity android:name=".DailyStamp.daily_stamp_camera" />
         <activity android:name=".Metaverse.metaverse" />
         <activity android:name=".Walking.walking" />
-        <activity android:name=".PlanReview.plan_reivew" />
+        <activity android:name=".PlanReview.plan_review" />
         <activity android:name=".plan_choose" />
         <activity android:name=".DailyStamp.daily_stamp" />
         <activity android:name=".MainActivity" />

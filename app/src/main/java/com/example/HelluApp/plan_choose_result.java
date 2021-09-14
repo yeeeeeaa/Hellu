@@ -41,7 +41,7 @@ public class plan_choose_result extends AppCompatActivity {
     private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private final DatabaseReference databaseReference = firebaseDatabase.getReference();
     // 파이어베이스 유저 아이디 가져오는 코드인 듯? From. daily_stamp_write.java
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseUser user = mAuth.getCurrentUser();
     String Uid = user.getUid();         // user의 고유 랜덤 값(?)을 문자열로 반환해줌
 
@@ -79,6 +79,7 @@ public class plan_choose_result extends AppCompatActivity {
         LoseWeight = bundle.getString("LoseWeight");
         mealTime = bundle.getStringArrayList("mealTime");
         amountOfExercise = bundle.getString("amountOfExercise");
+        PresentWeight = bundle.getString("PresentWeight");
 
         StringBuilder str_meal = new StringBuilder();
         for (String meal_feedback : meal_feedback) {
@@ -97,10 +98,10 @@ public class plan_choose_result extends AppCompatActivity {
 
         Plan_result.put("성별", Gender);
         Plan_result.put("나이", Age);
-        Plan_result.put("신장", EditHeight);
+        Plan_result.put("신장", Height);      // 저장 안 됨
         Plan_result.put("체중", EditWeight);
         Plan_result.put("목표 감량 체중", LoseWeight);
-        Plan_result.put("현재 체중", PresentWeight);
+        Plan_result.put("현재 체중", PresentWeight);    // 저장 안 됨
         Plan_result.put("목표 체중", GoalWeight);
         Plan_result.put("운동 주 횟수", numberOfWeekOfExercise);
         Plan_result.put("하루 목표 운동량", amountOfExercise);
