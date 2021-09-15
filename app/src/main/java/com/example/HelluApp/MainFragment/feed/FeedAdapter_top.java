@@ -1,6 +1,5 @@
 package com.example.HelluApp.MainFragment.feed;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +15,12 @@ import com.example.HelluApp.R;
 
 import java.util.ArrayList;
 
-public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
+public class FeedAdapter_top extends RecyclerView.Adapter<FeedAdapter_top.FeedViewHolder> {
 
     private ArrayList<Post> arrayList;
-    private feed_recent context;
+    private feed_my_top_posts context;
 
-    public FeedAdapter(ArrayList<Post> arrayList, feed_recent context) {
+    public FeedAdapter_top(ArrayList<Post> arrayList, feed_my_top_posts context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -35,13 +34,13 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FeedViewHolder holder, int position) {
-        Glide.with(holder.itemView).load(arrayList.get(position).uid).into(holder.iv_profile); //프로필 이미지
+    public void onBindViewHolder(@NonNull FeedAdapter_top.FeedViewHolder holder, int position) {
+        Glide.with(holder.itemView).load(arrayList.get(position).uid).into(holder.iv_profile);
         Glide.with(holder.itemView).load(arrayList.get(position).image_path).into(holder.iv_image); //글 이미지
-        //holder.tv_date.setText(arrayList.get(position).date); //날짜
+        //holder.tv_date.setText(arrayList.get(position).date); //제목
         holder.tv_author.setText(String.valueOf(arrayList.get(position).author)); //글 작성자
         holder.tv_title.setText(arrayList.get(position).title); //제목
-        holder.tv_content.setText(String.valueOf(arrayList.get(position).content)); //내용
+        holder.tv_content.setText(String.valueOf(arrayList.get(position).content)); //내용 일부
     }
 
     @Override
