@@ -47,7 +47,6 @@ public class fragment_feed extends Fragment {
             }
         });
 
-
         fragment_recent = new feed_recent();
         fragment_mypost = new feed_my_posts();
         fragment_mytoppost = new feed_my_top_posts();
