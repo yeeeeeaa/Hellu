@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import com.example.HelluApp.DailyStamp.daily_stamp_camera;
 import com.example.HelluApp.DailyStamp.daily_stamp_write;
 import com.example.HelluApp.R;
-import com.example.HelluApp.Walking.walking_ranking;
+import com.example.HelluApp.Community.community_user;
 import com.example.HelluApp.Walking.walking_walking;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,6 +27,7 @@ public class community extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
+        //getFragmentManager().beginTransaction().replace(R.id.content_layout, new community_user()).commit();
 
         //하단 네비게이션 화면 선택하면 눌리는 함수
         mBottomNV = findViewById(R.id.community_navigation);
@@ -60,7 +61,7 @@ public class community extends AppCompatActivity {
                 fragment = new community_chatting();
 
             } else{
-                fragment=new community_user();
+                fragment = new community_user();
             }
 
             fragmentTransaction.add(R.id.content_layout, fragment, tag);
@@ -72,5 +73,6 @@ public class community extends AppCompatActivity {
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commitNow();
     }
+
 
 }

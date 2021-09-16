@@ -1,2 +1,3 @@
-package com.example.HelluApp.Community;public class FirestoreAdapter {
+package com.example.HelluApp.Community;
+public class FirestoreAdapter {
 }

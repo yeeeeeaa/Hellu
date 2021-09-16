@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.HelluApp.Community.users_model;
 import com.example.HelluApp.MainFragment.fragment_mypage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -81,7 +82,11 @@ public class signup extends AppCompatActivity {
                                     String ProfileUrl = "https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2";
                                     User user1 = new User(Nickname, Email, Uid, ProfileUrl);
                                     HashMap<String, Object> user_data = user1.usertomap();
-
+                                    users_model users_models = new users_model();
+                                    users_models.usernm = editTextTextName.getText().toString().trim();
+                                    users_models.userphoto = "https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2";
+                                    users_models.uid = user.getUid();
+                                    users_models.useremail = user.getEmail();
                                     /*
                                     //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
                                     HashMap<Object,String> hashMap = new HashMap<>();
@@ -104,6 +109,7 @@ public class signup extends AppCompatActivity {
                                     return;
                                 }
                             }
+
                         });
 
             }
