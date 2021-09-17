@@ -1,7 +1,5 @@
 package com.example.HelluApp.Community;
 
-import java.util.HashMap;
-
 public class users_model {
     public static String useremail;
     public static String usernm;
@@ -48,4 +46,6 @@ public class users_model {
         this.uid = uid;
     }
 
+    public void setUsernm() {
+    }
 }
