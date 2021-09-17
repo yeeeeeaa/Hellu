@@ -1,19 +1,30 @@
 package com.example.HelluApp.Community;
 
-public class users_model {
-    public String useremail;
-    public String usernm;
-    public String userphoto;
-    public String uid;
+import java.util.HashMap;
 
-    public String getUseremail() {
+public class users_model {
+    public static String useremail;
+    public static String usernm;
+    public static String userphoto;
+    public static String uid;
+
+    public users_model(){ }
+
+    public users_model(String useremail, String usernm, String userphoto, String uid){
+        this.useremail = useremail;
+        this.usernm = usernm;
+        this.userphoto = userphoto;
+        this.uid = uid;
+    }
+
+    public static String getUseremail() {
         return useremail;
     }
     public void setUseremail(String useremail) {
         this.useremail = useremail;
     }
 
-    public String getUsernm() {
+    public static String getUsernm() {
         return usernm;
     }
 
@@ -21,7 +32,7 @@ public class users_model {
         this.usernm = usernm;
     }
 
-    public String getUserphoto() {
+    public static String getUserphoto() {
         return userphoto;
     }
 
@@ -29,11 +40,12 @@ public class users_model {
         this.userphoto = userphoto;
     }
 
-    public String getUid() {
+    public static String getUid() {
         return uid;
     }
 
     public void setUid(String uid) {
         this.uid = uid;
     }
+
 }
