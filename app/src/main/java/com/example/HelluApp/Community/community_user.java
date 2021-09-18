@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.HelluApp.R;
 import com.example.HelluApp.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,8 +45,13 @@ public class community_user extends Fragment {
     String Profile;
     String Uid;
     List<String> users_uids = new ArrayList<>();
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
+    private String currentUid = user.getUid();
 
     int i = 0;
+    int first;
+    int current;
 
     @Nullable
     @Override
@@ -72,24 +79,15 @@ public class community_user extends Fragment {
                         users_uids.add(snapshot.getKey());
                         users_models.add(snapshot.child(users_uids.get(i)).getValue(users_model.class));
 
-                        //Nickname = users_model.getUsernm();
-
-                        //users_models.add(snapshot.getValue(users_model.class)); // 아이템 추가
-
-                        //users_model users_model_list = snapshot.child(users_uids.get(i)).getValue(users_model.class);
-/*
-                        Email.add(rDatabase.child(users_uids.get(i)).child("Email").toString());
-                        Nickname.add(rDatabase.child(users_uids.get(i)).child("Nickname").toString());
-                        Profile.add(rDatabase.child(users_uids.get(i)).child("ProfileUrl").toString());
-                        Uid.add(rDatabase.child(users_uids.get(i)).child("Uid").toString());
-                        //Email = rDatabase.child(users_uids.get(i)).child("Email").toString();
-
- */
-                        //users_models.add(new users_model(Email.get(i), Nickname.get(i), Profile.get(i), Uid.get(i)));
-
                         i++;
                     }
                     notifyDataSetChanged();
+                    for(int k = 0;k < users_uids.size(); k++){
+                        if(users_uids.get(k).equals(currentUid)) {
+                            users_uids.remove(currentUid);
+                            users_uids.add(0, currentUid);
+                        }
+                    }
                 }
 
                 @Override
@@ -105,18 +103,26 @@ public class community_user extends Fragment {
             return new CustomViewHolder(view);
         }
         @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position){
-            rDatabase.child(users_uids.get(position)).addListenerForSingleValueEvent(new ValueEventListener() {
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position){
+            first = 1;
+            current = 0;
+            FirebaseDatabase.getInstance().getReference("User").addValueEventListener(new ValueEventListener() {
+                @SuppressLint("NotifyDataSetChanged")
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Nickname = dataSnapshot.child("Nickname").getValue(String.class);
-                    Email = dataSnapshot.child("Email").getValue(String.class);
-                    Profile = dataSnapshot.child("ProfileUrl").getValue(String.class);
-                    Uid = dataSnapshot.child("Uid").getValue(String.class);
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Nickname = dataSnapshot.child(users_uids.get(position)).child("Nickname").getValue(String.class);
+                    Email = dataSnapshot.child(users_uids.get(position)).child("Email").getValue(String.class);
+                    Profile = dataSnapshot.child(users_uids.get(position)).child("ProfileUrl").getValue(String.class);
+                    Uid = dataSnapshot.child(users_uids.get(position)).child("Uid").getValue(String.class);
+                    first = 0;
+                    Glide.with(holder.itemView.getContext())
+                            .load(Profile).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder) holder).imageView);
+                    //((CustomViewHolder)holder).textView.setText(users_models.get(position).usernm);
+                    ((CustomViewHolder) holder).textView.setText(Nickname);
                 }
 
                 @Override
-                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                public void onCancelled(@NonNull DatabaseError error) {
 
                 }
             });
@@ -124,10 +130,6 @@ public class community_user extends Fragment {
             //Picasso.get().load(users_models.get(position).userphoto).into(((CustomViewHolder)holder).imageView);
             //Picasso.get().load("https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2").into(((CustomViewHolder)holder).imageView);
             //Glide.with(holder.itemView.getContext()).load(users_models.get(position).userphoto).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder)holder).imageView);
-            Glide.with(holder.itemView.getContext())
-                    .load(rDatabase.child(users_uids.get(position)).child("ProfileUrl").toString()).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder)holder).imageView);
-            //((CustomViewHolder)holder).textView.setText(users_models.get(position).usernm);
-            ((CustomViewHolder)holder).textView.setText(Nickname);
         }
         @Override
         public int getItemCount(){
