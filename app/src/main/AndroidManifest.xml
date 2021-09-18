@@ -28,6 +28,7 @@
             android:exported="true" />
         <activity android:name=".MainFragment.MypageChange" />
         <activity android:name=".Community.community" />
+        <activity android:name=".Community.community_message" />
         <activity android:name=".plan_choose_result" />
         <activity
             android:name=".signup"

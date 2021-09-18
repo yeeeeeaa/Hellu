@@ -1,6 +1,9 @@
 package com.example.HelluApp.Community;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -123,6 +126,18 @@ public class community_user extends Fragment {
                             .load(Profile).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder) holder).imageView);
                     //((CustomViewHolder)holder).textView.setText(users_models.get(position).usernm);
                     ((CustomViewHolder) holder).textView.setText(Nickname);
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view){
+                            Intent intent = new Intent(view.getContext(), community_message.class);
+                            intent.putExtra("destinationUid", Uid);
+                            ActivityOptions activityOptions = null;
+                            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                                activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.fromleft, R.anim.fromleft);
+                                startActivity(intent, activityOptions.toBundle());
+                            }
+                        }
+                    });
                 }
 
                 @Override
