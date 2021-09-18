@@ -2,63 +2,43 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+
+    android:orientation="horizontal"
+    android:layout_height="60dp">
 
 <!--    친구목록에 들어갈 유저_아이템(프사,이름,상태메시지 등)을 찍어주는 레이아웃-->
 
-    <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
+    <!--이름-->
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="20dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        app:cardBackgroundColor="@color/light_gray">
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:text="이름"
+        android:textSize="16sp"
+        android:textColor="#000"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical"
-            android:padding="5dp">
+    <!--찌르기 버튼-->
+    <View
+        android:layout_width="288dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="15dp">
-
-            <!--프로필 사진-->
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/ic_launcher"
-                android:layout_alignParentRight="true"/>
-
-            <!--이름-->
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="이름"
-                android:textSize="16sp"
-                android:textColor="#000"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <!--찌르기 버튼-->
-            <Button
-                android:layout_gravity="right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="찌르기"/>
-
-        </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    <Button
+        android:id = "@+id/alertbutton"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="30dp"
+        android:text="찌르기" />
 </LinearLayout>

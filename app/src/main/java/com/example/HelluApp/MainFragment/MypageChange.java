@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.HelluApp.Community.users_model;
 import com.example.HelluApp.MainFragment.fragment_mypage;
 import com.example.HelluApp.User;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -180,7 +181,8 @@ public class MypageChange extends AppCompatActivity {
                                 Map<String, Object> profileUpdates = new HashMap<>();
                                 profileUpdates.put("ProfileUrl", profile);
                                 usersRef.updateChildren(profileUpdates);
-                                //닉네임을 key 식별자로 하고 프로필 이미지의 주소를 값으로 저장
+
+                                        //닉네임을 key 식별자로 하고 프로필 이미지의 주소를 값으로 저장
 
                                 //2. 내 phone에 nickName, profileUrl을 저장
                                 SharedPreferences preferences= getSharedPreferences("account",MODE_PRIVATE);
