@@ -28,6 +28,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -50,8 +51,6 @@ public class community_user extends Fragment {
     private String currentUid = user.getUid();
 
     int i = 0;
-    int first;
-    int current;
 
     @Nullable
     @Override
@@ -61,6 +60,8 @@ public class community_user extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext()));
         recyclerView.setAdapter(new CommunityUsersRecyclerViewAdapter());
+
+
         return view;
     }
 
@@ -104,17 +105,20 @@ public class community_user extends Fragment {
         }
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position){
-            first = 1;
-            current = 0;
             FirebaseDatabase.getInstance().getReference("User").addValueEventListener(new ValueEventListener() {
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(users_uids.get(position).equals(currentUid)) {
+                        ((CustomViewHolder) holder).button.setVisibility(View.GONE);
+                    }
+                    else if(!users_uids.get(position).equals(currentUid)) {
+                        ((CustomViewHolder) holder).button.setVisibility(View.VISIBLE);
+                    }
                     Nickname = dataSnapshot.child(users_uids.get(position)).child("Nickname").getValue(String.class);
                     Email = dataSnapshot.child(users_uids.get(position)).child("Email").getValue(String.class);
                     Profile = dataSnapshot.child(users_uids.get(position)).child("ProfileUrl").getValue(String.class);
                     Uid = dataSnapshot.child(users_uids.get(position)).child("Uid").getValue(String.class);
-                    first = 0;
                     Glide.with(holder.itemView.getContext())
                             .load(Profile).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder) holder).imageView);
                     //((CustomViewHolder)holder).textView.setText(users_models.get(position).usernm);
@@ -138,12 +142,14 @@ public class community_user extends Fragment {
         private class CustomViewHolder extends RecyclerView.ViewHolder{
             public ImageView imageView;
             public TextView textView;
+            public Button button;
 
             public CustomViewHolder(View view){
                 super(view);
 
                 imageView = (ImageView) view.findViewById(R.id.profile);
                 textView = (TextView) view.findViewById(R.id.name);
+                button = (Button) view.findViewById(R.id.alertbutton);
             }
         }
     }
