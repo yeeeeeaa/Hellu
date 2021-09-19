@@ -49,8 +49,10 @@ public class plan_choose extends AppCompatActivity {
     ArrayList<String> mealTime = new ArrayList<>();          //식사 시간
     String purposeOfExercise = "";      // 운동 목적(Motivation)
     String exercise;                    // 추천 운동
-    Button result_btn;
     ArrayList<String> meal_feedback = new ArrayList<>();   // 식단가이드(피드백)
+    String exerciseURL;            // 추천 운동 영상 링크
+    ArrayList<String> totalExerciseURL = new ArrayList<>();    // 추천 운동 영상 묶음
+    Button result_btn;
 
     private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private final DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -92,7 +94,9 @@ public class plan_choose extends AppCompatActivity {
             String BEE = CalculateBEE(Gender, EditWeight, EditHeight, Age);
             Plan_result.put("기초대사량", BEE);
 
+            // All_Plan에 저장
             databaseReference.child("All_Plan").push().setValue(Plan_result);
+            // User_Plan/UID에 저장
             databaseReference.child("User_Plan").child(Uid).setValue(Plan_result);
 
             // 다음 화면으로 넘어감.
@@ -364,45 +368,50 @@ public class plan_choose extends AppCompatActivity {
                         switch(index){
                             case 0:
                                 exercise = "체육관 운동";
+                                exerciseURL = "https://www.youtube.com/watch?v=zjfGs_iIIE8";
                                 break;
 
                             case 1:
                                 exercise = "웨이트 트레이닝";
+                                exerciseURL = "https://www.youtube.com/watch?v=Ah72gR5DrxU";
                                 break;
 
                             case 2:
                                 exercise = "수영";
+                                exerciseURL = "https://www.youtube.com/watch?v=bPWqO20Xzco";
                                 break;
 
                             case 3:
                                 exercise = "팀 스포츠";
+                                exerciseURL = "https://www.youtube.com/watch?v=yyjOhsNEqtE";
                                 break;
 
                             case 4:
                                 exercise = "조깅";
+                                exerciseURL = "https://www.youtube.com/watch?v=6zsHvi7aqjE";
                                 break;
 
                             case 5:
                                 exercise = "요가";
+                                exerciseURL = "https://www.youtube.com/watch?v=OBTl49bVk94";
                                 break;
 
                             case 6:
                                 exercise = "줌바 댄스";
+                                exerciseURL = "https://www.youtube.com/watch?v=eK90xs8qPVw";
                                 break;
 
                             default:
                                 break;
                         }
-                        /*
-                        for(int i = 0; i < input[0].length; i++){    // 입력값 테스트
-                            System.out.println(input[0][i] + "\n");
-                        }
-                        */
-                        // 변수에 저장해서 출력하기
-//                        prefer_ex.setText(exercise);
+
+                        // 운동 가이드
+                        totalExerciseURL.add("https://www.youtube.com/watch?v=yyjOhsNEqtE");
+                        totalExerciseURL.add(exerciseURL);
 
                         // 파베 저장 코드
                         databaseReference.child("User_Plan").child(Uid).child("추천운동").setValue(exercise);
+                        databaseReference.child("User_Plan").child(Uid).child("운동 가이드").setValue(totalExerciseURL);
 
                         interpreter.close();    // 인터프리터 종료
                     }
@@ -421,7 +430,6 @@ public class plan_choose extends AppCompatActivity {
         }
 
         String BEE = decimalFormat.format(resultBEE);
-
         return BEE;
     }
 
