@@ -124,7 +124,6 @@ public class community_user extends Fragment {
                     Uid = dataSnapshot.child(users_uids.get(position)).child("Uid").getValue(String.class);
                     Glide.with(holder.itemView.getContext())
                             .load(Profile).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder) holder).imageView);
-                    //((CustomViewHolder)holder).textView.setText(users_models.get(position).usernm);
                     ((CustomViewHolder) holder).textView.setText(Nickname);
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -145,11 +144,7 @@ public class community_user extends Fragment {
 
                 }
             });
-
-            //Picasso.get().load(users_models.get(position).userphoto).into(((CustomViewHolder)holder).imageView);
-            //Picasso.get().load("https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2").into(((CustomViewHolder)holder).imageView);
-            //Glide.with(holder.itemView.getContext()).load(users_models.get(position).userphoto).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder)holder).imageView);
-        }
+}
         @Override
         public int getItemCount(){
             return users_models.size();
