@@ -92,7 +92,7 @@ public class plan_choose extends AppCompatActivity {
             String BEE = CalculateBEE(Gender, EditWeight, EditHeight, Age);
             Plan_result.put("기초대사량", BEE);
 
-//            databaseReference.child("User_Plan").push().setValue(Plan_result);
+            databaseReference.child("All_Plan").push().setValue(Plan_result);
             databaseReference.child("User_Plan").child(Uid).setValue(Plan_result);
 
             // 다음 화면으로 넘어감.
