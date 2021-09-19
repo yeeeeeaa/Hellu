@@ -81,8 +81,10 @@ public class plan_choose_result extends AppCompatActivity {
         amountOfExercise = bundle.getString("amountOfExercise");
         PresentWeight = bundle.getString("PresentWeight");
 
+        //meal_feedback이 list라서 string으로 바꿈
         StringBuilder str_meal = new StringBuilder();
         for (String meal_feedback : meal_feedback) {
+            str_meal.append("\n");
             str_meal.append(meal_feedback);
             str_meal.append("\n");
         }

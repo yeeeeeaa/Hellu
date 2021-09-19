@@ -41,7 +41,7 @@ public class plan_choose extends AppCompatActivity {
     Button result_btn;
     ArrayList<String> meal_feedback = new ArrayList<>();   // 식단가이드(피드백)
 
-//    private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    //    private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 //    private final DatabaseReference databaseReference = firebaseDatabase.getReference();
     // 파이어베이스 유저 아이디 가져오는 코드인 듯? From. daily_stamp_write.java
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -163,14 +163,14 @@ public class plan_choose extends AppCompatActivity {
         CheckBox option76 = findViewById(R.id.q7_radio_Button6);
 
         //성별
-        if(optionG1.isChecked()){
+        if (optionG1.isChecked()) {
             Gender = "남";
-        } else if (optionG2.isChecked()){
+        } else if (optionG2.isChecked()) {
             Gender = "여";
         }
 
         //나이
-        if (optionAge != null){
+        if (optionAge != null) {
             Age = optionAge.getText().toString().trim();
         } else {
             Toast.makeText(plan_choose.this, "나이를 입력해주세요.", Toast.LENGTH_SHORT).show();
@@ -178,7 +178,7 @@ public class plan_choose extends AppCompatActivity {
         }
 
         //신장, 체중
-        if (optionHeight != null || optionWeight != null){
+        if (optionHeight != null || optionWeight != null) {
             EditHeight = optionHeight.getText().toString().trim();
             EditWeight = optionWeight.getText().toString().trim();
         } else {
@@ -187,7 +187,7 @@ public class plan_choose extends AppCompatActivity {
         }
 
         //목표감량 체중, 아직 계산은 안했음
-        if (optionLose != null){
+        if (optionLose != null) {
             LoseWeight = optionLose.getText().toString().trim();
 
             //현재 체중 = 입력한 체중값
@@ -279,27 +279,39 @@ public class plan_choose extends AppCompatActivity {
         // 6. 식단가이드
         if (option71.isChecked()) {
             //meal_guide.add("밥");
-            meal_feedback.add("밥 줄이세요.");
+            meal_feedback.add("밥을 많이 드시는군요. 탄수화물 과다 섭취는 인슐린을 지나치게 분비시켜 체내 지방 및 콜레스테롤을 " +
+                    "축적시키므로 당뇨나 비만, 고혈압 등을 유발할 수 있습니다. 탄수화물 하루 권장섭취량은 250~300g 이며 이를 칼로리로 " +
+                    "계산하면 1000~1200kcal 정도이니 참고해서 탄수화물 섭취를 줄여보시길 바랍니다.");
         }
         if (option72.isChecked()) {
             //meal_guide.add("빵");
-            meal_feedback.add("빵 줄이세요.");
+            meal_feedback.add("빵을 많이 드시는군요. 빵과 같은 밀가루 음식은 설탕, 베이킹파우더, 버터, 마가린 등이 들어가는 고탄수화물 " +
+                    "식품이기 때문에 혈당을 빠르게 치솟게 해 비만이나 당뇨, 지방간 등을 유발할 수 있습니다. 다이어트와 건강개선을 위해서는 " +
+                    "밀가루 음식을 최대한 줄이시는 것이 좋습니다.");
         }
         if (option73.isChecked()) {
             //meal_guide.add("라면");
-            meal_feedback.add("라면 줄이세요.");
+            meal_feedback.add("라면을 많이 드시는군요. 라면은 나트륨이 많은 음식으로 유명합니다. 특히 라면 국물은 사실상 나트륨 덩어리와 " +
+                    "다름 없는데요. 나트륨 과다 섭취와 관련된 4대 만성질환(고혈압, 심장병, 만성 신장병, 뇌경색)뿐만 아니라 위암까지도 " +
+                    "유발할 수 있습니다. 라면은 최대한 줄이고, 만약 먹는다면 국물은 먹지 않는 것이 좋습니다.");
         }
         if (option74.isChecked()) {
             //meal_guide.add("패스트푸드");
-            meal_feedback.add("패스트푸드 줄이세요.");
+            meal_feedback.add("패스트푸드는 햄버거, 감자튀김, 치킨, 피자 등이 대표적입니다. 이들은 과한 칼로리, 포화지방, 트랜스 지방, " +
+                    "콜레스테롤 등이 많아 영양불균형을 초래합니다. 염증을 유발하는 가공식품은 만성염증을 유발하기 때문에 최대한 줄이시는 " +
+                    "것이 좋습니다. ");
         }
         if (option75.isChecked()) {
             //meal_guide.add("각종 배달음식");
-            meal_feedback.add("배달음식 줄이세요.");
+            meal_feedback.add("배달음식의 경우 자극적인 음식이 많아 나트륨 과다 섭취 가능성이 큽니다. 나트륨 과다 섭취는 " +
+                    "고혈압, 뇌졸중, 당뇨, 비만 등 만성질환을 유발합니다. 다이어트나 건강 개선을 위해서는 배달음식을 최대한 줄이고 " +
+                    "가정식을 먹는 것이 좋습니다.");
         }
         if (option76.isChecked()) {
             //meal_guide.add("군것질, 간식");
-            meal_feedback.add("군것질,간식 줄이세요.");
+            meal_feedback.add("군것질이나 간식을 많이 드시는군요. 하루 동안 간식을 자주 먹을수록 더 많은 전체 칼로리를 소비하게 되고, " +
+                    "이것은 체중증가로 이어질 수 있습니다. 군것질을 줄이기 위해서는 포만감이 오래 가는 고단백 식사하기, 음식 일지 쓰기, " +
+                    "물 자주 마시기, 운동하기 등의 방법이 있습니다.");
         }
     }
 
