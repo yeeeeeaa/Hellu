@@ -54,6 +54,23 @@ public class plan_review extends AppCompatActivity {
                 String exerciseType = dataSnapshot.child("추천운동").getValue(String.class);
                 String usualAct = dataSnapshot.child("평소 활동량").getValue(String.class);
                 String basalMeta = dataSnapshot.child("기초대사량").getValue(String.class);
+                String mealGuide = "";
+                StringBuilder mealGuide_builder = new StringBuilder();
+
+                // 식단 가이드에 저장된 항목 불러오기
+                for(int i = 0; i < 6; i++){
+                    String intToStr = String.valueOf(i);
+                    DataSnapshot guide_ds = dataSnapshot.child("식단 가이드").child(intToStr);
+
+                    if( !guide_ds.exists() ){
+                        break;
+                    }else{
+                        mealGuide = guide_ds.getValue(String.class);
+                        mealGuide_builder.append("\n");
+                        mealGuide_builder.append(mealGuide);
+                        mealGuide_builder.append("\n");
+                    }
+                }
 
                 // 출력
                 present_weight.setText(nowWeight);
@@ -62,6 +79,7 @@ public class plan_review extends AppCompatActivity {
                 prefer_ex.setText(exerciseType);
                 usual_act.setText(usualAct);
                 basal_meta.setText(basalMeta);
+                meal_guide.setText(mealGuide_builder);
                 }
 
             @Override
