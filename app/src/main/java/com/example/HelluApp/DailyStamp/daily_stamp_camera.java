@@ -58,6 +58,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -66,6 +67,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -88,6 +91,7 @@ public class daily_stamp_camera extends AppCompatActivity{
     private SensorManager mSensorManager;
     private DeviceOrientation deviceOrientation;
     int mDSI_height, mDSI_width;
+    TextView setTime;
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
     static {
@@ -125,6 +129,16 @@ public class daily_stamp_camera extends AppCompatActivity{
         mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         deviceOrientation = new DeviceOrientation();
 
+        //date써서 타임스탬프 띄우기
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd\nHH:mm:ss");
+        String timeStamp = date.format(new Date());
+
+        //timestamp 타입은 Timestamp이기 때문에 string으로 바꿔줌
+        String str_timeStamp = String.valueOf(timeStamp);
+
+        setTime = findViewById(R.id.cameraTimeStampView);
+        setTime.setText(str_timeStamp);
+        
         initSurfaceView();
 
     }
