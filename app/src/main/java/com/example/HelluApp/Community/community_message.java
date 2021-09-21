@@ -1,5 +1,6 @@
 package com.example.HelluApp.Community;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -77,7 +78,7 @@ public class community_message extends AppCompatActivity {
         checkChatRoom();
     }
 
-    void  checkChatRoom(){
+    void checkChatRoom(){
         FirebaseDatabase.getInstance().getReference().child("Chatting_Room").orderByChild("users/"+uid).equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -88,6 +89,7 @@ public class community_message extends AppCompatActivity {
                         button.setEnabled(true);
                         recyclerView.setLayoutManager(new LinearLayoutManager(community_message.this));
                         recyclerView.setAdapter(new RecyclerViewAdapter());
+                        Log.d("MainActivity", "ValueEventListener : " + "도착 uid 저장하기 성공");
                     }
                 }
             }
@@ -101,17 +103,21 @@ public class community_message extends AppCompatActivity {
 
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         //List<chat_model.Comment> comments;
-        List<String> comments;
+        public List<String> comments;
         List<String> uids;
         public RecyclerViewAdapter(){
             comments = new ArrayList<>();
-            FirebaseDatabase.getInstance().getReference().child("Chatting_room").child(chatRoomUid).child("comments").addValueEventListener(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference("Chatting_room").child(chatRoomUid).child("comments").addValueEventListener(new ValueEventListener() {
+                @SuppressLint("NotifyDataSetChanged")
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                public void onDataChange(DataSnapshot dataSnapshot) {
                     comments.clear();
-                    for (DataSnapshot item : snapshot.getChildren()){
-                        //comments.add(item.getValue());
-                        comments.add(snapshot.child(chatRoomUid).getValue().toString());
+                    Log.d("MainActivity", "ValueEventListener : " + FirebaseDatabase.getInstance().getReference("Chatting_room").child(chatRoomUid).child("comments").child(uid).get());
+                    Log.d("MainActivity", "ValueEventListener : " + dataSnapshot.child(uid).getValue());
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        comments.add(snapshot.getValue().toString());
+                        Log.d("MainActivity", "ValueEventListener : " + snapshot.getValue());
+                        Log.d("MainActivity", "ValueEventListener : " + "코멘트 저장하기 성공");
                     }
                     notifyDataSetChanged();
                 }
@@ -125,13 +131,13 @@ public class community_message extends AppCompatActivity {
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, parent, false);
-
-
+            Log.d("MainActivity", "ValueEventListener : " + "뷰에 아이템 선언하기");
             return new MessageViewHolder(view);
         }
         @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position){
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position){
             ((MessageViewHolder)holder).textView_msg.setText(comments.get(position));
+            Log.d("MainActivity", "ValueEventListener : " + "메시지 띄우기 성공");
         }
         @Override
         public int getItemCount(){
@@ -142,6 +148,7 @@ public class community_message extends AppCompatActivity {
             public MessageViewHolder(View view){
                 super(view);
                 textView_msg = (TextView) view.findViewById(R.id.message_item_msg);
+                Log.d("MainActivity", "ValueEventListener : " + "뷰에 메시지 선언하기");
             }
         }
     }

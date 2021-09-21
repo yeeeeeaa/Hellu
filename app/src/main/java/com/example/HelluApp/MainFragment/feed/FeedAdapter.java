@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +32,15 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_item, parent, false);
         FeedViewHolder holder = new FeedViewHolder(view);
+
+        ImageButton starButton = view.findViewById(R.id.star_button);
+        starButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                starButton.setImageResource(R.drawable.ic_baseline_star_rate_24);
+            }
+        });
+
         return holder;
     }
 
@@ -38,7 +48,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     public void onBindViewHolder(@NonNull FeedViewHolder holder, int position) {
         Glide.with(holder.itemView).load(arrayList.get(position).uid).into(holder.iv_profile); //프로필 이미지
         Glide.with(holder.itemView).load(arrayList.get(position).image_path).into(holder.iv_image); //글 이미지
-        //holder.tv_date.setText(arrayList.get(position).date); //날짜
+        holder.tv_date.setText(arrayList.get(position).date); //날짜
         holder.tv_author.setText(String.valueOf(arrayList.get(position).author)); //글 작성자
         holder.tv_title.setText(arrayList.get(position).title); //제목
         holder.tv_content.setText(String.valueOf(arrayList.get(position).content)); //내용

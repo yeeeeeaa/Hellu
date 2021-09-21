@@ -129,7 +129,7 @@ public class community_user extends Fragment {
                         @Override
                         public void onClick(View view){
                             Intent intent = new Intent(view.getContext(), community_message.class);
-                            intent.putExtra("destinationUid", Uid);
+                            intent.putExtra("destinationUid", users_uids.get(position));
                             ActivityOptions activityOptions = null;
                             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
                                 activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.fromleft, R.anim.fromleft);
