@@ -138,7 +138,6 @@ public class daily_stamp_camera extends AppCompatActivity{
         });
 
         mSurfaceView = findViewById(R.id.surfaceView);
-        cameraLayoutView = findViewById(R.id.cameraLayoutView);
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
@@ -402,6 +401,7 @@ public class daily_stamp_camera extends AppCompatActivity{
         values.put(MediaStore.Images.Media.DISPLAY_NAME, title);
         values.put(MediaStore.Images.Media.DESCRIPTION, description);
         values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+        values.put(MediaStore.Images.Media.MIME_TYPE, "text/txt");      //가능?
 
         // Add the date meta data to ensure the image is added at the front of the gallery
         values.put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis());

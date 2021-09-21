@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <FrameLayout
+        android:id="@+id/cameraLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <SurfaceView
             android:id="@+id/surfaceView"
             android:layout_width="match_parent"
             android:layout_height="588dp" />
-
-    <FrameLayout
-        android:id="@+id/cameraLayoutView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/cameraTimeStampView"
@@ -23,7 +23,6 @@
                 android:text=""
                 android:layout_gravity="center"
                 android:textAlignment="center"/>
-
     </FrameLayout>
 
 
