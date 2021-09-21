@@ -20,6 +20,7 @@ public class FeedAdapter_my extends RecyclerView.Adapter<FeedAdapter_my.FeedView
 
     private ArrayList<Post> arrayList;
     private feed_my_posts context;
+    int count = 0;
 
     public FeedAdapter_my(ArrayList<Post> arrayList, feed_my_posts context) {
         this.arrayList = arrayList;
@@ -35,7 +36,13 @@ public class FeedAdapter_my extends RecyclerView.Adapter<FeedAdapter_my.FeedView
         starButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                starButton.setImageResource(R.drawable.ic_baseline_star_rate_24);
+                if((count%2)==0) {
+                    starButton.setImageResource(R.drawable.ic_baseline_star_rate_24);
+                    count+=1;
+                }else{
+                    starButton.setImageResource(R.drawable.ic_baseline_star_outline_24);
+                    count+=1;
+                }
             }
         });
         return holder;
