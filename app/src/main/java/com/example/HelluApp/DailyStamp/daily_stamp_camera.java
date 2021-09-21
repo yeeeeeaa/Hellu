@@ -151,8 +151,6 @@ public class daily_stamp_camera extends AppCompatActivity{
         setTime = findViewById(R.id.cameraTimeStampView);
         setTime.setText(timeStamp);
 
-        cameraLayoutView.addView(mSurfaceView);
-
         initSurfaceView();
 
     }
