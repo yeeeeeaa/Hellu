@@ -47,6 +47,14 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.hardware.Camera;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+
+import java.io.IOException;
+
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -55,9 +63,11 @@ import android.util.SparseIntArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,7 +89,8 @@ import java.util.Date;
 public class daily_stamp_camera extends AppCompatActivity{
 
     private SurfaceView mSurfaceView;
-    private SurfaceHolder mSurfaceViewHolder;
+    private FrameLayout cameraLayoutView;
+    private SurfaceHolder mHolder;
     private Handler mHandler;
     private ImageReader mImageReader;
     private CameraDevice mCameraDevice;
@@ -91,7 +102,7 @@ public class daily_stamp_camera extends AppCompatActivity{
     private SensorManager mSensorManager;
     private DeviceOrientation deviceOrientation;
     int mDSI_height, mDSI_width;
-    TextView setTime;
+    private TextView setTime;
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
     static {
@@ -100,6 +111,9 @@ public class daily_stamp_camera extends AppCompatActivity{
         ORIENTATIONS.append(ExifInterface.ORIENTATION_ROTATE_180, 180);
         ORIENTATIONS.append(ExifInterface.ORIENTATION_ROTATE_270, 270);
     }
+
+    Bitmap bmp = Bitmap.createBitmap(449, 47, Bitmap.Config.ARGB_8888);
+    Canvas canvas = new Canvas(bmp);
 
     //매일 인증 카메라.java
     @Override
@@ -124,6 +138,7 @@ public class daily_stamp_camera extends AppCompatActivity{
         });
 
         mSurfaceView = findViewById(R.id.surfaceView);
+        cameraLayoutView = findViewById(R.id.cameraLayoutView);
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
@@ -133,15 +148,15 @@ public class daily_stamp_camera extends AppCompatActivity{
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd\nHH:mm:ss");
         String timeStamp = date.format(new Date());
 
-        //timestamp 타입은 Timestamp이기 때문에 string으로 바꿔줌
-        String str_timeStamp = String.valueOf(timeStamp);
-
         setTime = findViewById(R.id.cameraTimeStampView);
-        setTime.setText(str_timeStamp);
-        
+        setTime.setText(timeStamp);
+
+        cameraLayoutView.addView(mSurfaceView);
+
         initSurfaceView();
 
     }
+
 
     @Override
     protected void onResume() {
@@ -165,12 +180,12 @@ public class daily_stamp_camera extends AppCompatActivity{
         mDSI_height = displayMetrics.heightPixels;
         mDSI_width = displayMetrics.widthPixels;
 
-
-        mSurfaceViewHolder = mSurfaceView.getHolder();
-        mSurfaceViewHolder.addCallback(new SurfaceHolder.Callback() {
+        mHolder = mSurfaceView.getHolder();
+        mHolder.addCallback(new SurfaceHolder.Callback() {
 
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
+
                 initCameraAndPreview();
             }
 
@@ -196,6 +211,7 @@ public class daily_stamp_camera extends AppCompatActivity{
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void initCameraAndPreview() {
+
         HandlerThread handlerThread = new HandlerThread("CAMERA2");
         handlerThread.start();
         mHandler = new Handler(handlerThread.getLooper());
@@ -266,8 +282,8 @@ public class daily_stamp_camera extends AppCompatActivity{
 
     public void takePreview() throws CameraAccessException {
         mPreviewBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
-        mPreviewBuilder.addTarget(mSurfaceViewHolder.getSurface());
-        mCameraDevice.createCaptureSession(Arrays.asList(mSurfaceViewHolder.getSurface(), mImageReader.getSurface()), mSessionPreviewStateCallback, mHandler);
+        mPreviewBuilder.addTarget(mHolder.getSurface());
+        mCameraDevice.createCaptureSession(Arrays.asList(mHolder.getSurface(), mImageReader.getSurface()), mSessionPreviewStateCallback, mHandler);
     }
 
     //카메라 콜백 이미지 캡처
@@ -280,6 +296,7 @@ public class daily_stamp_camera extends AppCompatActivity{
                 mPreviewBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
                 mPreviewBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
                 mSession.setRepeatingRequest(mPreviewBuilder.build(), null, mHandler);
+
             } catch (CameraAccessException e) {
                 e.printStackTrace();
             }
