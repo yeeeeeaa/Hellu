@@ -23,12 +23,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelluApp">
+        <!-- 팝업 Activity -->
+        <activity
+            android:name=".PlanReview.plan_evaluation"
+            android:exported="true"
+            android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".Metaverse.metaverse_trainingroom"
             android:exported="true" />
-        <activity
+        <!--<activity
             android:name=".walking_item"
-            android:exported="true" />
+            android:exported="true" />-->
         <activity android:name=".MainFragment.MypageChange" />
         <activity android:name=".Community.community" />
         <activity android:name=".Community.community_message" />

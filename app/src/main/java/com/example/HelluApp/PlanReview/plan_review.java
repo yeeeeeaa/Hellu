@@ -3,8 +3,10 @@ package com.example.HelluApp.PlanReview;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.HelluApp.R;
@@ -28,7 +30,21 @@ public class plan_review extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_review);
 
-        // 텍스트뷰
+        // 파이어베이스에서 값 가져오기
+        PlanReview();
+
+        // 평가하기 버튼
+        Button evaluationBtn = findViewById(R.id.evaluationBtn);
+
+        evaluationBtn.setOnClickListener(view -> {
+            // 다음 화면으로 넘어감.
+            Intent intent = new Intent(getApplicationContext(), plan_evaluation.class);
+            startActivity(intent);
+        });
+    }
+
+    private void PlanReview(){
+        // 텍스트뷰 UI 객체 생성
         TextView present_weight = findViewById(R.id.present_weight);     // 현재 체중
         TextView goal_weight = findViewById(R.id.goal_weight);           // 목표 체중
         TextView exercise_plan = findViewById(R.id.exercise_plan);       // 운동 계획(일주일에 몇 번 운동할지)
@@ -39,7 +55,6 @@ public class plan_review extends AppCompatActivity {
         TextView exercise_guide = findViewById(R.id.exercise_guide);     // 운동 가이드
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("User_Plan");
-
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         String Uid = user.getUid();
@@ -106,7 +121,7 @@ public class plan_review extends AppCompatActivity {
                 basal_meta.setText(basalMeta);
                 meal_guide.setText(mealGuide_builder);
                 exercise_guide.setText(exerciseGuide_builder);
-                }
+            }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
