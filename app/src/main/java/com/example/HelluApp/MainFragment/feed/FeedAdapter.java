@@ -1,6 +1,7 @@
 package com.example.HelluApp.MainFragment.feed;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         holder.tv_author.setText(String.valueOf(arrayList.get(position).author)); //글 작성자
         holder.tv_title.setText(arrayList.get(position).title); //제목
         holder.tv_content.setText(String.valueOf(arrayList.get(position).content)); //내용
+        //holder.tv_starnum.setText(Integer.valueOf(arrayList.get(position).content)); //별 개수
     }
 
     @Override
@@ -74,6 +76,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         TextView tv_content;
         TextView tv_author;
         TextView tv_date;
+        //TextView tv_starnum;    //별 개수 나타내는 TextView
 
         public FeedViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,6 +87,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             this.tv_title = itemView.findViewById(R.id.tv_title);
             this.tv_content = itemView.findViewById(R.id.tv_content);
             this.tv_author = itemView.findViewById(R.id.tv_author);
+            //this.tv_starnum = itemView.findViewById(R.id.tv_starnum);   //별 개수 나타내는 TextView
         }
     }
 }
