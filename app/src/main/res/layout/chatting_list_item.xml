@@ -2,24 +2,42 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:layout_height="70dp">
-    <ImageView
-        android:layout_margin="10dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_gravity="center_vertical"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/chatlist_img" />
-    <TextView
-        android:id="@+id/chatlist_text"
-        android:layout_marginTop="10dp"
-        android:text="방 이름"
-        android:layout_marginLeft="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#000"/>
+    android:layout_height="70dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="10dp"
+        android:id="@+id/user_photo"/>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User ID"
+            android:id="@+id/user_name"
+            android:layout_marginLeft="10dp"
+            android:textSize="18dp"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth = "150dp"
+            android:text="User ID"
+            android:id="@+id/user_msg"
+            android:layout_marginRight="5dp"
+            android:textSize="14dp"
+            android:layout_alignParentRight="true"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical"/>
+    </RelativeLayout>
 </LinearLayout>
