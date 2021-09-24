@@ -1,7 +1,6 @@
 package com.example.HelluApp.PlanReview;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.HelluApp.MainActivity;
 import com.example.HelluApp.R;
 
 public class plan_evaluation extends Activity {
@@ -29,8 +27,6 @@ public class plan_evaluation extends Activity {
     public void mOnClose(View view) {
         // 창 닫기
         finish();
-//        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//        startActivity(intent);
 
         // 토스트 메시지
         Toast.makeText(this.getApplicationContext(),"평가를 남겨주셔서 감사합니다!", Toast.LENGTH_SHORT).show();
