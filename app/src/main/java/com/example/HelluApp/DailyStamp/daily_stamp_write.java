@@ -60,6 +60,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
     String Content;
     String Image_path;
     String filename;
+    String Kcal;
 
     Button save_button;         //매일인증 저장하기 버튼
     Button gallery;             //갤러리 열기 버튼
@@ -204,6 +205,9 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         //내용
         EditText optionContent = findViewById(R.id.daily_write_content);
 
+        //칼로리
+        EditText optionKcal = findViewById(R.id.daily_write_kcal);
+
         //제목 입력
         if (optionTitle != null) {
             Title = optionTitle.getText().toString().trim();
@@ -217,6 +221,14 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             Content = optionContent.getText().toString().trim();
         } else {
             Toast.makeText(this, "내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //칼로리 입력
+        if(optionKcal != null){
+            Kcal = optionKcal.getText().toString().trim();
+        } else {
+            Toast.makeText(this, "칼로리를 입력해주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -234,7 +246,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
                         } else {
                             // Write new post
-                            writeNewPost(Uid, user.Nickname, Title, Content, Image_path, getDate, filename);
+                            writeNewPost(Uid, user.Nickname, Title, Content, Image_path, getDate, filename, Kcal);
                         }
 
                     }
@@ -247,11 +259,11 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     }
 
-    private void writeNewPost(String Uid, String Nickname, String Title, String Content, String Image_path, String getDate, String filename) {
+    private void writeNewPost(String Uid, String Nickname, String Title, String Content, String Image_path, String getDate, String filename, String Kcal) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = databaseReference.child("User_Write").push().getKey();
-        Post post = new Post(Uid, Nickname, Title, Content, Image_path, getDate, filename);
+        Post post = new Post(Uid, Nickname, Title, Content, Image_path, getDate, filename, Kcal);
         Map<String, Object> postValues = post.posttomap();
 
         Map<String, Object> childUpdates = new HashMap<>();
