@@ -1,7 +1,10 @@
 package com.example.HelluApp.Community;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -38,15 +41,8 @@ import java.util.List;
 import java.util.Map;
 
 public class community_chatting extends Fragment {
-    private DatabaseReference rDatabase = FirebaseDatabase.getInstance().getReference("User");
-    String Nickname;
-    String Email;
-    String Profile;
-    String Uid;
-    List<String> users_uids = new ArrayList<>();
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
-    private String currentUid = user.getUid();
 
     int i = 0;
 
@@ -64,37 +60,17 @@ public class community_chatting extends Fragment {
     }
 
     class CommunityChattingRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-        public List<users_model> users_models;
+        public List<String> chatting_room;
+        public List<String> chatting_photo;
         //users_model users_models2;
 
         public CommunityChattingRecyclerViewAdapter(){
-            users_models = new ArrayList<>();
-            FirebaseDatabase.getInstance().getReference("User").addValueEventListener(new ValueEventListener() {
-                @SuppressLint("NotifyDataSetChanged")
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    users_models.clear();
-                    for(DataSnapshot snapshot :dataSnapshot.getChildren()){
-                        users_uids.add(snapshot.getKey());
-                        users_models.add(snapshot.child(users_uids.get(i)).getValue(users_model.class));
-
-                        i++;
-                    }
-                    users_uids.remove(currentUid);
-                    notifyDataSetChanged();
-                    for(int k = 0;k < users_uids.size(); k++){
-                        if(users_uids.get(k).equals(currentUid)) {
-                            users_uids.remove(currentUid);
-                            users_uids.add(0, currentUid);
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+            chatting_room = new ArrayList<>();
+            chatting_photo = new ArrayList<>();
+            chatting_room.add("조깅 운동 클럽");
+            chatting_room.add("다이어트 종합반");
+            chatting_photo.add("https://cdn.pixabay.com/photo/2016/07/11/03/57/jogging-1509003_960_720.jpg");
+            chatting_photo.add("https://cdn.pixabay.com/photo/2017/09/16/19/21/salad-2756467_960_720.jpg");
         }
 
         @Override
@@ -108,22 +84,14 @@ public class community_chatting extends Fragment {
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    Nickname = dataSnapshot.child(users_uids.get(position)).child("Nickname").getValue(String.class);
-                    Email = dataSnapshot.child(users_uids.get(position)).child("Email").getValue(String.class);
-                    Profile = dataSnapshot.child(users_uids.get(position)).child("ProfileUrl").getValue(String.class);
-                    Uid = dataSnapshot.child(users_uids.get(position)).child("Uid").getValue(String.class);
                     Glide.with(holder.itemView.getContext())
-                                .load(Profile).apply(new RequestOptions().circleCrop()).into(((community_chatting.CommunityChattingRecyclerViewAdapter.CustomViewHolder) holder).imageView);
-                    ((CustomViewHolder) holder).textView_name.setText(Nickname);
+                                .load(chatting_photo.get(position)).apply(new RequestOptions().circleCrop()).into(((community_chatting.CommunityChattingRecyclerViewAdapter.CustomViewHolder) holder).imageView);
+                    ((CustomViewHolder) holder).textView_name.setText(chatting_room.get(position));
 
-
-                    /*
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view){
                             Intent intent = new Intent(view.getContext(), community_message.class);
-                            intent.putExtra("destinationUid", users_uids.get(position));
                             ActivityOptions activityOptions = null;
                             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
                                 activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.fromleft, R.anim.fromleft);
@@ -132,7 +100,6 @@ public class community_chatting extends Fragment {
                         }
                     });
 
-                     */
                 }
 
                 @Override
@@ -143,19 +110,17 @@ public class community_chatting extends Fragment {
         }
         @Override
         public int getItemCount(){
-            return users_models.size()-1;
+            return chatting_room.size();
         }
         private class CustomViewHolder extends RecyclerView.ViewHolder{
             public ImageView imageView;
             public TextView textView_name;
-            public TextView textView_msg;
 
             public CustomViewHolder(View view){
                 super(view);
 
                 imageView = (ImageView) view.findViewById(R.id.user_photo);
                 textView_name = (TextView) view.findViewById(R.id.user_name);
-                textView_msg = (TextView) view.findViewById(R.id.user_msg);
             }
         }
     }
