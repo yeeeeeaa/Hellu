@@ -125,6 +125,7 @@ public class community_user extends Fragment {
                     Glide.with(holder.itemView.getContext())
                             .load(Profile).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder) holder).imageView);
                     ((CustomViewHolder) holder).textView.setText(Nickname);
+                    /*
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view){
@@ -137,6 +138,8 @@ public class community_user extends Fragment {
                             }
                         }
                     });
+
+                     */
                 }
 
                 @Override

@@ -103,20 +103,19 @@ public class community_message extends AppCompatActivity {
 
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         //List<chat_model.Comment> comments;
-        public List<String> comments;
+        List<String> comments;
         List<String> uids;
         public RecyclerViewAdapter(){
             comments = new ArrayList<>();
-            FirebaseDatabase.getInstance().getReference("Chatting_room").child(chatRoomUid).child("comments").addValueEventListener(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference("Chatting_room").child(chatRoomUid).addValueEventListener(new ValueEventListener() {
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     comments.clear();
-                    Log.d("MainActivity", "ValueEventListener : " + FirebaseDatabase.getInstance().getReference("Chatting_room").child(chatRoomUid).child("comments").child(uid).get());
-                    Log.d("MainActivity", "ValueEventListener : " + dataSnapshot.child(uid).getValue());
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        comments.add(snapshot.getValue().toString());
-                        Log.d("MainActivity", "ValueEventListener : " + snapshot.getValue());
+                    Log.d("MainActivity", "ValueEventListener : " + FirebaseDatabase.getInstance().getReference("Chatting_room").child(chatRoomUid).getKey());
+                    Log.d("MainActivity", "ValueEventListener : " + dataSnapshot.getChildren());
+                    for (DataSnapshot item : dataSnapshot.getChildren()){
+                        comments.add((String) item.getValue());
                         Log.d("MainActivity", "ValueEventListener : " + "코멘트 저장하기 성공");
                     }
                     notifyDataSetChanged();
