@@ -6,6 +6,7 @@ import androidx.loader.content.CursorLoader;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,6 +14,7 @@ import android.graphics.Bitmap;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,8 @@ import android.widget.Toast;
 
 import com.example.HelluApp.R;
 import com.example.HelluApp.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,6 +38,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,6 +64,9 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
     String Title;
     String Content;
     String Image_path;
+
+    String filename;
+    String uri;
 
     Button save_button;         //매일인증 저장하기 버튼
     Button gallery;             //갤러리 열기 버튼
@@ -118,6 +126,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         if (requestCode == 111 && resultCode == RESULT_OK) {
             filePath = data.getData();
             Image_path = getRealPathFromUri(filePath);
+            uri = String.valueOf(filePath);
             Toast.makeText(getApplicationContext(), "이미지가 첨부되었습니다.", Toast.LENGTH_LONG).show();
             Log.d(TAG, "uri:" + String.valueOf(filePath));
             Log.d(TAG, "getRealPathFromUri:" + Image_path);
@@ -134,8 +143,8 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     //Uri -> Path(파일경로)
     //카메라 권한 설정했던 것처럼 앱 설정 들어가서 스토리지 권한 허용해주기!
-    private String getRealPathFromUri(Uri uri)
-    {
+    private String getRealPathFromUri(Uri uri) {
+
         String[] proj=  {MediaStore.Images.Media.DATA};
         CursorLoader cursorLoader = new CursorLoader(this,uri,proj,null,null,null);
         Cursor cursor = cursorLoader.loadInBackground();
@@ -162,7 +171,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             //Unique한 파일명을 만들자.
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
             Date now = new Date();
-            String filename = formatter.format(now) + ".png";
+            filename = formatter.format(now) + ".jpg";
             //storage 주소와 폴더 파일명을 지정해 준다.
             StorageReference storageRef = storage.getReferenceFromUrl("gs://eveproject-d838a.appspot.com").child("daily_stamp/" + filename);
 
@@ -233,7 +242,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
                         } else {
                             // Write new post
-                            writeNewPost(Uid, user.Nickname, Title, Content, Image_path, getDate);
+                            writeNewPost(Uid, user.Nickname, Title, Content, Image_path, getDate, filename, uri);
                         }
 
                     }
@@ -246,11 +255,11 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     }
 
-    private void writeNewPost(String Uid, String Nickname, String Title, String Content, String Image_path, String getDate) {
+    private void writeNewPost(String Uid, String Nickname, String Title, String Content, String Image_path, String getDate, String filename, String uri) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = databaseReference.child("User_Write").push().getKey();
-        Post post = new Post(Uid, Nickname, Title, Content, Image_path, getDate);
+        Post post = new Post(Uid, Nickname, Title, Content, Image_path, getDate, filename, uri);
         Map<String, Object> postValues = post.posttomap();
 
         Map<String, Object> childUpdates = new HashMap<>();
