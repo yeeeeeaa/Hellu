@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="어쩌구 저쩌구 운동에 대한 설명이 나올 곳입니다. 아직 운동에 대한 설명은 모르겠습니다. 일단 넣어 둘게요. 운동에 대한 설명이니까 엄청 길겠죠? 이 정도면 운동에 대한 설명 정도의 자리를 차지하는 텍스트일 것 같습니다." />
+        android:text="" />
 
     <EditText
         android:layout_width="match_parent"
