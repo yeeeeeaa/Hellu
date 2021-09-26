@@ -52,14 +52,17 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         FeedViewHolder holder = new FeedViewHolder(view);
 
         ImageButton starButton = view.findViewById(R.id.star_button);
+        TextView starNum = view.findViewById(R.id.tv_starnum);
         starButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if((count%2)==0) {
                     starButton.setImageResource(R.drawable.ic_baseline_star_rate_24);
+                    starNum.setText("1");
                     count+=1;
                 }else{
                     starButton.setImageResource(R.drawable.ic_baseline_star_outline_24);
+                    starNum.setText("0");
                     count+=1;
                 }
             }
