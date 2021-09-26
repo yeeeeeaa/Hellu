@@ -89,6 +89,23 @@ public class daily_stamp extends AppCompatActivity {
             }
         });
 
+        //하루 권장 칼로리(아직 손 안댐)
+        databaseReference = database.getReference("User_Plan"); // DB 테이블 연결
+        databaseReference.child(Uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
+                String basalMeta = dataSnapshot.child("기초대사량").getValue(String.class);
+                tv_recommended_kcal.setText(basalMeta);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // 디비를 가져오던중 에러 발생 시
+                Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException()); // 에러문 출력
+            }
+        });
+
         adapter = new CustomAdapter(arrayList, this);
         recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
         //여기까지 새로 추가한 부분
@@ -110,13 +127,13 @@ public class daily_stamp extends AppCompatActivity {
     //BottomNavigation 화면 전환 ex) 카메라 아이콘 누르면 카메라창 열림
     private void BottomNavigate(int id) {
 
-        if (id == R.id.daily_camera){
+        if (id == R.id.daily_camera) {
             Intent intent = new Intent(getApplicationContext(), daily_stamp_camera.class);
             startActivity(intent);
-        } else if(id == R.id.daily_write){
+        } else if (id == R.id.daily_write) {
             Intent intent = new Intent(getApplicationContext(), daily_stamp_write.class);
             startActivity(intent);
-        }else {
+        } else {
             // 네비게이션 바에서 갤러리를 누르면 바로 갤러리로 연동하는걸로 코드 수정함.
             Intent intent = new Intent();
             intent.setType("image/*");
