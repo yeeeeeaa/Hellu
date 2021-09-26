@@ -112,7 +112,7 @@ public class daily_stamp_camera extends AppCompatActivity{
         ORIENTATIONS.append(ExifInterface.ORIENTATION_ROTATE_270, 270);
     }
 
-    Bitmap tBmp = Bitmap.createBitmap(450, 50, Bitmap.Config.ARGB_8888);
+    Bitmap tBmp = Bitmap.createBitmap(2500, 100, Bitmap.Config.ARGB_8888);
     Canvas canvas = new Canvas(tBmp);      //카메라가 찍는 화면에 타임스탬프가 추가될 예정
 
     //매일 인증 카메라.java
@@ -348,7 +348,7 @@ public class daily_stamp_camera extends AppCompatActivity{
         Bitmap resultBmp = Bitmap.createBitmap(mBmp.getWidth(), mBmp.getHeight(), mBmp.getConfig());
         Canvas canvas = new Canvas(resultBmp);
         canvas.drawBitmap(mBmp, new Matrix(), null);
-        canvas.drawBitmap(tBmp, new Matrix(), null);
+        canvas.drawBitmap(tBmp, 2000, 1500, null);
 
         return resultBmp;
     }
@@ -365,7 +365,7 @@ public class daily_stamp_camera extends AppCompatActivity{
         canvas.drawPaint(paint);                //tBmp는 타임스탬프를 담고 있는 비트맵입니다
 
         paint.setColor(Color.BLACK);            //페인트 글씨색
-        paint.setTextSize(10);
+        paint.setTextSize(100);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd\nHH:mm:ss");
         String currentDateandTime = sdf.format(new Date());
