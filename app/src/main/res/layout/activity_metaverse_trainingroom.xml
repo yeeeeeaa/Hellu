@@ -10,16 +10,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:text="메타버스 트레이닝 방"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="" />
+        android:layout_margin="10dp"
+        android:textSize="15dp"
+        android:text="전문 트레이너 &amp; 다른 유저들과 함께 운동할 수 있는 공간입니다. \n해당 트레이너의 방 주소를 입력하시면 운동방으로 입장하실 수 있습니다. 메타버스를 통해 운동을 함께 즐겨보세요!" />
 
     <EditText
         android:id="@+id/metaverse_trainingLink_editText"
