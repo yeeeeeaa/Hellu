@@ -46,7 +46,7 @@ public class login extends AppCompatActivity {
         to_sign_up = (TextView) findViewById(R.id.to_sign_up);
 
         firebaseAuth = firebaseAuth.getInstance();
-/*
+
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
@@ -54,8 +54,6 @@ public class login extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), MainActivity.class)); //추가해 줄 ProfileActivity
         }
 
-
- */
 
 
         login_button.setOnClickListener(new View.OnClickListener() {

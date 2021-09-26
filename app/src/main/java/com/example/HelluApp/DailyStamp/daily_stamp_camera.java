@@ -112,7 +112,7 @@ public class daily_stamp_camera extends AppCompatActivity{
         ORIENTATIONS.append(ExifInterface.ORIENTATION_ROTATE_270, 270);
     }
 
-    Bitmap tBmp = Bitmap.createBitmap(2500, 100, Bitmap.Config.ARGB_8888);
+    Bitmap tBmp = Bitmap.createBitmap(2000, 2000, Bitmap.Config.ARGB_8888);         //넉넉하게 크게 잡음
     Canvas canvas = new Canvas(tBmp);      //카메라가 찍는 화면에 타임스탬프가 추가될 예정
 
     //매일 인증 카메라.java
@@ -142,6 +142,13 @@ public class daily_stamp_camera extends AppCompatActivity{
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         deviceOrientation = new DeviceOrientation();
+
+        //date써서 타임스탬프 띄우기
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timeStamp = date.format(new Date());
+
+        setTime = findViewById(R.id.cameraTimeStampView);
+        setTime.setText(timeStamp);
 
         initSurfaceView();
 
@@ -348,7 +355,7 @@ public class daily_stamp_camera extends AppCompatActivity{
         Bitmap resultBmp = Bitmap.createBitmap(mBmp.getWidth(), mBmp.getHeight(), mBmp.getConfig());
         Canvas canvas = new Canvas(resultBmp);
         canvas.drawBitmap(mBmp, new Matrix(), null);
-        canvas.drawBitmap(tBmp, 2000, 1500, null);
+        canvas.drawBitmap(tBmp, 800, 2800, null);             //타임스탬프가 찍히는 위치 조정
 
         return resultBmp;
     }
@@ -360,16 +367,18 @@ public class daily_stamp_camera extends AppCompatActivity{
 
         //타임스탬프를 화면에 찍기 위해 paint를 생성하고 canvas에 담습니다
         Paint paint = new Paint();
-        paint.setColor(Color.WHITE);            //페인트 배경색
+        paint.setColor(Color.TRANSPARENT);            //페인트 배경색-투명
+        //paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.FILL);
         canvas.drawPaint(paint);                //tBmp는 타임스탬프를 담고 있는 비트맵입니다
 
-        paint.setColor(Color.BLACK);            //페인트 글씨색
-        paint.setTextSize(100);
+        paint.setColor(Color.WHITE);            //페인트 글씨색
+        paint.setStrokeWidth(20f);              //선을 굵게
+        paint.setTextSize(150);                 //글씨크기
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd\nHH:mm:ss");
         String currentDateandTime = sdf.format(new Date());
-        canvas.drawText(currentDateandTime , 10, 25, paint);        //타임스탬프를 페인트로 해서 캔버스에 그리기
+        canvas.drawText(currentDateandTime , 20, 120, paint);        //타임스탬프를 페인트로 해서 캔버스에 그리기
 
         Matrix m = new Matrix();
         m.setRotate(degrees, (float) bitmap.getWidth() / 2, (float) bitmap.getHeight() / 2);
