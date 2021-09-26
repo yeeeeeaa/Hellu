@@ -355,7 +355,7 @@ public class daily_stamp_camera extends AppCompatActivity{
         Bitmap resultBmp = Bitmap.createBitmap(mBmp.getWidth(), mBmp.getHeight(), mBmp.getConfig());
         Canvas canvas = new Canvas(resultBmp);
         canvas.drawBitmap(mBmp, new Matrix(), null);
-        canvas.drawBitmap(tBmp, 800, 2800, null);             //타임스탬프가 찍히는 위치 조정
+        canvas.drawBitmap(tBmp, 800, 3000, null);             //타임스탬프가 찍히는 위치 조정
 
         return resultBmp;
     }
