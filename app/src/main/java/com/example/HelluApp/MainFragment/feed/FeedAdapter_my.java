@@ -50,7 +50,7 @@ public class FeedAdapter_my extends RecyclerView.Adapter<FeedAdapter_my.FeedView
 
     @Override
     public void onBindViewHolder(@NonNull FeedAdapter_my.FeedViewHolder holder, int position) {
-        Glide.with(holder.itemView).load(arrayList.get(position).uid).into(holder.iv_profile); //프로필 이미지
+        //Glide.with(holder.itemView).load(arrayList.get(position).uid).into(holder.iv_profile); //프로필 이미지
         Glide.with(holder.itemView).load(arrayList.get(position).image_path).into(holder.iv_image); //글 이미지
         holder.tv_date.setText(arrayList.get(position).date); //날짜
         holder.tv_author.setText(String.valueOf(arrayList.get(position).author)); //글 작성자
