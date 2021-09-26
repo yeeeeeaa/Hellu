@@ -94,7 +94,7 @@ public class plan_review extends AppCompatActivity {
                 }
 
                 // 운동 가이드에 저장된 항목 불러오기
-                for(int i = 0; i < 2; i++){
+                for(int i = 0; i < 4; i++){
                     String intToStr = String.valueOf(i);
                     DataSnapshot guide_ds = dataSnapshot.child("운동 가이드").child(intToStr);
 
@@ -105,7 +105,11 @@ public class plan_review extends AppCompatActivity {
                             exerciseGuide = guide_ds.getValue(String.class);
                             exerciseGuide_builder.append(exerciseGuide);
                         }else {
-                            exerciseGuide_builder.append("\n\n");
+                            if(i == 2){
+                                exerciseGuide_builder.append("\n\n");
+                            }else {
+                                exerciseGuide_builder.append("\n");
+                            }
                             exerciseGuide = guide_ds.getValue(String.class);
                             exerciseGuide_builder.append(exerciseGuide);
                         }

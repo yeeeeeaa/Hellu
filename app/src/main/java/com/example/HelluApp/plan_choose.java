@@ -282,37 +282,31 @@ public class plan_choose extends AppCompatActivity {
 
         // 6. 식단가이드
         if (option71.isChecked()) {
-            //meal_guide.add("밥");
             meal_feedback.add("밥을 많이 드시는군요. 탄수화물 과다 섭취는 인슐린을 지나치게 분비시켜 체내 지방 및 콜레스테롤을 " +
                     "축적시키므로 당뇨나 비만, 고혈압 등을 유발할 수 있습니다. 탄수화물 하루 권장섭취량은 250~300g 이며 이를 칼로리로 " +
                     "계산하면 1000~1200kcal 정도이니 참고해서 탄수화물 섭취를 줄여보시길 바랍니다.");
         }
         if (option72.isChecked()) {
-            //meal_guide.add("빵");
             meal_feedback.add("빵을 많이 드시는군요. 빵과 같은 밀가루 음식은 설탕, 베이킹파우더, 버터, 마가린 등이 들어가는 고탄수화물 " +
                     "식품이기 때문에 혈당을 빠르게 치솟게 해 비만이나 당뇨, 지방간 등을 유발할 수 있습니다. 다이어트와 건강개선을 위해서는 " +
                     "밀가루 음식을 최대한 줄이시는 것이 좋습니다.");
         }
         if (option73.isChecked()) {
-            //meal_guide.add("라면");
             meal_feedback.add("라면을 많이 드시는군요. 라면은 나트륨이 많은 음식으로 유명합니다. 특히 라면 국물은 사실상 나트륨 덩어리와 " +
                     "다름 없는데요. 나트륨 과다 섭취와 관련된 4대 만성질환(고혈압, 심장병, 만성 신장병, 뇌경색)뿐만 아니라 위암까지도 " +
                     "유발할 수 있습니다. 라면은 최대한 줄이고, 만약 먹는다면 국물은 먹지 않는 것이 좋습니다.");
         }
         if (option74.isChecked()) {
-            //meal_guide.add("패스트푸드");
             meal_feedback.add("패스트푸드는 햄버거, 감자튀김, 치킨, 피자 등이 대표적입니다. 이들은 과한 칼로리, 포화지방, 트랜스 지방, " +
                     "콜레스테롤 등이 많아 영양불균형을 초래합니다. 염증을 유발하는 가공식품은 만성염증을 유발하기 때문에 최대한 줄이시는 " +
                     "것이 좋습니다. ");
         }
         if (option75.isChecked()) {
-            //meal_guide.add("각종 배달음식");
             meal_feedback.add("배달음식의 경우 자극적인 음식이 많아 나트륨 과다 섭취 가능성이 큽니다. 나트륨 과다 섭취는 " +
                     "고혈압, 뇌졸중, 당뇨, 비만 등 만성질환을 유발합니다. 다이어트나 건강 개선을 위해서는 배달음식을 최대한 줄이고 " +
                     "가정식을 먹는 것이 좋습니다.");
         }
         if (option76.isChecked()) {
-            //meal_guide.add("군것질, 간식");
             meal_feedback.add("군것질이나 간식을 많이 드시는군요. 하루 동안 간식을 자주 먹을수록 더 많은 전체 칼로리를 소비하게 되고, " +
                     "이것은 체중증가로 이어질 수 있습니다. 군것질을 줄이기 위해서는 포만감이 오래 가는 고단백 식사하기, 음식 일지 쓰기, " +
                     "물 자주 마시기, 운동하기 등의 방법이 있습니다.");
@@ -336,19 +330,12 @@ public class plan_choose extends AppCompatActivity {
                     if (modelFile != null) {
                         Interpreter interpreter = new Interpreter(modelFile);
 
-                        // 1. 라디오 버튼의 값을 하나하나 받아서 input에 넣을 값 구분.
-                        // 2. 위치에 맞게 배열
-                        // 3. 그리고 input에 넣기.
                         // 모델의 Input
-                        //float[][] input = {{1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}};
                         // 입력값 모두 0으로 초기화
                         float[][] input = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
                         float[][] output = new float[1][7]; // 모델의 Output
 
                         input = surveyValueRetn(Gender, Age, Time_spent, Motivation, input);
-
-                        // 결과 출력
-                        //print(interpreter,input,output);
 
                         interpreter.run(input, output); // 모델 실행
 
@@ -365,39 +352,48 @@ public class plan_choose extends AppCompatActivity {
                             }
                         }
 
+                        String explanation = "";
+
                         switch(index){
                             case 0:
                                 exercise = "체육관 운동";
+                                explanation = "헬스장 루틴 정리 영상";
                                 exerciseURL = "https://www.youtube.com/watch?v=zjfGs_iIIE8";
                                 break;
 
                             case 1:
                                 exercise = "웨이트 트레이닝";
+                                explanation = "초보자 전신 운동 영상";
                                 exerciseURL = "https://www.youtube.com/watch?v=Ah72gR5DrxU";
                                 break;
 
                             case 2:
                                 exercise = "수영";
+                                explanation = "수영 초보자를 위한 기초 강습";
                                 exerciseURL = "https://www.youtube.com/watch?v=bPWqO20Xzco";
                                 break;
 
                             case 3:
                                 exercise = "팀 스포츠";
-                                exerciseURL = "https://www.youtube.com/watch?v=yyjOhsNEqtE";
+                                explanation = "동적 스트레칭 영상";
+                                exerciseURL = "https://www.youtube.com/watch?v=gMKrEgAdmmo";
                                 break;
 
                             case 4:
                                 exercise = "조깅";
+                                explanation = "조깅 영상";
                                 exerciseURL = "https://www.youtube.com/watch?v=6zsHvi7aqjE";
                                 break;
 
                             case 5:
                                 exercise = "요가";
+                                explanation = "23분 기초 요가 스트레칭";
                                 exerciseURL = "https://www.youtube.com/watch?v=OBTl49bVk94";
                                 break;
 
                             case 6:
                                 exercise = "줌바 댄스";
+                                explanation = "줌바 댄스 강의 영상";
                                 exerciseURL = "https://www.youtube.com/watch?v=eK90xs8qPVw";
                                 break;
 
@@ -406,7 +402,9 @@ public class plan_choose extends AppCompatActivity {
                         }
 
                         // 운동 가이드
+                        totalExerciseURL.add("운동 전 스트레칭 영상");
                         totalExerciseURL.add("https://www.youtube.com/watch?v=yyjOhsNEqtE");
+                        totalExerciseURL.add(explanation);
                         totalExerciseURL.add(exerciseURL);
 
                         // 파베 저장 코드
