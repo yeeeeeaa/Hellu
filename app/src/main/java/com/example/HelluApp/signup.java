@@ -54,12 +54,14 @@ public class signup extends AppCompatActivity {
         rDatabase = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
 
+        /*
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
             //그리고 MainActivity를 연다.
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
+         */
         
         signup_button.setOnClickListener(new View.OnClickListener() {
             @Override

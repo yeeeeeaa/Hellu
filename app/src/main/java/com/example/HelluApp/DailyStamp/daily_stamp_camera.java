@@ -112,8 +112,8 @@ public class daily_stamp_camera extends AppCompatActivity{
         ORIENTATIONS.append(ExifInterface.ORIENTATION_ROTATE_270, 270);
     }
 
-    Bitmap bmp = Bitmap.createBitmap(449, 47, Bitmap.Config.ARGB_8888);
-    Canvas canvas = new Canvas(bmp);
+    Bitmap tBmp = Bitmap.createBitmap(450, 50, Bitmap.Config.ARGB_8888);
+    Canvas canvas = new Canvas(tBmp);      //카메라가 찍는 화면에 타임스탬프가 추가될 예정
 
     //매일 인증 카메라.java
     @Override
@@ -142,13 +142,6 @@ public class daily_stamp_camera extends AppCompatActivity{
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         deviceOrientation = new DeviceOrientation();
-
-        //date써서 타임스탬프 띄우기
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd\nHH:mm:ss");
-        String timeStamp = date.format(new Date());
-
-        setTime = findViewById(R.id.cameraTimeStampView);
-        setTime.setText(timeStamp);
 
         initSurfaceView();
 
@@ -350,14 +343,43 @@ public class daily_stamp_camera extends AppCompatActivity{
         }
     }
 
+    //카메라가 찍는 화면이 담긴 캔버스 위에 타임스탬프가 담긴 캔버스를 올립니다
+    public Bitmap overlay(Bitmap mBmp, Bitmap tBmp) {
+        Bitmap resultBmp = Bitmap.createBitmap(mBmp.getWidth(), mBmp.getHeight(), mBmp.getConfig());
+        Canvas canvas = new Canvas(resultBmp);
+        canvas.drawBitmap(mBmp, new Matrix(), null);
+        canvas.drawBitmap(tBmp, new Matrix(), null);
+
+        return resultBmp;
+    }
+
+    //카메라로 찍는 화면 비트맵 생성
     public Bitmap getRotatedBitmap(Bitmap bitmap, int degrees) throws Exception {
         if(bitmap == null) return null;
         if (degrees == 0) return bitmap;
 
+        //타임스탬프를 화면에 찍기 위해 paint를 생성하고 canvas에 담습니다
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);            //페인트 배경색
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawPaint(paint);                //tBmp는 타임스탬프를 담고 있는 비트맵입니다
+
+        paint.setColor(Color.BLACK);            //페인트 글씨색
+        paint.setTextSize(10);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd\nHH:mm:ss");
+        String currentDateandTime = sdf.format(new Date());
+        canvas.drawText(currentDateandTime , 10, 25, paint);        //타임스탬프를 페인트로 해서 캔버스에 그리기
+
         Matrix m = new Matrix();
         m.setRotate(degrees, (float) bitmap.getWidth() / 2, (float) bitmap.getHeight() / 2);
+        Bitmap mBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), m, true);        //mBmp는 찍고 있는 화면입니다
 
-        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), m, true);
+        overlay(mBmp, tBmp);
+
+        Bitmap result = overlay(mBmp, tBmp);    //overlay()를 통해 두 캔버스를 합친 결과를 result로 받습니다
+
+        return result;
     }
 
 
@@ -392,7 +414,7 @@ public class daily_stamp_camera extends AppCompatActivity{
      * @see android.provider.MediaStore.Images.Media#insertImage(ContentResolver, Bitmap, String, String)
      */
     public static final String insertImage(ContentResolver cr,
-                                           Bitmap source,
+                                           Bitmap source,     //여기서 불러오는 Bitmap은 getRotatedBitmap()에서 리턴한 비트맵입니다
                                            String title,
                                            String description) {
 
@@ -407,9 +429,10 @@ public class daily_stamp_camera extends AppCompatActivity{
         values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
 
         Uri url = null;
-        String stringUrl = null;    /* value to be returned */
+        String stringUrl = null;    /* value to be returned, 파일이 저장되는 경로 */
 
         try {
+
             url = cr.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
 
             if (source != null) {
