@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Metaverse.metaverse_trainingroom">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="메타버스 트레이닝 방"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="어쩌구 저쩌구 운동에 대한 설명이 나올 곳입니다. 아직 운동에 대한 설명은 모르겠습니다. 일단 넣어 둘게요. 운동에 대한 설명이니까 엄청 길겠죠? 이 정도면 운동에 대한 설명 정도의 자리를 차지하는 텍스트일 것 같습니다." />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="주소를 입력하는 곳"
+
+        android:gravity="center"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="게더나 줌으로 들어가는 버튼" />
+
+</LinearLayout>
