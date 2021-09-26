@@ -57,7 +57,7 @@ public class community_message extends AppCompatActivity {
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
     private String Uid = user.getUid();
-
+    private String page_num;
     EditText et;
     ListView listView;
 
@@ -74,7 +74,7 @@ public class community_message extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_char);
-
+        page_num = getIntent().getStringExtra("page_num");
         //제목줄 제목글시를 닉네임으로(또는 채팅방)
 
         et=findViewById(R.id.message);
@@ -84,7 +84,13 @@ public class community_message extends AppCompatActivity {
 
         //Firebase DB관리 객체와 'caht'노드 참조객체 얻어오기
         firebaseDatabase= FirebaseDatabase.getInstance();
-        chatRef= firebaseDatabase.getReference("chat");
+        if (page_num.equals("chat")) {
+            chatRef = firebaseDatabase.getReference("chat");
+        }else if (page_num.equals("chat2")){
+            chatRef = firebaseDatabase.getReference("chat2");
+        }else if (page_num.equals("chat3")){
+            chatRef = firebaseDatabase.getReference("chat3");
+        }
 
 
         //firebaseDB에서 채팅 메세지들 실시간 읽어오기..

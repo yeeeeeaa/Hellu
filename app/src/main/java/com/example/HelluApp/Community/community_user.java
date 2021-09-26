@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +40,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 //친구목록.java
 
@@ -75,15 +77,18 @@ public class community_user extends Fragment {
         public CommunityUsersRecyclerViewAdapter(){
             users_models = new ArrayList<>();
             FirebaseDatabase.getInstance().getReference("User").addValueEventListener(new ValueEventListener() {
+                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     users_models.clear();
                     for(DataSnapshot snapshot :dataSnapshot.getChildren()){
-                        users_uids.add(snapshot.getKey());
-                        users_models.add(snapshot.child(users_uids.get(i)).getValue(users_model.class));
+                        if(!Objects.equals(snapshot.getKey(), "0o8pHc0N1qS3FRZHy2UfD4z1HO82")){
+                            users_uids.add(snapshot.getKey());
+                            users_models.add(snapshot.child(users_uids.get(i)).getValue(users_model.class));
 
-                        i++;
+                            i++;
+                        }
                     }
                     notifyDataSetChanged();
                     for(int k = 0;k < users_uids.size(); k++){

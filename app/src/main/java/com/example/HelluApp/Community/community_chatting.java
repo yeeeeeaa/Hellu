@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,15 +63,22 @@ public class community_chatting extends Fragment {
     class CommunityChattingRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public List<String> chatting_room;
         public List<String> chatting_photo;
+        public List<String> chatting_id;
         //users_model users_models2;
 
         public CommunityChattingRecyclerViewAdapter(){
             chatting_room = new ArrayList<>();
             chatting_photo = new ArrayList<>();
+            chatting_id = new ArrayList<>();
             chatting_room.add("조깅 운동 클럽");
+            chatting_room.add("1:1 트레이너 대화방");
             chatting_room.add("다이어트 종합반");
             chatting_photo.add("https://cdn.pixabay.com/photo/2016/07/11/03/57/jogging-1509003_960_720.jpg");
+            chatting_photo.add("https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2");
             chatting_photo.add("https://cdn.pixabay.com/photo/2017/09/16/19/21/salad-2756467_960_720.jpg");
+            chatting_id.add("chat");
+            chatting_id.add("chat2");
+            chatting_id.add("chat3");
         }
 
         @Override
@@ -92,6 +100,7 @@ public class community_chatting extends Fragment {
                         @Override
                         public void onClick(View view){
                             Intent intent = new Intent(view.getContext(), community_message.class);
+                            intent.putExtra("page_num", chatting_id.get(position));
                             ActivityOptions activityOptions = null;
                             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
                                 activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.fromleft, R.anim.fromleft);
