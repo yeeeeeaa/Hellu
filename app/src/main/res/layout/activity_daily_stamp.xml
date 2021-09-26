@@ -32,11 +32,11 @@
                 android:layout_gravity="center"
                 android:text="하루 권장 칼로리🥬:" />
             <TextView
-                android:id="@+id/recommended_kcal"
+                android:id="@+id/recommended_kcal_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="12345"
+                android:text="2000"
                 android:layout_marginLeft="2dp"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -59,11 +59,11 @@
                 android:text="오늘 먹은 칼로리🍔:" />
 
             <TextView
-                android:id="@+id/today_kcal"
+                android:id="@+id/today_kcal_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="12345"
+                android:text="0"
                 android:layout_marginLeft="2dp"/>
             <TextView
                 android:layout_width="wrap_content"
