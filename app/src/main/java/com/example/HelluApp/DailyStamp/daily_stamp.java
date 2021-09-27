@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -43,6 +44,7 @@ public class daily_stamp extends AppCompatActivity {
     TextView tv_recommended_kcal;
     TextView tv_today_kcal;
     String getDate;
+    int CODE_ALBUM_REQUEST = 111;
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseUser user = mAuth.getCurrentUser();
@@ -135,14 +137,19 @@ public class daily_stamp extends AppCompatActivity {
             startActivity(intent);
         } else {
             // 네비게이션 바에서 갤러리를 누르면 바로 갤러리로 연동하는걸로 코드 수정함.
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(intent, 1);
+//            Intent intent = new Intent();
+//            intent.setType("image/*");
+//            intent.setAction(Intent.ACTION_GET_CONTENT);
+//            startActivityForResult(intent, 1);
             /*
             Intent intent = new Intent(getApplicationContext(), daily_stamp_gallery.class);
             startActivity(intent);
              */
+
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            startActivityForResult(intent, CODE_ALBUM_REQUEST);
         }
     }
 }
