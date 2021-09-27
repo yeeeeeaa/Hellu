@@ -26,12 +26,12 @@ public class metaverse_trainingroom extends AppCompatActivity {
 
         //입력한 주소 받아오기
         //et_trainingRoom_link = findViewById(R.id.metaverse_trainingLink_editText);
-        if(et_trainingRoom_link != null){
-            TrainingRoomLink = et_trainingRoom_link.getText().toString();
-        } else{
-            //Toast.makeText(this, "트레이닝 방 주소를 입력해주세요", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        if(et_trainingRoom_link != null){
+//            TrainingRoomLink = et_trainingRoom_link.getText().toString();
+//        } else{
+//            //Toast.makeText(this, "트레이닝 방 주소를 입력해주세요", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
         //트레이닝 방 입장하기 버튼 클릭 이벤트
         b_trainingRoom_enter = findViewById(R.id.metaverse_trainingLink_button);
