@@ -120,7 +120,7 @@ public class walking_ranking extends Fragment {
                     Glide.with(holder.itemView.getContext())
                             .load(Profile).apply(new RequestOptions().circleCrop()).into(((walking_ranking.WalkingRankingRecyclerViewAdapter.CustomViewHolder) holder).imageView);
                     ((walking_ranking.WalkingRankingRecyclerViewAdapter.CustomViewHolder) holder).textView1.setText(Nickname);
-                    ((walking_ranking.WalkingRankingRecyclerViewAdapter.CustomViewHolder) holder).textView2.setText(Walking);
+                    ((walking_ranking.WalkingRankingRecyclerViewAdapter.CustomViewHolder) holder).textView2.setText(Walking+" 걸음");
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view){

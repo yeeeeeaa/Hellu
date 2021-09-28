@@ -73,8 +73,8 @@ public class walking_ranking_checking extends AppCompatActivity implements Senso
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
-            tvStepCount.setText("Step Count : " + event.values[0]);
-            walking = String.valueOf(event.values[0]);
+            tvStepCount.setText("Step Count : " + ((int) event.values[0]));
+            walking = String.valueOf(Integer.valueOf((int) event.values[0]));
         }
     }
 
